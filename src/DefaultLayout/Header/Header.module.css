@@ -1,0 +1,433 @@
+.navbarWrapper {
+    width: 100%;
+    z-index: 2;
+    position: fixed;
+}
+
+.topbar {
+    background-color: #212121;
+}
+
+.topbarList {
+    list-style: none;
+    display: flex !important;
+    justify-content: space-between;
+    height: 40px;
+    background-color: #212121;
+    max-width: 1300px;
+    margin: var(--center);
+    align-items: center;
+}
+
+.topbarElement {
+    color: white;
+    font-size: 14px;
+    position: relative;
+}
+
+.elementSeeDetails {
+    margin-left: 8px;
+    font-size: 11px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.header {
+    position: relative;
+    height: 67px;
+    background-color: #ffffff;
+    z-index: 2;
+}
+
+.sticky > .header {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.headerList {
+    list-style: none;
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 6px;
+    max-width: 1300px;
+    margin: var(--center);
+}
+
+.headerChildList {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerListElement {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 12px;
+    z-index: 10000;
+}
+
+.headerChildListElement {
+    padding: 10px 14px;
+    cursor: pointer;
+}
+.headerListElementChild {
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.headerIcon {
+    color: var(--primary);
+}
+
+.shopLogo {
+    margin-left: 150px;
+}
+
+.shopClub1 {
+    margin-top: -1.5px;
+}
+
+.faCaretDown {
+    padding-left: 8px;
+}
+
+.headerListElementChild:hover {
+    font-weight: bold;
+}
+
+.headerChildListElement:hover {
+    font-weight: bold;
+}
+
+.headerListElementChild:hover > .perfumeSubmenu {
+    font-weight: normal;
+}
+
+.headerListElementFirstChild {
+    padding-left: 0px !important;
+}
+
+.headerListElementFirstChild:hover {
+    padding-bottom: 165px;
+}
+
+.headerChildListElementLastChild {
+    padding-right: 0px !important;
+}
+
+.perfumeSubmenu {
+    position: absolute;
+    display: none;
+    margin-top: 30px;
+}
+
+.perfumeSubmenuList {
+    width: 150px;
+    background-color: #eeeeee;
+    padding: 5px 30px 5px 0;
+    list-style: none;
+    padding-bottom: 10px;
+}
+
+.perfumeSubmenuListElement {
+    font-size: 13px;
+    padding: 5px;
+    margin-left: 20px;
+}
+
+.perfumeSubmenuListElement:hover {
+    font-weight: bold;
+}
+
+.discountContainer {
+    position: relative;
+    font-size: 20px;
+    width: 350px;
+    height: auto;
+    margin-left: 140%;
+    margin-top: 20%;
+    background-color: var(--primary);
+    display: none;
+    border-radius: 10px;
+    z-index: 4;
+}
+
+.faTimes {
+    margin-left: 320px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.discountLists {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    margin: 0 auto;
+}
+
+.discountList {
+    list-style: none;
+}
+
+.discountList > li {
+    line-height: 30px;
+}
+
+.discountTitle {
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    margin-top: 0;
+}
+
+.discountInfo {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.discountElement {
+    font-size: 14px;
+}
+
+.discountNote {
+    font-size: 13px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.navbar_input:checked ~ .discountContainer {
+    display: block;
+}
+
+.login_input:checked ~ .loginFormWrapper {
+    display: block;
+}
+
+.navbar_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    background-color: gray;
+    z-index: 3;
+    opacity: 0.5;
+}
+
+.navbar_overlay2 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    background-color: gray;
+    z-index: 3;
+    opacity: 0.5;
+}
+
+.buttonWrapper {
+    padding-bottom: 40px;
+}
+
+.button {
+    background-color: var(--primary);
+    padding: 15px 40px;
+    display: block;
+    margin: 0 auto;
+    background: linear-gradient(to left, var(--primary) 50%, #fffcf6 50%) right;
+    background-size: 200%;
+    transition: 0.5s ease-out;
+    color: #fffcf6;
+    border: 1px solid #fffcf6;
+}
+
+.button:hover {
+    background-position: left;
+    color: var(--primary);
+}
+
+.loginFormWrapper {
+    position: absolute;
+    width: 300px;
+    padding: 10px 28px 28px 28px;
+    box-shadow: 0px 3px 3px 3px rgb(141, 139, 139);
+    background-color: #ffffff;
+    top: 4%;
+    right: 0.1%;
+    z-index: 4;
+    transform: translateY(-114%);
+    transition: all 1s;
+}
+
+.loginText {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.loginDescription {
+    font-weight: normal;
+    padding: 15px 0;
+    font-size: 11px;
+}
+
+form > input {
+    width: 100%;
+    padding: 14px 15px;
+    margin: 5px 0;
+    border: none;
+    background-color: #eee0c5;
+}
+
+input:focus {
+    outline: none;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 15px 0px;
+    margin-top: 15px;
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    color: white;
+    transition: all 1s;
+}
+
+.loginButton:hover {
+    border: 1px solid var(--primary);
+    background-color: white;
+    color: var(--primary);
+}
+
+.signupButton {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 15px;
+    background: linear-gradient(to left, #ffffff 50%, var(--primary) 50%) right;
+    background-size: 200%;
+    transition: 0.5s ease-out;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.signupButton:hover {
+    background-position: left;
+    color: #ffffff;
+}
+
+.mobileMenuWrapper {
+    position: absolute;
+    transform: translateX(-110%);
+    transition: all 1s;
+    background-color: #c0bfbf;
+    opacity: 0.9;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+}
+
+.mobileMenuCheckbox:checked ~ .mobileMenuWrapper {
+    transform: translateX(0%);
+}
+
+.mobileMenu {
+    list-style: none;
+    padding-bottom: 300%;
+    font-size: 14px;
+}
+
+.mobileMenuToggler {
+    display: none;
+}
+
+.mobileMenuElement {
+    cursor: pointer;
+}
+
+.mobileMenuElement:not(:first-child) > * {
+    margin-left: 20px;
+}
+
+.mobileMenuElement:not(:first-child) {
+    padding: 10px 0;
+}
+
+.shopClub2 {
+    width: 100%;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.mobileMenuExitWrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.mobileMenuExit {
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 20px;
+    background-color: #949292;
+}
+
+@media (max-width: 839px) {
+    .navbarWrapper {
+        width: 100%;
+        max-width: none;
+    }
+
+    .header {
+        max-width: 100%;
+    }
+
+    .mobileMenuToggler {
+        display: block;
+    }
+
+    .topbarList {
+        width: 95% !important;
+    }
+
+    .topbarElement {
+        margin-top: 8px;
+        font-size: 10px;
+    }
+
+    .headerList {
+        width: 95% !important;
+    }
+
+    .headerListElementFirstChild {
+        display: none;
+    }
+
+    .headerChildListElement {
+        display: none;
+    }
+
+    .headerLogin {
+        display: block;
+    }
+
+    .headerChildListElementLastChild {
+        display: block;
+    }
+
+    .shopLogo {
+        margin-left: 60px;
+    }
+}
+
+@media (min-width: 840px) and (max-width: 1123px) {
+}
+
+@media (min-width: 1124px) and (max-width: 1339px) {
+}
