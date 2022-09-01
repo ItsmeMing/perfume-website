@@ -1,5 +1,5 @@
-import "./reset.css";
 import "./GlobalStyles.scss";
+import "./reset.css";
 
 function GlobalStyles({ children }) {
     return children;

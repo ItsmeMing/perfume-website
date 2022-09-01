@@ -1,0 +1,334 @@
+@import "../../../globalstyles/variables.scss";
+
+.header {
+    width: 100%;
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .topnav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            background-color: $black;
+            // width: 1300px;
+            > p {
+                color: $white;
+            }
+            .discount {
+                cursor: pointer;
+                .dc-details {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .navbar {
+            display: flex;
+            > * {
+                flex: 1;
+                cursor: pointer;
+            }
+            .d-menu {
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+            .logo-wrapper {
+                .logo {
+                    display: block;
+                    height: auto;
+                    margin: 0 auto;
+                }
+            }
+            .r-menu {
+                display: flex;
+                justify-content: right;
+                .r-menu-item {
+                    padding: 0 12px;
+                    &:hover {
+                        font-weight: bold;
+                    }
+                }
+                :not(:first-child) {
+                    color: $orange;
+                }
+                :last-child {
+                    position: relative;
+                    padding-right: 0;
+                    .cart-number {
+                        color: $white;
+                        position: absolute;
+                        border-radius: 100%;
+                        background-color: #3985ed;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .header {
+        background: linear-gradient(to bottom, $black 40px, $white 0%);
+        height: auto;
+        padding: 5px 0;
+        .container {
+            .topnav {
+                width: 95%;
+                height: auto;
+                > p {
+                    font-size: 13px;
+                    line-height: 17px;
+                    text-align: center;
+                }
+                .discount {
+                    width: 24%;
+                    .dc-details {
+                        display: none;
+                    }
+                }
+                .fs-condition {
+                    width: 30%;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .header {
+        background: linear-gradient(to bottom, $black 32px, $white 0%);
+        .container {
+            .topnav {
+                height: 32px;
+                > p {
+                    font-size: 12px;
+                }
+                .discount {
+                    .dc-details {
+                        font-size: 8px;
+                        margin-left: 2px;
+                    }
+                }
+            }
+            .navbar {
+                height: 52px;
+                .d-menu {
+                    font-size: 11px;
+                }
+                .logo-wrapper {
+                    .logo {
+                        width: 80px;
+                    }
+                }
+                .r-menu {
+                    .r-menu-item {
+                        font-size: 11px;
+                        > * {
+                            font-size: 11px;
+                        }
+                    }
+                    :last-child {
+                        .cart-number {
+                            font-size: 8px;
+                            right: -25%;
+                            top: -40%;
+                            padding: 0 3.52px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        background: linear-gradient(to bottom, $black 34px, $white 0%);
+        .container {
+            .topnav {
+                height: 34px;
+                > p {
+                    font-size: 13px;
+                }
+                .discount {
+                    .dc-details {
+                        font-size: 9px;
+                        margin-left: 3px;
+                    }
+                }
+            }
+            .navbar {
+                height: 52px;
+                .d-menu {
+                    font-size: 11px;
+                }
+                .logo-wrapper {
+                    .logo {
+                        width: 80px;
+                    }
+                }
+                .r-menu {
+                    .r-menu-item {
+                        font-size: 11px;
+                        > * {
+                            font-size: 11px;
+                        }
+                    }
+                    :last-child {
+                        .cart-number {
+                            font-size: 8px;
+                            right: -25%;
+                            top: -40%;
+                            padding: 0 3.52px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .header {
+        background: linear-gradient(to bottom, $black 36px, $white 0%);
+        .container {
+            .topnav {
+                height: 36px;
+                > p {
+                    font-size: 14px;
+                }
+                .discount {
+                    .dc-details {
+                        font-size: 10px;
+                        margin-left: 4px;
+                    }
+                }
+            }
+            .navbar {
+                height: 54px;
+                .d-menu {
+                    font-size: 12px;
+                }
+                .logo-wrapper {
+                    .logo {
+                        width: 90px;
+                    }
+                }
+                .r-menu {
+                    .r-menu-item {
+                        font-size: 12px;
+                        > * {
+                            font-size: 12px;
+                        }
+                    }
+                    :last-child {
+                        .cart-number {
+                            font-size: 9px;
+                            right: -25%;
+                            top: -40%;
+                            padding: 0 3.95px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .header {
+        background: linear-gradient(to bottom, $black 38px, $white 0%);
+        .container {
+            .topnav {
+                height: 38px;
+                > p {
+                    font-size: 15px;
+                }
+                .discount {
+                    .dc-details {
+                        font-size: 11px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+            .navbar {
+                height: 56px;
+                .d-menu {
+                    font-size: 13px;
+                }
+                .logo-wrapper {
+                    .logo {
+                        width: 100px;
+                    }
+                }
+                .r-menu {
+                    .r-menu-item {
+                        font-size: 13px;
+                        > * {
+                            font-size: 13px;
+                        }
+                    }
+                    :last-child {
+                        .cart-number {
+                            font-size: 10px;
+                            right: -25%;
+                            top: -40%;
+                            padding: 0 4.4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width: 1400px) {
+    .header {
+        background: linear-gradient(to bottom, $black 40px, $white 0%);
+        .container {
+            width: 1300px;
+            .topnav {
+                height: 40px;
+
+                > p {
+                    font-size: 16px;
+                }
+                .discount {
+                    .dc-details {
+                        font-size: 12px;
+                        margin-left: 6px;
+                    }
+                }
+            }
+            .navbar {
+                height: 58px;
+                .d-menu {
+                    font-size: 14px;
+                }
+                .logo-wrapper {
+                    .logo {
+                        width: 110px;
+                    }
+                }
+                .r-menu {
+                    .r-menu-item {
+                        font-size: 14px;
+                        > * {
+                            font-size: 14px;
+                        }
+                    }
+                    :last-child {
+                        .cart-number {
+                            font-size: 11px;
+                            right: -25%;
+                            top: -40%;
+                            padding: 0 4.8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
