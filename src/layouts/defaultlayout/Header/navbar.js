@@ -13,7 +13,7 @@ import {
     faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import logo from "./assets/images/logo.webp";
+import logo from "../assets/images/logo.webp";
 
 const Navbar = ({ search }) => {
     const dButton = useRef(null);
@@ -77,7 +77,13 @@ const Navbar = ({ search }) => {
     );
 };
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ search }) => {
+    const sMenu = useRef(null);
+    const arrow = useRef(null);
+    const handleSubMenu = () => {
+        sMenu.current.classList.toggle("active");
+        arrow.current.classList.toggle("active");
+    };
     return (
         <Fragment>
             <FontAwesomeIcon
@@ -88,12 +94,12 @@ const MobileNavbar = () => {
                 }}
             />
             <ul className="m-menu">
-                <li className="m-menu-item">
-                    <p className="menu-text">Perfumes</p>
-                    <FontAwesomeIcon icon={faCaretDown} className="menu-icon" />
-                </li>
-                <li className="m-menu-item">
-                    <ul className="s-menu">
+                <li className="m-menu-item" id="sub">
+                    <div className="menu-text" onClick={handleSubMenu}>
+                        Perfumes
+                        <FontAwesomeIcon ref={arrow} icon={faCaretDown} className="menu-icon" />
+                    </div>
+                    <ul ref={sMenu} className="s-menu">
                         <li className="s-menu-item">
                             <p className="menu-text">All</p>
                             <FontAwesomeIcon icon={faSprayCanSparkles} className="menu-icon" />
@@ -116,7 +122,13 @@ const MobileNavbar = () => {
                     <p className="menu-text">About</p>
                     <FontAwesomeIcon icon={faCircleInfo} className="menu-icon" />
                 </li>
-                <li className="m-menu-item">
+                <li
+                    className="m-menu-item"
+                    onClick={() => {
+                        document.querySelector(".m-menu").classList.remove("active");
+                        search.current.classList.toggle("active");
+                    }}
+                >
                     <p className="menu-text">Search</p>
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="menu-icon" />
                 </li>
@@ -134,6 +146,11 @@ const MobileNavbar = () => {
                 onClick={() => {
                     document.querySelector(".m-menu").classList.remove("active");
                     document.querySelector(".mobile-overlay").classList.remove("active");
+                    if (sMenu.current.classList.contains("active")) {
+                        sMenu.current.classList.remove("active");
+                        arrow.current.classList.remove("active");
+                    }
+                    search.current.classList.remove("active");
                 }}
             ></div>
         </Fragment>

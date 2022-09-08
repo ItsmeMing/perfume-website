@@ -3,20 +3,19 @@ $white: #ffffff;
 $orange: #ef776a;
 $light-brown: #fffcf6;
 
-@mixin button {
+@mixin button($borColor, $backColor1, $backColor2, $hColor) {
     display: block;
-
     font-size: 16px;
-    color: $white;
+    color: $borColor;
     height: 46px;
     padding: 0 24px;
     background-color: transparent;
-    background: linear-gradient(to left, transparent 50%, $white 50%) right;
+    background: linear-gradient(to left, $backColor1 50%, $backColor2 50%) right;
     background-size: 200%;
     transition: 0.3s ease-out;
-    border: 1px solid $white;
+    border: 1px solid $borColor;
     &:hover {
         background-position: left;
-        color: $orange;
+        color: $hColor;
     }
 }

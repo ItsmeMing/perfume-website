@@ -77,7 +77,7 @@ function Header() {
                         </article>
                     </section>
                     <nav className="navbar p-0">
-                        {mnav ? <MobileNavbar></MobileNavbar> : <Navbar search={search}></Navbar>}
+                        {mnav ? <MobileNavbar search={search}></MobileNavbar> : <Navbar search={search}></Navbar>}
                     </nav>
                     <Search search={search}></Search>
                 </Container>
