@@ -1,0 +1,170 @@
+@import "../../../../../globalstyles/variables.scss";
+
+.banner-container {
+    position: relative;
+    height: auto;
+    .banner-content {
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        > p {
+            color: $white;
+        }
+        .slogan {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .b-text {
+            font-weight: 400;
+            width: 85%;
+        }
+        .b-button {
+            @include button($orange, $orange, transparent, $orange);
+            color: $white;
+            display: block;
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .banner-container {
+        width: 90% !important;
+        .banner-content {
+            width: 100%;
+            margin: 40px 0;
+            transform: none;
+            > p {
+                color: $black;
+            }
+            .slogan {
+                font-size: 42px;
+                line-height: 40px;
+            }
+            .b-text {
+                font-size: 12px;
+                line-height: 16px;
+                width: 100%;
+                margin: 16px auto;
+            }
+            .b-button {
+                font-size: 12px;
+                height: 38px;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-container {
+        .banner-content {
+            margin: 25px 0;
+            transform: none;
+            > p {
+                color: $black;
+            }
+            .slogan {
+                font-size: 30px;
+                line-height: 35px;
+            }
+            .b-text {
+                font-size: 11px;
+                line-height: 15px;
+                width: 100%;
+                margin: 15px auto;
+            }
+            .b-button {
+                font-size: 11px;
+                height: 36px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .banner-container {
+        .banner-content {
+            position: absolute;
+            width: 420px;
+            .slogan {
+                font-size: 44px;
+                line-height: 42px;
+            }
+            .b-text {
+                font-size: 13px;
+                line-height: 17px;
+                margin: 17px auto;
+            }
+            .b-button {
+                font-size: 13px;
+                height: 40px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .banner-container {
+        .banner-content {
+            width: 480px;
+            .slogan {
+                font-size: 46px;
+                line-height: 43px;
+            }
+            .b-text {
+                font-size: 14px;
+                line-height: 18px;
+                margin: 18px auto;
+            }
+            .b-button {
+                font-size: 14px;
+                height: 42px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .banner-container {
+        .banner-content {
+            width: 490px;
+            .slogan {
+                font-size: 48px;
+                line-height: 44px;
+            }
+            .b-text {
+                font-size: 15px;
+                line-height: 19px;
+                margin: 19px auto;
+            }
+            .b-button {
+                font-size: 15px;
+                height: 44px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .banner-container {
+        width: 1300px !important;
+        .banner-content {
+            width: 500px;
+            .slogan {
+                font-size: 50px;
+                line-height: 45px;
+            }
+            .b-text {
+                font-size: 16px;
+                line-height: 20px;
+                margin: 20px auto;
+            }
+            .b-button {
+                font-size: 16px;
+                height: 46px;
+            }
+        }
+    }
+}

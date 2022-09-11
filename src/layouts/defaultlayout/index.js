@@ -7,7 +7,9 @@ function DefaultLayout({ children }) {
     return (
         <Fragment>
             <Header></Header>
-            <Container fluid>{children}</Container>
+            <Container fluid className="g-0">
+                {children}
+            </Container>
             <Footer></Footer>
         </Fragment>
     );

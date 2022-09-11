@@ -1,5 +1,16 @@
+import { Fragment } from "react";
+import Banner from "./components/banner/Banner";
+import Sliderr from "./components/slider/Slider";
+import Slogan from "./components/slogan/Slogan";
+
 function Main() {
-    return <h1>Main page</h1>;
+    return (
+        <Fragment>
+            <Banner></Banner>
+            <Sliderr></Sliderr>
+            <Slogan></Slogan>
+        </Fragment>
+    );
 }
 
 export default Main;

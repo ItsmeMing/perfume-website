@@ -1,0 +1,34 @@
+#Categories
+
+# @name getAllCategories
+GET  https://dummyjson.com/products/100
+
+###
+
+# @name addNewCategory
+POST http://localhost:3001/api/categories
+Content-Type: application/json
+
+{
+    "name": "undefined"
+}
+
+###
+
+# @name updateCategory
+PATCH http://localhost:3001/api/categories/2
+Content-Type: application/json
+
+{
+    "name": "Men"
+}
+
+###
+
+# @name deleteCategory
+DELETE http://localhost:3001/api/categories/2
+Content-Type: application/json
+
+{
+    "name": "Men"
+}

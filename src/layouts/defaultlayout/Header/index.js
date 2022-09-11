@@ -28,7 +28,7 @@ function Header() {
     return (
         <Fragment>
             <header className="header">
-                <Container className="container g-0">
+                <Container className="g-0">
                     <section className="topnav">
                         <p
                             ref={disBtn}

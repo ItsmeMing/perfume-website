@@ -1,0 +1,201 @@
+{
+    "sliders": [
+        {
+            "id": 1,
+            "text": "Dossier (aka. everyone's favorite fragnance [inspired by] brand)...",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/teenvogue.svg"
+        },
+        {
+            "id": 2,
+            "text": "Dossier acts as an affordable alternative by creating scents...",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/insta.svg"
+        },
+        {
+            "id": 3,
+            "text": "Make your whole home smell like decadence by using this candle.",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/buzzfeed.svg"
+        },
+        {
+            "id": 4,
+            "text": "We've rounded up a selection of the loveliest fall-ready fragrances...",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/fashionista.svg"
+        },
+        {
+            "id": 5,
+            "text": "Dossier's fancy and affordable scent is actually inspired by YSL.",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/et.svg"
+        },
+        {
+            "id": 6,
+            "text": "I can attest that it smells like a dream and is impressively long-lasting.",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/insidehook.svg"
+        },
+        {
+            "id": 7,
+            "text": "The brand's vegan and cruelty-free offerings include an assortment of lust-worthy scents.",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/ad.svg"
+        },
+        {
+            "id": 8,
+            "text": "Dossier is coming to you with a home fragnance line.",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/msn.svg"
+        },
+        {
+            "id": 9,
+            "text": "TikTok's favorite perfume brand just launched a candle time.",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/t/245/assets/apartment-therapy.svg"
+        },
+        {
+            "id": 10,
+            "text": "This is like a rainy Saturday morning in a bottle. That's nice to  think about on a Monday.",
+            "brandimg": "https://cdn.shopify.com/s/files/1/0047/4067/7699/files/Vector_500x.png"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Women",
+            "createAt": 1616346753759,
+            "updateAt": 1616346753759
+        },
+        {
+            "id": 2,
+            "name": "Men",
+            "createAt": 1616346753759,
+            "updateAt": 1616346753759
+        },
+        {
+            "id": 3,
+            "name": "Unisex",
+            "createAt": 1616346753759,
+            "updateAt": 1616346753759
+        },
+        {
+            "name": "undefined",
+            "createdAt": 1662709068771,
+            "id": 4
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "FLORAL MARSHMALLOW",
+            "categoryId": 1,
+            "description": "Inspired by Killian's Love, Don't Be Shy",
+            "price": "39$",
+            "reviews": "850",
+            "productimg": "./src/assets/perfumes/women/floral-marshmallow-women.webp",
+            "productimghover": "./src/assets/perfumes/women/floral-marshmallow-women-hover.webp"
+        },
+        {
+            "id": 2,
+            "name": "GOURMAND WHITE FLOWERS",
+            "categoryId": 1,
+            "description": "Inspired by Viktor&Rolf's Flowerbomb",
+            "price": "29$",
+            "reviews": "1241",
+            "productimg": "./src/assets/perfumes/women/gourmand-white-flowers-women.webp",
+            "productimghover": "./src/assets/perfumes/women/gourmand-white-flowers-women-hover.webp"
+        },
+        {
+            "id": 3,
+            "name": "AMBERY VANILLA",
+            "categoryId": 1,
+            "description": "Inspired by YSL's Black Opium",
+            "price": "29$",
+            "reviews": "1683",
+            "productimg": "./src/assets/perfumes/women/ambery-vanilla-new-women.webp",
+            "productimghover": "./src/assets/perfumes/women/ambery-vanilla-new-women-hover.webp"
+        },
+        {
+            "id": 4,
+            "name": "FLORAL HONEYSUCKLE",
+            "categoryId": 1,
+            "description": "Inspired by Killian's Love, Don't Be Shy",
+            "price": "39$",
+            "reviews": "819",
+            "productimg": "./src/assets/perfumes/women/floral-honeysuckle-women.webp",
+            "productimghover": "./src/assets/perfumes/women/floral-honeysuckle-women-hover.webp"
+        },
+        {
+            "id": 5,
+            "name": "CITRUS GINGER",
+            "categoryId": 2,
+            "description": "Inspired by Chanel's Bleu de Chanel",
+            "price": "29$",
+            "reviews": "459",
+            "productimg": "./src/assets/perfumes/men/citrus-ginger-men.webp",
+            "productimghover": "./src/assets/perfumes/men/citrus-ginger-men-hover.webp"
+        },
+        {
+            "id": 6,
+            "name": "MUSKY OAKMOSS",
+            "categoryId": 2,
+            "description": "Inspired by Creed's Aventus",
+            "price": "49$",
+            "reviews": "601",
+            "productimg": "./src/assets/perfumes/men/musky-oakmoss-men.webp",
+            "productimghover": "./src/assets/perfumes/men/musky-oakmoss-men-hover.webp"
+        },
+        {
+            "id": 7,
+            "name": "APROMATIC PINEAPPLE",
+            "categoryId": 2,
+            "description": "Inspired by YSL's Y",
+            "price": "29$",
+            "reviews": "373",
+            "productimg": "./src/assets/perfumes/men/aromatic-pineapple-men.webp",
+            "productimghover": "./src/assets/perfumes/men/aromatic-pineapple-men-hover.webp"
+        },
+        {
+            "id": 8,
+            "name": "AROMATIC GINGER",
+            "categoryId": 2,
+            "description": "Inspired by Louis Vuitton's L'Immensité",
+            "price": "49$",
+            "reviews": "601",
+            "productimg": "./src/assets/perfumes/men/aromatic-ginger-men.webp",
+            "productimghover": "./src/assets/perfumes/men/aromatic-ginger-men-hover.webp"
+        },
+        {
+            "id": 9,
+            "name": "WOODY SANDALWOOD",
+            "categoryId": 3,
+            "description": "Inspired by Le Labo Fragnances'Santal 33",
+            "price": "49$",
+            "reviews": "1325",
+            "productimg": "./src/assets/perfumes/unisex/woody-sandalwood-unisex.webp",
+            "productimghover": "./src/assets/perfumes/unisex/woody-sandalwood-unisex-hover.webp"
+        },
+        {
+            "id": 10,
+            "name": "AMBERY CHERRY",
+            "categoryId": 3,
+            "description": "Inspired by Tom Ford's Lost Cherry",
+            "price": "49$",
+            "reviews": "1034",
+            "productimg": "./src/assets/perfumes/unisex/ambery-cherry-new-unisex.webp",
+            "productimghover": "./src/assets/perfumes/unisex/ambery-cherry-new-unisex-hover.webp"
+        },
+        {
+            "id": 11,
+            "name": "WOODY SAGE",
+            "categoryId": 3,
+            "description": "Inspired by Jo Malone's Wood Sage & Sea Salt",
+            "price": "29$",
+            "reviews": "929",
+            "productimg": "./src/assets/perfumes/unisex/woody-sage-unisex.webp",
+            "productimghover": "./src/assets/perfumes/unisex/woody-sage-unisex-hover.webp"
+        },
+        {
+            "id": 12,
+            "name": "FRUITY HONEY",
+            "categoryId": 3,
+            "description": "Inspired by Jo Malone's Nectarine Blossom & Honey",
+            "price": "29$",
+            "reviews": "540",
+            "productimg": "./src/assets/perfumes/unisex/fruity-honey-unisex.webp",
+            "productimghover": "./src/assets/perfumes/unisex/fruity-honey-unisex-hover.webp"
+        }
+    ]
+}
