@@ -1,0 +1,103 @@
+@import "../../../../../globalstyles/variables.scss";
+
+.best-sellers {
+    margin: 100px auto;
+    .b-s-buttons {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        > * {
+            padding: 12px 0;
+        }
+        .b-s-text {
+            font-weight: 500;
+            font-size: 22px;
+        }
+        .b-s-btn-list {
+            display: flex;
+            align-items: center;
+            .b-s-btn {
+                font-size: 14px;
+                margin: 0 30px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    .row {
+        .product {
+            margin-top: 20px;
+            .product-img-wrapper {
+                position: relative;
+                .product-image {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                }
+                .product-btn {
+                    font-size: 14px;
+                    color: $orange;
+                    display: block;
+                    position: absolute;
+                    top: 80%;
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    width: 85%;
+                    height: 40px;
+                    background-color: $white;
+                    border: none;
+                    border-radius: 3px;
+                    transition: all 0.75s;
+                    opacity: 0;
+                    &:hover {
+                        color: $white;
+                        background-color: $orange;
+                    }
+                }
+            }
+            .product-info {
+                padding: 15px 0;
+                background-color: #fffcf6;
+                > * {
+                    width: 90%;
+                    margin: 0 auto;
+                }
+                .product-reviews {
+                    font-size: 10px;
+                }
+                .p-info-list {
+                    display: flex;
+                    justify-content: space-between;
+                    .product-name {
+                        font-size: 14px;
+                    }
+                    .product-price {
+                        font-size: 14px;
+                    }
+                    &:hover {
+                        > * {
+                            color: $orange;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .product-des {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .best-sellers {
+        width: 1300px !important;
+        .b-s-buttons {
+        }
+    }
+}
