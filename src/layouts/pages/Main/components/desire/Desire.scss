@@ -1,0 +1,275 @@
+@import "../../../../../globalstyles/variables.scss";
+
+.desire-container {
+    width: 100%;
+    margin: 0 auto;
+    .d-img-wrapper {
+        .d-img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+    .d-text-container {
+        position: relative;
+        background-color: $light-brown;
+        .d-text-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 85%;
+            margin: 0 auto;
+            transform: translate(-50%, -50%);
+            .desire {
+                font-weight: 700;
+            }
+            .desire-details {
+            }
+            .desire-button {
+                @include button($orange, transparent, $orange, $white);
+            }
+            .d-price-text {
+                font-weight: 700;
+            }
+            .d-price-wrapper {
+                display: flex;
+                .d-price-group {
+                    &:first-child {
+                        padding-left: 0;
+                        border-right: 1px solid black;
+                    }
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                    .d-p-g-element {
+                        padding: 3px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .desire-container {
+        .d-img-wrapper {
+            order: 2;
+        }
+        .d-text-container {
+            height: 300px;
+            .d-text-wrapper {
+                .desire {
+                    font-size: 20px;
+                }
+                .desire-details {
+                    font-size: 11px;
+                    line-height: 23px;
+                    margin: 15px auto;
+                }
+                .desire-button {
+                    font-size: 11px;
+                    height: 36px;
+                }
+                .d-price-text {
+                    font-size: 15px;
+                    margin: 15px 0;
+                }
+                .d-price-wrapper {
+                    .d-price-group {
+                        padding: 0 25px;
+                        .d-p-g-element {
+                            font-size: 11px;
+                            padding: 0.5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .desire-container {
+        .d-text-container {
+            height: 350px;
+            .d-text-wrapper {
+                .desire {
+                    font-size: 22px;
+                }
+                .desire-details {
+                    font-size: 12px;
+                    line-height: 24px;
+                    margin: 17px auto;
+                }
+                .desire-button {
+                    font-size: 12px;
+                    height: 38px;
+                }
+                .d-price-text {
+                    font-size: 16px;
+                    margin: 17px 0;
+                }
+                .d-price-wrapper {
+                    .d-price-group {
+                        padding: 0 30px;
+                        .d-p-g-element {
+                            font-size: 12px;
+                            padding: 1px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .desire-container {
+        .d-img-wrapper {
+            order: 2;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .desire-container {
+        .d-text-container {
+            height: 375px;
+            .d-text-wrapper {
+                .desire {
+                    font-size: 24px;
+                }
+                .desire-details {
+                    font-size: 13px;
+                    line-height: 25px;
+                    margin: 19px auto;
+                }
+                .desire-button {
+                    font-size: 13px;
+                    height: 40px;
+                }
+                .d-price-text {
+                    font-size: 17px;
+                    margin: 19px 0;
+                }
+                .d-price-wrapper {
+                    .d-price-group {
+                        padding: 0 35px;
+                        .d-p-g-element {
+                            font-size: 13px;
+                            padding: 1.5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .desire-container {
+        .d-text-container {
+            .d-text-wrapper {
+                .desire {
+                    font-size: 26px;
+                }
+                .desire-details {
+                    font-size: 14px;
+                    line-height: 26px;
+                    margin: 21px auto;
+                }
+                .desire-button {
+                    font-size: 14px;
+                    height: 42px;
+                }
+                .d-price-text {
+                    font-size: 18px;
+                    margin: 21px 0;
+                }
+                .d-price-wrapper {
+                    .d-price-group {
+                        padding: 0 40px;
+                        .d-p-g-element {
+                            font-size: 14px;
+                            padding: 2px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .desire-container {
+        .d-text-container {
+            .d-text-wrapper {
+                .desire {
+                    font-size: 28px;
+                }
+                .desire-details {
+                    font-size: 15px;
+                    line-height: 27px;
+                    margin: 23px auto;
+                }
+                .desire-button {
+                    font-size: 15px;
+                    height: 44px;
+                }
+                .d-price-text {
+                    font-size: 19px;
+                    margin: 23px 0;
+                }
+                .d-price-wrapper {
+                    .d-price-group {
+                        padding: 0 45px;
+                        .d-p-g-element {
+                            font-size: 15px;
+                            padding: 2.5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .desire-container {
+        .d-text-container {
+            .d-text-wrapper {
+                .desire {
+                    font-size: 30px;
+                }
+                .desire-details {
+                    font-size: 16px;
+                    line-height: 28px;
+                    margin: 25px auto;
+                }
+                .desire-button {
+                    font-size: 16px;
+                    height: 46px;
+                }
+                .d-price-text {
+                    font-size: 20px;
+                    margin: 25px 0;
+                }
+                .d-price-wrapper {
+                    .d-price-group {
+                        padding: 0 50px;
+                        .d-p-g-element {
+                            font-size: 16px;
+                            padding: 3px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1684px) {
+    .desire-container {
+        width: 1684px;
+    }
+}
