@@ -7,8 +7,13 @@ function Desire() {
     const textContainer = useRef(null);
     useEffect(() => {
         const handleWidth = () => {
-            textContainer.current.style.height = `${img.current.offsetHeight}`;
+            if (window.innerWidth < 992) {
+                textContainer.current.removeAttribute("style");
+            } else {
+                textContainer.current.style.height = `${img.current.offsetHeight}px`;
+            }
         };
+        handleWidth();
         window.addEventListener("resize", handleWidth);
 
         // cleanup function
