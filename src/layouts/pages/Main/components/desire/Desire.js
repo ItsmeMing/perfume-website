@@ -13,7 +13,7 @@ function Desire() {
                 textContainer.current.style.height = `${img.current.offsetHeight}px`;
             }
         };
-        handleWidth();
+        setTimeout(handleWidth, 500);
         window.addEventListener("resize", handleWidth);
 
         // cleanup function

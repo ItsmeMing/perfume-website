@@ -4,6 +4,7 @@ import BestSellers from "./components/bestsellers/BestSellers";
 import Sliderr from "./components/slider/Slider";
 import Slogan from "./components/slogan/Slogan";
 import Desire from "./components/desire/Desire";
+import ImageWithText from "./components/image-with-text/ImageWithText";
 
 function Main() {
     return (
@@ -13,6 +14,7 @@ function Main() {
             <Slogan></Slogan>
             <BestSellers></BestSellers>
             <Desire></Desire>
+            <ImageWithText></ImageWithText>
         </Fragment>
     );
 }
