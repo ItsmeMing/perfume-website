@@ -37,6 +37,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            width: 90%;
             margin: 0 auto;
             .i-w-t-text {
                 text-align: left;
@@ -83,7 +84,6 @@
             }
             &:nth-child(3) {
                 order: 3;
-                width: 80%;
                 margin: 35px auto;
                 .iwt-btn {
                     font-size: 11px;
@@ -127,7 +127,6 @@
             }
             &:nth-child(3) {
                 order: 3;
-                width: 80%;
                 margin: 40px auto;
                 .iwt-btn {
                     font-size: 12px;
@@ -153,6 +152,7 @@
     .image-with-text-container {
         .image-with-text-wrapper {
             &:first-child {
+                order: 2;
                 margin: 45px 0;
                 .i-w-t-list {
                     .i-w-t-item {
@@ -162,12 +162,19 @@
                     }
                 }
             }
+            &:nth-child(2) {
+                order: 1;
+            }
             &:nth-child(3) {
+                order: 4;
                 margin: 45px auto;
                 .iwt-btn {
                     font-size: 13px;
                     height: 40px;
                 }
+            }
+            &:last-child {
+                order: 3;
             }
             .i-w-t-text {
                 font-size: 24px;
@@ -196,7 +203,6 @@
                 }
             }
             &:nth-child(3) {
-                width: 90%;
                 .iwt-btn {
                     font-size: 14px;
                     height: 42px;
