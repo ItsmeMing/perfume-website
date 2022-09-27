@@ -7,6 +7,7 @@ import Desire from "./components/desire/Desire";
 import ImageWithText from "./components/image-with-text/ImageWithText";
 import Refund from "./components/refund/Refund";
 import Features from "./components/features/Features";
+import SocialPosts from "./components/social-posts/SocialPosts";
 
 function Main() {
     return (
@@ -19,6 +20,7 @@ function Main() {
             <ImageWithText></ImageWithText>
             <Refund></Refund>
             <Features></Features>
+            <SocialPosts></SocialPosts>
         </Fragment>
     );
 }

@@ -1,0 +1,17 @@
+@import "../../../../../globalstyles/variables.scss";
+
+.social-posts-container {
+    width: 100%;
+}
+
+@media (min-width: 1400px) {
+    .social-posts-container {
+        width: 1300px !important;
+    }
+}
+
+@media (min-width: 1684px) {
+    .social-posts-container {
+        width: 1684px !important;
+    }
+}
