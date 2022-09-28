@@ -17,53 +17,18 @@ import logo from "../assets/images/logo.webp";
 
 const Navbar = ({ search }) => {
     const dButton = useRef(null);
-    const dMenu = useRef(null);
     return (
         <Fragment>
-            <p
-                ref={dButton}
-                className="d-menu"
-                onClick={() => {
-                    dButton.current.classList.toggle("active");
-                    dButton.current.style.pointerEvents = "none";
-                    setTimeout(() => {
-                        dButton.current.removeAttribute("style");
-                    }, 1000);
-                    if (dMenu.current.classList.contains("active")) {
-                        dMenu.current.removeAttribute("style");
-                        setTimeout(() => {
-                            dMenu.current.classList.remove("active");
-                        }, 400);
-                    } else {
-                        setTimeout(() => {
-                            dMenu.current.classList.add("active");
-                        }, 400);
-                        setTimeout(() => {
-                            dMenu.current.style.zIndex = "999";
-                        }, 600);
-                    }
-                }}
-            >
+            <span ref={dButton} className="d-menu">
                 PERFUMES
-            </p>
-            <ul ref={dMenu} className="d-menu-list">
-                <li className="d-menu-list-item">All</li>
-                <li className="d-menu-list-item">Women</li>
-                <li className="d-menu-list-item">Men</li>
-                <li className="d-menu-list-item">Unisex</li>
-            </ul>
+            </span>
             <figure className="logo-wrapper">
                 <img src={logo} alt="logo" className="logo"></img>
             </figure>
             <ul className="r-menu">
                 <li className="r-menu-item">ABOUT</li>
                 <li className="r-menu-item">
-                    <FontAwesomeIcon
-                        icon={faMagnifyingGlass}
-                        onClick={() => {
-                            search.current.classList.toggle("active");
-                        }}
-                    />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </li>
                 <li className="r-menu-item">
                     <FontAwesomeIcon icon={faUser} />
@@ -150,7 +115,6 @@ const MobileNavbar = ({ search }) => {
                         sMenu.current.classList.remove("active");
                         arrow.current.classList.remove("active");
                     }
-                    search.current.classList.remove("active");
                 }}
             ></div>
         </Fragment>

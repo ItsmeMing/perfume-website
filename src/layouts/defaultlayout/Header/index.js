@@ -2,7 +2,6 @@ import { Fragment, useState, useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
 import "./Header.scss";
 import { Navbar, MobileNavbar } from "./navbar";
-import Search from "./search";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -22,7 +21,6 @@ function Header() {
         };
     }, []);
 
-    const search = useRef(null);
     const disBtn = useRef(null);
     const discount = useRef(null);
     return (
@@ -76,10 +74,9 @@ function Header() {
                             <button className="s-n-button">SHOP NOW</button>
                         </article>
                     </section>
-                    <nav className="navbar p-0">
-                        {mnav ? <MobileNavbar search={search}></MobileNavbar> : <Navbar search={search}></Navbar>}
+                    <nav className="navbar g-0">
+                        {mnav ? <MobileNavbar /> : <Navbar />}
                     </nav>
-                    <Search search={search}></Search>
                 </Container>
             </header>
         </Fragment>
