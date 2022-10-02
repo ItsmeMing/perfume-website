@@ -17,17 +17,9 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 85%;
+            width: 90%;
             margin: 0 auto;
             transform: translate(-50%, -50%);
-            .desire {
-                font-weight: 700;
-            }
-            .desire-details {
-            }
-            .desire-button {
-                @include button($orange, transparent, $orange, $white);
-            }
             .d-price-text {
                 font-weight: 700;
             }
@@ -58,18 +50,6 @@
         .d-text-container {
             height: 300px;
             .d-text-wrapper {
-                .desire {
-                    font-size: 20px;
-                }
-                .desire-details {
-                    font-size: 11px;
-                    line-height: 23px;
-                    margin: 15px auto;
-                }
-                .desire-button {
-                    font-size: 11px;
-                    height: 36px;
-                }
                 .d-price-text {
                     font-size: 15px;
                     margin: 15px 0;
@@ -93,18 +73,6 @@
         .d-text-container {
             height: 350px;
             .d-text-wrapper {
-                .desire {
-                    font-size: 22px;
-                }
-                .desire-details {
-                    font-size: 12px;
-                    line-height: 24px;
-                    margin: 17px auto;
-                }
-                .desire-button {
-                    font-size: 12px;
-                    height: 38px;
-                }
                 .d-price-text {
                     font-size: 16px;
                     margin: 17px 0;
@@ -136,18 +104,6 @@
         .d-text-container {
             height: 375px;
             .d-text-wrapper {
-                .desire {
-                    font-size: 24px;
-                }
-                .desire-details {
-                    font-size: 13px;
-                    line-height: 25px;
-                    margin: 19px auto;
-                }
-                .desire-button {
-                    font-size: 13px;
-                    height: 40px;
-                }
                 .d-price-text {
                     font-size: 17px;
                     margin: 19px 0;
@@ -170,18 +126,7 @@
     .desire-container {
         .d-text-container {
             .d-text-wrapper {
-                .desire {
-                    font-size: 26px;
-                }
-                .desire-details {
-                    font-size: 14px;
-                    line-height: 26px;
-                    margin: 21px auto;
-                }
-                .desire-button {
-                    font-size: 14px;
-                    height: 42px;
-                }
+                width: 85%;
                 .d-price-text {
                     font-size: 18px;
                     margin: 21px 0;
@@ -204,18 +149,6 @@
     .desire-container {
         .d-text-container {
             .d-text-wrapper {
-                .desire {
-                    font-size: 28px;
-                }
-                .desire-details {
-                    font-size: 15px;
-                    line-height: 27px;
-                    margin: 23px auto;
-                }
-                .desire-button {
-                    font-size: 15px;
-                    height: 44px;
-                }
                 .d-price-text {
                     font-size: 19px;
                     margin: 23px 0;
@@ -236,20 +169,9 @@
 
 @media (min-width: 1400px) {
     .desire-container {
+        width: 1300px;
         .d-text-container {
             .d-text-wrapper {
-                .desire {
-                    font-size: 30px;
-                }
-                .desire-details {
-                    font-size: 16px;
-                    line-height: 28px;
-                    margin: 25px auto;
-                }
-                .desire-button {
-                    font-size: 16px;
-                    height: 46px;
-                }
                 .d-price-text {
                     font-size: 20px;
                     margin: 25px 0;

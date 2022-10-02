@@ -1,5 +1,7 @@
 function Product() {
-    return <h1>Product page</h1>;
+    return (
+        <section className="products-container container g-0"></section>
+    )
 }
 
 export default Product;

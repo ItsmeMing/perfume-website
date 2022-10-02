@@ -12,13 +12,6 @@
             .refund-content {
                 width: 90%;
                 margin: 0 auto;
-                .refund-text {
-                    font-weight: 700;
-                }
-                .refund-btn {
-                    @include button($orange, transparent, $orange, $white);
-                    align-self: flex-start;
-                }
             }
         }
     }
@@ -30,18 +23,6 @@
             .refund-item {
                 .refund-content {
                     margin: 35px auto;
-                    .refund-text {
-                        font-size: 20px;
-                    }
-                    .refund-2nd-text {
-                        font-size: 11px;
-                        line-height: 23px;
-                        margin: 15px 0;
-                    }
-                    .refund-btn {
-                        font-size: 11px;
-                        height: 36px;
-                    }
                 }
             }
         }
@@ -54,18 +35,6 @@
             .refund-item {
                 .refund-content {
                     margin: 40px auto;
-                    .refund-text {
-                        font-size: 22px;
-                    }
-                    .refund-2nd-text {
-                        font-size: 12px;
-                        line-height: 24px;
-                        margin: 17px 0;
-                    }
-                    .refund-btn {
-                        font-size: 12px;
-                        height: 38px;
-                    }
                 }
             }
         }
@@ -81,18 +50,6 @@
                 }
                 .refund-content {
                     margin: 45px auto;
-                    .refund-text {
-                        font-size: 24px;
-                    }
-                    .refund-2nd-text {
-                        font-size: 13px;
-                        line-height: 25px;
-                        margin: 19px 0;
-                    }
-                    .refund-btn {
-                        font-size: 13px;
-                        height: 40px;
-                    }
                 }
             }
         }
@@ -102,72 +59,19 @@
 @media (min-width: 992px) {
     .refund-container {
         margin-bottom: 80px;
-        .refund-wrapper {
-            .refund-item {
-                .refund-content {
-                    .refund-text {
-                        font-size: 26px;
-                    }
-                    .refund-2nd-text {
-                        font-size: 14px;
-                        line-height: 26px;
-                        margin: 21px 0;
-                    }
-                    .refund-btn {
-                        font-size: 14px;
-                        height: 42px;
-                    }
-                }
-            }
-        }
     }
 }
 
 @media (min-width: 1200px) {
     .refund-container {
         margin-bottom: 90px;
-        .refund-wrapper {
-            .refund-item {
-                .refund-content {
-                    .refund-text {
-                        font-size: 28px;
-                    }
-                    .refund-2nd-text {
-                        font-size: 15px;
-                        line-height: 27px;
-                        margin: 23px 0;
-                    }
-                    .refund-btn {
-                        font-size: 15px;
-                        height: 44px;
-                    }
-                }
-            }
-        }
     }
 }
 
 @media (min-width: 1400px) {
     .refund-container {
+        width: 1300px;
         margin-bottom: 100px;
-        .refund-wrapper {
-            .refund-item {
-                .refund-content {
-                    .refund-text {
-                        font-size: 30px;
-                    }
-                    .refund-2nd-text {
-                        font-size: 16px;
-                        line-height: 28px;
-                        margin: 25px 0;
-                    }
-                    .refund-btn {
-                        font-size: 16px;
-                        height: 46px;
-                    }
-                }
-            }
-        }
     }
 }
 

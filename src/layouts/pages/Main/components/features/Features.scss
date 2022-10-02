@@ -14,8 +14,7 @@
             }
         }
     }
-    .feature-btn {
-        @include button($orange, transparent, $orange, $white);
+    .btn {
         margin: 50px auto 0 auto;
     }
     .arrow {
@@ -56,9 +55,7 @@
                 }
             }
         }
-        .feature-btn {
-            font-size: 14px;
-            height: 42px;
+        .btn {
             margin: 30px auto 0 auto;
         }
     }
@@ -85,9 +82,7 @@
                 }
             }
         }
-        .feature-btn {
-            font-size: 14px;
-            height: 42px;
+        .btn {
             margin: 30px auto 0 auto;
         }
     }
@@ -119,9 +114,7 @@
                 }
             }
         }
-        .feature-btn {
-            font-size: 13px;
-            height: 40px;
+        .btn {
             margin: 35px auto 0 auto;
         }
         .arrow {
@@ -156,9 +149,7 @@
                 }
             }
         }
-        .feature-btn {
-            font-size: 14px;
-            height: 42px;
+        .btn {
             margin: 40px auto 0 auto;
         }
     }
@@ -184,9 +175,7 @@
                 }
             }
         }
-        .feature-btn {
-            font-size: 15px;
-            height: 44px;
+        .btn {
             margin: 45px auto 0 auto;
         }
     }
@@ -212,9 +201,7 @@
                 }
             }
         }
-        .feature-btn {
-            font-size: 16px;
-            height: 46px;
+        .btn {
             margin: 50px auto 0 auto;
         }
     }

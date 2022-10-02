@@ -1,13 +1,16 @@
 import { Fragment, useState, useEffect, useRef } from "react";
+import Btn from "../../../global-components/btn/Btn";
 import { Container } from "react-bootstrap";
 import "./Header.scss";
 import { Navbar, MobileNavbar } from "./navbar";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Search from "./search";
 
 function Header() {
-    const [mnav, setMnav] = useState(false);
 
+    //switch to navbar/mobile-navbar base on screen's width
+    const [mnav, setMnav] = useState(false);
     useEffect(() => {
         const handleMobileNav = () => {
             if (window.innerWidth <= 575.98) setMnav(true);
@@ -15,17 +18,41 @@ function Header() {
         };
         handleMobileNav();
         window.addEventListener("resize", handleMobileNav);
+
         // cleanup function
         return () => {
             window.removeEventListener("resize", handleMobileNav);
         };
     }, []);
 
+    //add bottom border to header when scrolling
+    const header = useRef(null);
+    useEffect(() => {
+        const handleHeader = () => {
+            if (window.scrollY >= 1) {
+                header.current.classList.add("scrolling");
+            }
+            else {
+                header.current.classList.remove("scrolling");
+            }
+        }
+        window.addEventListener("scroll", handleHeader);
+        // cleanup function
+        return () => {
+            window.removeEventListener("scroll", handleHeader);
+        };
+    }, [])
+
+    //toggle discount 
     const disBtn = useRef(null);
     const discount = useRef(null);
+
+    //toggle search
+    const search = useRef(null);
+
     return (
         <Fragment>
-            <header className="header">
+            <header className="header" ref={header}>
                 <Container className="g-0">
                     <section className="topnav">
                         <p
@@ -54,7 +81,22 @@ function Header() {
                         </p>
                         <p className="fs-condition">Free shipping on 3+ items</p>
                         <article ref={discount} className="discount-details disabled">
-                            <FontAwesomeIcon icon={faXmark} className="exit-button" />
+                            <FontAwesomeIcon
+                                icon={faXmark}
+                                className="exit-button"
+                                onClick={() => {
+                                    if (discount.current.classList.contains("disabled")) {
+                                        discount.current.classList.remove("disabled");
+                                        setTimeout(() => {
+                                            discount.current.classList.toggle("active");
+                                        }, 150);
+                                    } else {
+                                        discount.current.classList.toggle("active");
+                                        setTimeout(() => {
+                                            discount.current.classList.add("disabled");
+                                        }, 500);
+                                    }
+                                }} />
                             <p className="dis-text">Buy more, save more.</p>
                             <div className="d-conditions">
                                 <ul className="b-con-list">
@@ -71,13 +113,14 @@ function Header() {
                                 </ul>
                             </div>
                             <p className="f-ship-con">Plus, get free shipping on 3+ items!</p>
-                            <button className="s-n-button">SHOP NOW</button>
+                            <Btn btnClass="btn fill-trans-white" btnContent="SHOP NOW"></Btn>
                         </article>
                     </section>
-                    <nav className="navbar g-0">
-                        {mnav ? <MobileNavbar /> : <Navbar />}
+                    <nav className="navbar g-0 p-0">
+                        {mnav ? <MobileNavbar searchRef={search} /> : <Navbar searchRef={search} />}
                     </nav>
                 </Container>
+                <Search search={search}></Search>
             </header>
         </Fragment>
     );

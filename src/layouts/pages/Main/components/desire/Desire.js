@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Col, Row } from "react-bootstrap";
+import TextLayout from "../../../../../global-components/text-layout/TextLayout";
 import "./Desire.scss";
 
 function Desire() {
@@ -34,12 +35,13 @@ function Desire() {
                 </Col>
                 <Col lg={6} md={12} xs={12} className="d-text-container g-0" ref={textContainer}>
                     <div className="d-text-wrapper">
-                        <p className="desire">Fragrance for all.</p>
-                        <p className="desire-details">
-                            We eliminate retailer markups, celebrity marketing, and licensing fees to offer luxury
-                            scents for 70-90% less.
-                        </p>
-                        <button className="desire-button">LEARN MORE</button>
+                        <TextLayout
+                            firstText="Fragrance for all."
+                            secondText="We eliminate retailer markups, celebrity marketing, and licensing fees to offer luxury
+                            scents for 70-90% less."
+                            btnClass="btn fill-trans-orange"
+                            btnContent="LEARN MORE"
+                        ></TextLayout>
                         <p className="d-price-text">Fair pricing</p>
                         <div className="d-price-wrapper">
                             <div className="d-price-group">

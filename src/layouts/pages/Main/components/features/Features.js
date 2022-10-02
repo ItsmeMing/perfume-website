@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Btn from "../../../../../global-components/btn/Btn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft, faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import feature1 from "./phone.webp";
@@ -63,7 +64,7 @@ function Features() {
                     <p className="feature-ins">On every order when you purchase 3+ items.</p>
                 </div>
             </div>
-            <button className="feature-btn">JOIN THE DOSSIER CLUB</button>
+            <Btn btnClass="btn fill-trans-orange" btnContent="JOIN THE DOSSIER CLUB"></Btn>
             <FontAwesomeIcon
                 icon={faArrowAltCircleLeft}
                 className="arrow left-a"

@@ -39,13 +39,6 @@
             justify-content: center;
             width: 90%;
             margin: 0 auto;
-            .i-w-t-text {
-                text-align: left;
-            }
-            .iwt-btn {
-                @include button($orange, transparent, $orange, $white);
-                align-self: flex-start;
-            }
         }
         &:last-child {
             grid-column-start: 1;
@@ -85,10 +78,6 @@
             &:nth-child(3) {
                 order: 3;
                 margin: 35px auto;
-                .iwt-btn {
-                    font-size: 11px;
-                    height: 36px;
-                }
             }
             &:last-child {
                 order: 4;
@@ -128,10 +117,6 @@
             &:nth-child(3) {
                 order: 3;
                 margin: 40px auto;
-                .iwt-btn {
-                    font-size: 12px;
-                    height: 38px;
-                }
             }
             &:last-child {
                 order: 4;
@@ -168,10 +153,6 @@
             &:nth-child(3) {
                 order: 4;
                 margin: 45px auto;
-                .iwt-btn {
-                    font-size: 13px;
-                    height: 40px;
-                }
             }
             &:last-child {
                 order: 3;
@@ -202,12 +183,6 @@
                     }
                 }
             }
-            &:nth-child(3) {
-                .iwt-btn {
-                    font-size: 14px;
-                    height: 42px;
-                }
-            }
             .i-w-t-text {
                 font-size: 26px;
                 margin-bottom: 21px;
@@ -233,12 +208,6 @@
                     }
                 }
             }
-            &:nth-child(3) {
-                .iwt-btn {
-                    font-size: 15px;
-                    height: 44px;
-                }
-            }
             .i-w-t-text {
                 font-size: 28px;
                 margin-bottom: 23px;
@@ -253,6 +222,7 @@
 
 @media (min-width: 1400px) {
     .image-with-text-container {
+        width: 1300px;
         margin: 100px auto;
         .image-with-text-wrapper {
             &:first-child {
@@ -263,12 +233,6 @@
                             width: 150px;
                         }
                     }
-                }
-            }
-            &:nth-child(3) {
-                .iwt-btn {
-                    font-size: 16px;
-                    height: 46px;
                 }
             }
             .i-w-t-text {

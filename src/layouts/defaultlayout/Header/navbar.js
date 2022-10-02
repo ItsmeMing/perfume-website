@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Fragment, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,35 +15,55 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import logo from "../assets/images/logo.webp";
+import Search from "./search";
 
-const Navbar = ({ search }) => {
+const Navbar = ({ searchRef }) => {
     const dButton = useRef(null);
     return (
         <Fragment>
-            <span ref={dButton} className="d-menu">
-                PERFUMES
-            </span>
-            <figure className="logo-wrapper">
-                <img src={logo} alt="logo" className="logo"></img>
-            </figure>
-            <ul className="r-menu">
-                <li className="r-menu-item">ABOUT</li>
-                <li className="r-menu-item">
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </li>
-                <li className="r-menu-item">
-                    <FontAwesomeIcon icon={faUser} />
-                </li>
-                <li className="r-menu-item">
-                    <FontAwesomeIcon icon={faCartShopping} />
-                    <span className="cart-number">0</span>
-                </li>
-            </ul>
+            <div className="d-menu-wrapper">
+                <div ref={dButton} className="d-menu">
+                    PERFUMES
+                    <ul className="d-menu-list">
+                        <Link to="/products">
+                            <li className="d-menu-item">
+                                All
+                            </li>
+                        </Link>
+                        <li className="d-menu-item">Men</li>
+                        <li className="d-menu-item">Women</li>
+                        <li className="d-menu-item">Unisex</li>
+                    </ul>
+                </div>
+            </div>
+            <Link to="/">
+                <figure className="logo-wrapper">
+                    <img src={logo} alt="logo" className="logo"></img>
+                </figure>
+            </Link>
+            <div className="r-menu-wrapper">
+                <ul className="r-menu">
+                    <li className="r-menu-item">ABOUT</li>
+                    <li className="r-menu-item" onClick={() => {
+                        searchRef.current.classList.toggle("active")
+                        console.log("toggled")
+                    }}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </li>
+                    <li className="r-menu-item">
+                        <FontAwesomeIcon icon={faUser} />
+                    </li>
+                    <li className="r-menu-item">
+                        <FontAwesomeIcon icon={faCartShopping} />
+                        <span className="cart-number">0</span>
+                    </li>
+                </ul>
+            </div>
         </Fragment>
     );
 };
 
-const MobileNavbar = ({ search }) => {
+const MobileNavbar = ({ searchRef }) => {
     const sMenu = useRef(null);
     const arrow = useRef(null);
     const handleSubMenu = () => {
@@ -91,7 +112,7 @@ const MobileNavbar = ({ search }) => {
                     className="m-menu-item"
                     onClick={() => {
                         document.querySelector(".m-menu").classList.remove("active");
-                        search.current.classList.toggle("active");
+                        // search.current.classList.toggle("active");
                     }}
                 >
                     <p className="menu-text">Search</p>

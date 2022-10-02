@@ -1,3 +1,4 @@
+import TextLayout from "../../../../../global-components/text-layout/TextLayout";
 import icon1 from "./image_2021_09_09T17_26_42_989Z_1.webp";
 import icon2 from "./image_rabit_1.webp";
 import icon3 from "./image_2021_09_09T17_46_39_031Z_1.webp";
@@ -38,12 +39,12 @@ function ImageWithText() {
                 <img src={bigimage1} alt=""></img>
             </div>
             <div className="image-with-text-wrapper">
-                <p className="i-w-t-text">The finest French ingredients.</p>
-                <p className="i-w-t-child-text">
-                    We only source our scents from Grasse, the world’s perfume capital. Our products are made from clean
-                    ingredients for the best quality possible.
-                </p>
-                <button className="iwt-btn">LEARN MORE</button>
+                <TextLayout
+                    firstText="The finest French ingredients."
+                    secondText="We only source our scents from Grasse, the world’s perfume capital. Our products are made from clean ingredients for the best quality possible."
+                    btnClass="btn fill-trans-orange"
+                    btnContent="LEARN MORE"
+                ></TextLayout>
             </div>
             <div className="image-with-text-wrapper">
                 <img src={bigimage2} alt=""></img>

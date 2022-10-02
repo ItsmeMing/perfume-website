@@ -14,7 +14,6 @@ function SocialPosts() {
     const socialPost3 = useRef(null);
     const socialPost4 = useRef(null);
     useEffect(() => {
-        console.log(window.getComputedStyle(socialPost1.current).width);
         const setHeight = () => {
             socialPost1.current.style.height = `${window.getComputedStyle(socialPost1.current).width}`;
             socialPost2.current.style.height = `${window.getComputedStyle(socialPost1.current).width}`;

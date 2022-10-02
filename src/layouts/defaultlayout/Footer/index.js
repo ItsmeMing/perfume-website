@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Btn from "../../../global-components/btn/Btn";
 import { Container } from "react-bootstrap";
 import { faInstagram, faPinterestP, faFacebookF, faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +17,7 @@ function Footer() {
                         <p className="l-f-text-su">Sign up for exclusive Dossier email and offers.</p>
                         <form className="email-form">
                             <input className="email-input" placeholder="Enter email address."></input>
-                            <button className="submit-button">SUBMIT</button>
+                            <Btn btnClass="btn fill-trans-orange" btnContent="SUBMIT"></Btn>
                         </form>
                         <div className="footer-contact">
                             <FontAwesomeIcon icon={faInstagram} className="c-icon"></FontAwesomeIcon>

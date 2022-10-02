@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Container } from "react-bootstrap";
+import Btn from "../../../../../global-components/btn/Btn";
 import "./Banner.scss";
 import video from "./HP_Banner_Final_Mov.mp4";
 
@@ -23,7 +24,7 @@ function Banner() {
                     <p className="b-text">
                         Scents inspired by Tom Ford, Creed, Baccarat Rouge 540, Le Labo & many more, from $29
                     </p>
-                    <button className="b-button">SHOP PERFUMES</button>
+                    <Btn btnClass="btn ease-orange-trans" btnContent="SHOP PERFUMES"></Btn>
                 </section>
             </Container>
         </Fragment>

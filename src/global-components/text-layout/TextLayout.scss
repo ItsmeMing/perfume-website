@@ -1,0 +1,84 @@
+@import "../../globalstyles/variables.scss";
+
+> * {
+    text-align: left;
+}
+.tl-text {
+    font-weight: 700;
+}
+.btn {
+    align-self: flex-start;
+}
+
+@media (max-width: 575.98px) {
+    //mobile devices
+    .tl-text {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .tl-child-text {
+        font-size: 11px;
+        line-height: 24px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 576px) {
+    .tl-text {
+        font-size: 22px;
+        margin-bottom: 17px;
+    }
+    .tl-child-text {
+        font-size: 12px;
+        line-height: 25px;
+        margin-bottom: 17px;
+    }
+}
+
+@media (min-width: 768px) {
+    .tl-text {
+        font-size: 24px;
+        margin-bottom: 19px;
+    }
+    .tl-child-text {
+        font-size: 13px;
+        line-height: 26px;
+        margin-bottom: 19px;
+    }
+}
+
+@media (min-width: 992px) {
+    .tl-text {
+        font-size: 26px;
+        margin-bottom: 21px;
+    }
+    .tl-child-text {
+        font-size: 14px;
+        line-height: 26px;
+        margin-bottom: 21px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .tl-text {
+        font-size: 28px;
+        margin-bottom: 23px;
+    }
+    .tl-child-text {
+        font-size: 15px;
+        line-height: 27px;
+        margin-bottom: 23px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .tl-text {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+    .tl-child-text {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 25px;
+    }
+}

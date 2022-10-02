@@ -19,10 +19,7 @@
             font-weight: 400;
             width: 85%;
         }
-        .b-button {
-            @include button($orange, $orange, transparent, $orange);
-            color: $white;
-            display: block;
+        .btn {
             margin: 0 auto;
         }
     }
@@ -48,10 +45,6 @@
                 width: 100%;
                 margin: 16px auto;
             }
-            .b-button {
-                font-size: 12px;
-                height: 38px;
-            }
         }
     }
 }
@@ -74,10 +67,6 @@
                 width: 100%;
                 margin: 15px auto;
             }
-            .b-button {
-                font-size: 11px;
-                height: 36px;
-            }
         }
     }
 }
@@ -96,10 +85,6 @@
                 line-height: 17px;
                 margin: 17px auto;
             }
-            .b-button {
-                font-size: 13px;
-                height: 40px;
-            }
         }
     }
 }
@@ -116,10 +101,6 @@
                 font-size: 14px;
                 line-height: 18px;
                 margin: 18px auto;
-            }
-            .b-button {
-                font-size: 14px;
-                height: 42px;
             }
         }
     }
@@ -138,10 +119,6 @@
                 line-height: 19px;
                 margin: 19px auto;
             }
-            .b-button {
-                font-size: 15px;
-                height: 44px;
-            }
         }
     }
 }
@@ -159,10 +136,6 @@
                 font-size: 16px;
                 line-height: 20px;
                 margin: 20px auto;
-            }
-            .b-button {
-                font-size: 16px;
-                height: 46px;
             }
         }
     }

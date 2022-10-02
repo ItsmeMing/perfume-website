@@ -2,16 +2,10 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./BestSellers.scss";
 
+
+//get types of products
 function BestSellers() {
     const [cates, setCates] = useState(null);
-    const [clrWomen, setClrWomen] = useState();
-    const [clrMen, setClrMen] = useState("#ef776a");
-    const [clrUnisex, setClrUnisex] = useState();
-    const [products, setProducts] = useState(null);
-    const [url, setUrl] = useState(
-        "http://localhost:3001/api/products?categoryId=1&_sort=reviews&_order=desc&start=0&_limit=4",
-    );
-
     useEffect(() => {
         fetch("http://localhost:3001/api/categories")
             .then((res) => {
@@ -22,6 +16,11 @@ function BestSellers() {
             });
     }, []);
 
+    //get value base on type of products
+    const [url, setUrl] = useState(
+        "http://localhost:3001/api/products?categoryId=1&_sort=reviews&_order=desc&start=0&_limit=4",
+    );
+    const [products, setProducts] = useState(null);
     useEffect(() => {
         fetch(url)
             .then((res) => {
@@ -30,17 +29,37 @@ function BestSellers() {
             .then((data) => {
                 setProducts(data);
             });
-        console.log(products);
     }, [url]);
 
-    const handleCateBtn = (clickedId) => {
-        const temp = cates.filter((cate) => {
-            return cate.id != clickedId;
-        });
-    };
+    // set text color to the product's type
+    const [clrWomen, setClrWomen] = useState("#ef776a");
+    const [clrMen, setClrMen] = useState("gray");
+    const [clrUnisex, setClrUnisex] = useState("gray");
+    const handleClr = (e) => {
+        switch (e.target.innerText) {
+            case "WOMEN":
+                setClrWomen("#ef776a");
+                setClrMen("gray");
+                setClrUnisex("gray");
+                break;
+            case "MEN":
+                setClrWomen("gray");
+                setClrMen("#ef776a");
+                setClrUnisex("gray");
+                break;
+            case "UNISEX":
+                setClrWomen("gray");
+                setClrMen("gray");
+                setClrUnisex("#ef776a");
+                break;
+            default:
+                break;
+        }
+    }
+
 
     return (
-        <Container className="best-sellers g-0">
+        <section className="best-sellers container g-0">
             <div className="b-s-buttons">
                 <p className="b-s-text">Best sellers.</p>
                 <ul className="b-s-btn-list">
@@ -49,14 +68,16 @@ function BestSellers() {
                             <li
                                 key={key}
                                 className="b-s-btn"
-                                style={{ color: `clr${cate.name}` }}
-                                onClick={() => {
+                                onClick={(e) => {
                                     setUrl(
                                         `http://localhost:3001/api/products?categoryId=${cate.id}&_sort=reviews&_order=desc&start=0&_limit=4`,
                                     );
+                                    handleClr(e);
                                 }}
                             >
-                                {cate.name.toUpperCase()}
+                                <span style={{ color: eval(`clr${cate.name}`), borderBottom: `1px solid ${eval(`clr${cate.name}`)}` }}>
+                                    {cate.name.toUpperCase()}
+                                </span>
                             </li>
                         ))}
                 </ul>
@@ -98,7 +119,7 @@ function BestSellers() {
                         </Col>
                     ))}
             </Row>
-        </Container>
+        </section>
     );
 }
 

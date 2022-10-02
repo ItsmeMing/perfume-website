@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "./routes";
 import DefaultLayout from "./layouts/defaultlayout";
+import { Container } from "react-bootstrap";
 
 function App() {
     return (
@@ -14,9 +15,11 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <DefaultLayout>
-                                        <Page />
-                                    </DefaultLayout>
+                                    <Container fluid className="g-0" style={{ position: "relative" }}>
+                                        <DefaultLayout>
+                                            <Page />
+                                        </DefaultLayout>
+                                    </Container>
                                 }
                             ></Route>
                         );
