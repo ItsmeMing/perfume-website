@@ -1,0 +1,88 @@
+@import "../../../../styles/variables.scss";
+
+.auth-container {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    text-align: center;
+    width: 500px;
+    max-width: 100%;
+    padding: 20px;
+    background-color: rgb(240, 240, 240);
+    border: 1px solid $light-gray;
+    transition: all 1s;
+
+    .auth-btn {
+
+        >strong {
+            text-decoration: underline;
+            color: $orange;
+            cursor: pointer;
+        }
+    }
+
+    .form-container {
+        display: grid;
+        gap: 10px;
+    }
+
+    .form-container.signup {
+        grid-template-areas:
+            'one'
+            'two'
+            'three'
+            'four';
+
+        .form-item {
+            &:first-child {
+                grid-area: one;
+            }
+
+            &:nth-child(2) {
+                grid-area: two;
+            }
+
+            &:nth-child(3) {
+                grid-area: three;
+            }
+
+            &:last-child {
+                grid-area: four;
+            }
+        }
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+.auth-container.active {
+    right: 0;
+}
+
+@media (min-width: 1400px) {
+    .auth-container {
+        .auth-title {
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .auth-btn {
+            font-size: 16px;
+            margin: 30px 0;
+        }
+
+        .form-container.signup {
+            grid-template-areas:
+                'one two'
+                'three three'
+                'four four'
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 30px;
+        }
+    }
+}
