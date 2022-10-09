@@ -1,6 +1,7 @@
+import { Fragment, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Fragment, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cart from "./cart/Cart";
 import {
     faMagnifyingGlass,
     faCartShopping,
@@ -16,7 +17,8 @@ import {
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import logo from "../assets/images/logo.webp";
 
-const Navbar = ({ searchRef, auth }) => {
+
+const Navbar = ({ searchRef, auth, count }) => {
     const dButton = useRef(null);
     return (
         <Fragment>
@@ -55,7 +57,8 @@ const Navbar = ({ searchRef, auth }) => {
                     </li>
                     <li className="r-menu-item">
                         <FontAwesomeIcon icon={faCartShopping} />
-                        <span className="cart-number">0</span>
+                        <span className="cart-number">{count}</span>
+                        <Cart></Cart>
                     </li>
                 </ul>
             </div>
@@ -63,13 +66,18 @@ const Navbar = ({ searchRef, auth }) => {
     );
 };
 
-const MobileNavbar = ({ searchRef }) => {
+const MobileNavbar = ({ searchRef, auth }) => {
     const sMenu = useRef(null);
     const arrow = useRef(null);
     const handleSubMenu = () => {
         sMenu.current.classList.toggle("active");
         arrow.current.classList.toggle("active");
     };
+
+    const cart = useRef(null)
+    const toggleCart = () => {
+        cart.current.classList.add("active")
+    }
     return (
         <Fragment>
             <FontAwesomeIcon
@@ -112,13 +120,19 @@ const MobileNavbar = ({ searchRef }) => {
                     className="m-menu-item"
                     onClick={() => {
                         document.querySelector(".m-menu").classList.remove("active");
-                        // search.current.classList.toggle("active");
+                        searchRef.current.classList.toggle("active");
                     }}
                 >
                     <p className="menu-text">Search</p>
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="menu-icon" />
                 </li>
-                <li className="m-menu-item">
+                <li className="m-menu-item" onClick={() => {
+                    auth.current.classList.toggle("active")
+                    setTimeout(() => {
+                        document.querySelector(".m-menu").classList.remove("active");
+                        document.querySelector(".mobile-overlay").classList.remove("active");
+                    }, 1000);
+                }}>
                     <p className="menu-text">Log In</p>
                     <FontAwesomeIcon icon={faUserSolid} className="menu-icon" />
                 </li>
@@ -126,12 +140,14 @@ const MobileNavbar = ({ searchRef }) => {
             <figure className="logo-wrapper">
                 <img src={logo} alt="logo" className="logo"></img>
             </figure>
-            <FontAwesomeIcon icon={faCartShopping} />
+            <FontAwesomeIcon icon={faCartShopping} onClick={toggleCart} />
+            <Cart cart={cart}></Cart>
             <div
                 className="mobile-overlay"
                 onClick={() => {
                     document.querySelector(".m-menu").classList.remove("active");
                     document.querySelector(".mobile-overlay").classList.remove("active");
+                    searchRef.current.classList.remove("active");
                     if (sMenu.current.classList.contains("active")) {
                         sMenu.current.classList.remove("active");
                         arrow.current.classList.remove("active");

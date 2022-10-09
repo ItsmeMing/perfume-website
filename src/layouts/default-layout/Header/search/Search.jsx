@@ -1,6 +1,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import "./Search.scss"
 
 const Search = ({ search }) => {
     const [results, setResults] = useState("Không có sản phẩm nào")

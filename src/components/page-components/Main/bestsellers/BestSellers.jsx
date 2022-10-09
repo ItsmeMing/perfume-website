@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import cartSlice from "../../../../redux/cartSlice";
 import "./BestSellers.scss";
-
 
 //get types of products
 const BestSellers = () => {
@@ -55,8 +56,23 @@ const BestSellers = () => {
             default:
                 break;
         }
-    }
+    };
 
+    //add product to cart
+    const dispatch = useDispatch();
+    const productId = useSelector((state) => state.cart).cart.productid;
+    const AddItemToCart = (product) => {
+        dispatch(
+            cartSlice.actions.addCartItem({
+                id: productId,
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                quantity: 1,
+                imgurl: product.productimg,
+            }),
+        );
+    };
 
     return (
         <section className="best-sellers container g-0">
@@ -75,7 +91,12 @@ const BestSellers = () => {
                                     handleClr(e);
                                 }}
                             >
-                                <span style={{ color: eval(`clr${cate.name}`), borderBottom: `1px solid ${eval(`clr${cate.name}`)}` }}>
+                                <span
+                                    style={{
+                                        color: eval(`clr${cate.name}`),
+                                        borderBottom: `1px solid ${eval(`clr${cate.name}`)}`,
+                                    }}
+                                >
                                     {cate.name.toUpperCase()}
                                 </span>
                             </li>
@@ -85,7 +106,7 @@ const BestSellers = () => {
             <Row>
                 {products &&
                     products.map((product, index) => (
-                        <Col lg={3} md={6} xs={6} key={index} className="product">
+                        <Col lg={3} md={6} xs={6} id={product.id} className="product" key={index}>
                             <div
                                 className="product-img-wrapper"
                                 onMouseEnter={(e) => {
@@ -98,7 +119,14 @@ const BestSellers = () => {
                                 }}
                             >
                                 <img src={product.productimg} alt="" className="product-image"></img>
-                                <button className="product-btn">ADD TO CART</button>
+                                <button
+                                    className="product-btn"
+                                    onClick={() => {
+                                        AddItemToCart(product);
+                                    }}
+                                >
+                                    ADD TO CART
+                                </button>
                             </div>
                             <div className="product-info">
                                 <p className="product-reviews">Reviews: {product.reviews}</p>
@@ -121,6 +149,6 @@ const BestSellers = () => {
             </Row>
         </section>
     );
-}
+};
 
 export default BestSellers;

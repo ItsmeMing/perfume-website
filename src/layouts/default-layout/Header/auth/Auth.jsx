@@ -3,11 +3,19 @@ import Input from "../../../../components/global-components/input/Input";
 import Btn from "../../../../components/global-components/btn/Btn";
 import "./Auth.scss"
 
-const Cart = (props) => {
-    const [login, setLogin] = useState(false)
+const Auth = (props) => {
+    const { auth } = props;
+    const [login, setLogin] = useState(false);
+
+    //remove auth-form
+    const removeAuth = () => {
+        auth.current.classList.remove("active")
+    }
+
     return (
-        <section className="auth-container" ref={props.auth}>
+        <section className="auth-container" ref={auth}>
             {login ? <Login setLogin={setLogin} /> : <Signup setLogin={setLogin} />}
+            <Btn btnClass="btn ease-orange-trans auto-width" btnContent="EXIT" onClick={removeAuth}></Btn>
         </section>
     )
 }
@@ -44,4 +52,4 @@ const Login = (props) => {
     )
 }
 
-export default Cart;
+export default Auth;

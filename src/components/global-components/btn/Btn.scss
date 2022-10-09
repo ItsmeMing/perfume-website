@@ -6,6 +6,7 @@
     background-size: 200%;
     transition: 0.3s ease-out;
     border: 1px solid $borColor;
+
     &:hover {
         background-position: left;
         color: $hColor;
@@ -17,6 +18,7 @@
     background-color: $borColor;
     transition: 0.3s all;
     border: 1px solid $borColor;
+
     &:hover {
         color: $hTextColor;
         background-color: $hBackColor;

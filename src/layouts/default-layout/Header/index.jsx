@@ -1,12 +1,13 @@
 import { Fragment, useState, useEffect, useRef } from "react";
-import Btn from "../../../components/global-components/btn/Btn";
+import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
-import "./Header.scss";
 import { Navbar, MobileNavbar } from "./Navbar";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Search from "./Search";
+import Btn from "../../../components/global-components/btn/Btn";
+import Search from "./search/Search";
 import Auth from "./auth/Auth";
+import "./Header.scss";
 
 const Header = () => {
     //switch to navbar/mobile-navbar base on screen's width
@@ -31,54 +32,54 @@ const Header = () => {
         const handleHeader = () => {
             if (window.scrollY >= 1) {
                 header.current.classList.add("scrolling");
-            }
-            else {
+            } else {
                 header.current.classList.remove("scrolling");
             }
-        }
+        };
         window.addEventListener("scroll", handleHeader);
         // cleanup function
         return () => {
             window.removeEventListener("scroll", handleHeader);
         };
-    }, [])
+    }, []);
 
-    //toggle discount 
+    //toggle discount
     const disBtn = useRef(null);
     const discount = useRef(null);
+    const handleDisDetails = () => {
+        disBtn.current.classList.add("blurred");
+        setTimeout(() => {
+            disBtn.current.classList.remove("blurred");
+        }, 500);
+        if (discount.current.classList.contains("disabled")) {
+            discount.current.classList.remove("disabled");
+            setTimeout(() => {
+                discount.current.classList.toggle("active");
+            }, 150);
+        } else {
+            discount.current.classList.toggle("active");
+            setTimeout(() => {
+                discount.current.classList.add("disabled");
+            }, 500);
+        }
+    };
 
     //toggle search
     const search = useRef(null);
 
     //toggle auth-form
-    const auth = useRef(null)
+    const auth = useRef(null);
+
+    //get cart's length
+    const cartCount = useSelector((state) => state.cart).cart.list.length;
+    console.log(cartCount);
 
     return (
         <Fragment>
             <header className="header" ref={header}>
                 <Container className="g-0">
                     <section className="topnav">
-                        <p
-                            ref={disBtn}
-                            className="discount"
-                            onClick={() => {
-                                disBtn.current.classList.add("blurred");
-                                setTimeout(() => {
-                                    disBtn.current.classList.remove("blurred");
-                                }, 500);
-                                if (discount.current.classList.contains("disabled")) {
-                                    discount.current.classList.remove("disabled");
-                                    setTimeout(() => {
-                                        discount.current.classList.toggle("active");
-                                    }, 150);
-                                } else {
-                                    discount.current.classList.toggle("active");
-                                    setTimeout(() => {
-                                        discount.current.classList.add("disabled");
-                                    }, 500);
-                                }
-                            }}
-                        >
+                        <p ref={disBtn} className="discount" onClick={handleDisDetails}>
                             Get up to <strong>20$ OFF</strong>
                             <span className="dc-details">See details</span>
                         </p>
@@ -99,7 +100,8 @@ const Header = () => {
                                             discount.current.classList.add("disabled");
                                         }, 500);
                                     }
-                                }} />
+                                }}
+                            />
                             <p className="dis-text">Buy more, save more.</p>
                             <div className="d-conditions">
                                 <ul className="b-con-list">
@@ -120,7 +122,11 @@ const Header = () => {
                         </article>
                     </section>
                     <nav className="navbar g-0 p-0">
-                        {mnav ? <MobileNavbar searchRef={search} /> : <Navbar searchRef={search} auth={auth} />}
+                        {mnav ? (
+                            <MobileNavbar searchRef={search} auth={auth} />
+                        ) : (
+                            <Navbar searchRef={search} auth={auth} count={cartCount} />
+                        )}
                     </nav>
                 </Container>
                 <Search search={search}></Search>
@@ -128,6 +134,6 @@ const Header = () => {
             </header>
         </Fragment>
     );
-}
+};
 
 export default Header;
