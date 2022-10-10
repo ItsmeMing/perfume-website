@@ -1,5 +1,5 @@
-import Main from "../layouts/pages/Main.js";
-import Product from "../layouts/pages/Product.js";
+import Main from "../pages/main-page/Main.js";
+import Product from "../pages/product-page/Product.js";
 
 const publicRoutes = [
     { path: "/", component: Main },

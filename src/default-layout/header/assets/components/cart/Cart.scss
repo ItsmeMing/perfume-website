@@ -1,0 +1,189 @@
+@import "../../../../../styles/variables.scss";
+
+.cart-container {
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    height: 100vh;
+    background-color: $white;
+    box-shadow: 0px 4px 9px rgb(0 0 0 / 5%);
+    transition: all 0.5s;
+    .cart-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $light-gray;
+        .cart-title {
+            font-weight: bold;
+        }
+    }
+    .total-price-wrapper {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid $light-gray;
+    }
+}
+
+.cart-container.active {
+    right: 0;
+}
+
+@media (max-width: 575.98px) {
+    .cart-container {
+        right: -100%;
+        width: 100%;
+        > * {
+            padding: 8px 16px;
+        }
+        .cart-wrapper {
+            .cart-title {
+                font-size: 16px;
+            }
+            .btn.custom {
+                font-size: 12px;
+                height: 26px;
+            }
+        }
+        .total-price-wrapper {
+            .total-price-text {
+                font-size: 16px;
+            }
+            .total-price {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .cart-container {
+        right: -100%;
+        width: 100%;
+        > * {
+            padding: 9px 18px;
+        }
+        .cart-wrapper {
+            .cart-title {
+                font-size: 18px;
+            }
+            .btn.custom {
+                font-size: 13px;
+                height: 28px;
+            }
+        }
+        .total-price-wrapper {
+            .total-price-text {
+                font-size: 18px;
+            }
+            .total-price {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .cart-container {
+        > * {
+            padding: 10px 20px;
+        }
+        .cart-wrapper {
+            .cart-title {
+                font-size: 20px;
+            }
+            .btn.custom {
+                font-size: 14px;
+                height: 30px;
+            }
+        }
+        .total-price-wrapper {
+            .total-price-text {
+                font-size: 20px;
+            }
+            .total-price {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .cart-container {
+        right: -440px;
+        width: 440px;
+        > * {
+            padding: 8px 16px;
+        }
+        .cart-wrapper {
+            .cart-title {
+                font-size: 16px;
+            }
+            .btn.custom {
+                font-size: 12px;
+                height: 26px;
+            }
+        }
+        .total-price-wrapper {
+            .total-price-text {
+                font-size: 16px;
+            }
+            .total-price {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .cart-container {
+        right: -460px;
+        width: 460px;
+        > * {
+            padding: 9px 18px;
+        }
+        .cart-wrapper {
+            .cart-title {
+                font-size: 18px;
+            }
+            .btn.custom {
+                font-size: 13px;
+                height: 28px;
+            }
+        }
+        .total-price-wrapper {
+            .total-price-text {
+                font-size: 18px;
+            }
+            .total-price {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .cart-container {
+        right: -480px;
+        width: 480px;
+        > * {
+            padding: 10px 20px;
+        }
+        .cart-wrapper {
+            .cart-title {
+                font-size: 20px;
+            }
+            .btn.custom {
+                font-size: 14px;
+                height: 30px;
+            }
+        }
+        .total-price-wrapper {
+            .total-price-text {
+                font-size: 20px;
+            }
+            .total-price {
+                font-size: 20px;
+            }
+        }
+    }
+}

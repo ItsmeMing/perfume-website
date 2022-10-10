@@ -1,0 +1,211 @@
+@import "../../../../../../../styles/variables.scss";
+
+.m-menu {
+    color: $white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: gray;
+    transform: translateY(-100%);
+    transition: all 0.5s;
+
+    .m-menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $black;
+        cursor: pointer;
+
+        &:first-child {
+            display: block;
+            position: relative;
+            padding-bottom: 0;
+            overflow: hidden;
+
+            .menu-icon {
+                &:first-child {
+                    transform: rotate(180deg);
+                }
+
+                &:first-child.active {
+                    transform: rotate(0deg);
+                }
+            }
+        }
+        .s-menu {
+            display: none;
+            position: absolute;
+            width: 100%;
+            transition: all 1s;
+
+            &:hover {
+                display: block;
+            }
+
+            .s-menu-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid $black;
+
+                &:first-child {
+                    border-top: 1px solid $black;
+
+                    > svg {
+                        float: right;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+
+        .s-menu.active {
+            display: block;
+            position: static;
+        }
+
+        &:not(:first-child) {
+            border-top: none;
+        }
+
+        .menu-text {
+            > svg {
+                float: right;
+            }
+        }
+
+        .menu-icon {
+            transition: all 0.5s;
+        }
+    }
+}
+
+.m-menu.active {
+    transform: translateY(0%);
+}
+
+.logo-wrapper {
+    .logo {
+        display: block;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .m-menu {
+        .m-menu-item {
+            padding: 10px 0;
+            &:first-child > .menu-text {
+                padding-bottom: 10px;
+            }
+
+            .s-menu {
+                .s-menu-item {
+                    padding: 10px 0;
+
+                    &:first-child > .menu-icon {
+                        margin-right: 4px;
+                    }
+                }
+            }
+            .menu-text {
+                margin-left: 10px;
+
+                > svg {
+                    margin-right: 10px;
+                }
+            }
+
+            .menu-icon {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .logo-wrapper {
+        .logo {
+            width: 100px;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .m-menu {
+        .m-menu-item {
+            padding: 12px 0;
+            &:first-child > .menu-text {
+                padding-bottom: 12px;
+            }
+
+            .s-menu {
+                .s-menu-item {
+                    padding: 12px 0;
+
+                    &:first-child > .menu-icon {
+                        margin-right: 5px;
+                    }
+                }
+            }
+            .menu-text {
+                margin-left: 12px;
+
+                > svg {
+                    margin-right: 12px;
+                }
+            }
+
+            .menu-icon {
+                margin-right: 12px;
+            }
+        }
+    }
+
+    .logo-wrapper {
+        .logo {
+            width: 110px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .m-menu {
+        .m-menu-item {
+            padding: 14px 0;
+            &:first-child > .menu-text {
+                padding-bottom: 14px;
+            }
+
+            .s-menu {
+                .s-menu-item {
+                    padding: 14px 0;
+
+                    &:first-child > .menu-icon {
+                        margin-right: 6px;
+                    }
+                }
+            }
+            .menu-text {
+                margin-left: 14px;
+
+                > svg {
+                    margin-right: 14px;
+                }
+            }
+
+            .menu-icon {
+                margin-right: 14px;
+            }
+        }
+    }
+
+    .logo-wrapper {
+        .logo {
+            width: 120px;
+        }
+    }
+}
