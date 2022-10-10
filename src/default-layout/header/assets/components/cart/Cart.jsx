@@ -87,7 +87,13 @@ const Cart = ({ cart }) => {
                 <p className="cart-title">Your cart.</p>
                 <Btn btnClass="btn custom ease-orange-trans" btnContent="Close" onClick={removeCart}></Btn>
             </div>
-            {check ? <CartContent></CartContent> : <p>null</p>}
+            {check ? (
+                <CartContent></CartContent>
+            ) : (
+                <div className="null-section">
+                    <p>null</p>
+                </div>
+            )}
             <div className="total-price-wrapper">
                 <p className="total-price-text">Total price:</p>
                 <span className="total-price">${totalPrice}</span>

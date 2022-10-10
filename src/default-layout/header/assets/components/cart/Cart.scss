@@ -17,10 +17,21 @@
             font-weight: bold;
         }
     }
+    .null-section {
+        display: flex;
+        align-items: center;
+        > p {
+            text-align: center;
+            width: 100%;
+        }
+    }
     .total-price-wrapper {
         display: flex;
         justify-content: space-between;
         border-top: 1px solid $light-gray;
+        .total-price {
+            font-weight: bold;
+        }
     }
 }
 
@@ -43,6 +54,9 @@
                 font-size: 12px;
                 height: 26px;
             }
+        }
+        .null-section {
+            height: 331px;
         }
         .total-price-wrapper {
             .total-price-text {
@@ -71,6 +85,9 @@
                 height: 28px;
             }
         }
+        .null-section {
+            height: 372px;
+        }
         .total-price-wrapper {
             .total-price-text {
                 font-size: 18px;
@@ -95,6 +112,9 @@
                 font-size: 14px;
                 height: 30px;
             }
+        }
+        .null-section {
+            height: 402px;
         }
         .total-price-wrapper {
             .total-price-text {
@@ -123,6 +143,9 @@
                 height: 26px;
             }
         }
+        .null-section {
+            height: 331px;
+        }
         .total-price-wrapper {
             .total-price-text {
                 font-size: 16px;
@@ -150,6 +173,9 @@
                 height: 28px;
             }
         }
+        .null-section {
+            height: 372px;
+        }
         .total-price-wrapper {
             .total-price-text {
                 font-size: 18px;
@@ -176,6 +202,9 @@
                 font-size: 14px;
                 height: 30px;
             }
+        }
+        .null-section {
+            height: 402px;
         }
         .total-price-wrapper {
             .total-price-text {
