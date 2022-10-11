@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { memo } from "react";
+import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import cartSlice from "../../../../redux/cartSlice";
 import "./BestSellers.scss";
@@ -60,10 +61,12 @@ const BestSellers = () => {
     //add product to cart
     const dispatch = useDispatch();
     const productId = useSelector((state) => state.cart).cart.productid;
+    const cartItems = useSelector((state) => state.cart).cart.list;
     const AddItemToCart = (product) => {
         dispatch(
             cartSlice.actions.addCartItem({
                 id: productId,
+                productid: product.id,
                 name: product.name,
                 description: product.description,
                 price: product.price,
@@ -71,6 +74,31 @@ const BestSellers = () => {
                 imgurl: product.productimg,
             }),
         );
+    };
+
+    //check the cart to either add new product or increase product's quantity if product exist
+    const checkProduct = (product) => {
+        let check = false;
+        let temp;
+        if (cartItems.length === 0) AddItemToCart(product);
+        else {
+            for (let i = 0; i < cartItems.length; i++) {
+                if (cartItems[i].productid === product.id) {
+                    check = true;
+                    temp = cartItems[i];
+                }
+            }
+            switch (check) {
+                case true:
+                    dispatch(cartSlice.actions.updatePlusCartItem(temp.id));
+                    break;
+                case false:
+                    AddItemToCart(product);
+                    break;
+                default:
+                    break;
+            }
+        }
     };
 
     return (
@@ -121,7 +149,7 @@ const BestSellers = () => {
                                 <button
                                     className="product-btn"
                                     onClick={() => {
-                                        AddItemToCart(product);
+                                        checkProduct(product);
                                     }}
                                 >
                                     ADD TO CART
@@ -150,4 +178,4 @@ const BestSellers = () => {
     );
 };
 
-export default BestSellers;
+export default memo(BestSellers);

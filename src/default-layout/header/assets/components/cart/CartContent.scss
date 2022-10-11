@@ -52,11 +52,22 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            .price {
-                font-weight: bold;
+            margin-right: 10px;
+            .tprice-wrapper {
+                text-align: center;
+                .price {
+                    font-weight: bold;
+                }
+                .price.crossed-out {
+                    text-decoration: line-through;
+                }
+                .d-price {
+                    color: $orange;
+                }
             }
             .trash-can {
                 display: block;
+                margin: 0 auto;
             }
         }
     }
@@ -95,11 +106,14 @@
             }
             .tprice-delete {
                 .price {
-                    font-size: 12px;
+                    font-size: 11px;
                 }
-                .trash-can {
-                    padding: 4px 0;
+                .tprice-wrapper {
+                    font-size: 10px;
                 }
+            }
+            .trash-can {
+                padding: 4px 0;
             }
         }
     }
@@ -138,11 +152,14 @@
             }
             .tprice-delete {
                 .price {
-                    font-size: 13px;
+                    font-size: 12px;
                 }
-                .trash-can {
-                    padding: 4.5px 0;
+                .tprice-wrapper {
+                    font-size: 11px;
                 }
+            }
+            .trash-can {
+                padding: 4.5px 0;
             }
         }
     }
@@ -181,11 +198,14 @@
             }
             .tprice-delete {
                 .price {
-                    font-size: 14px;
+                    font-size: 13px;
                 }
-                .trash-can {
-                    padding: 4.5px 0;
+                .tprice-wrapper {
+                    font-size: 12px;
                 }
+            }
+            .trash-can {
+                padding: 4.5px 0;
             }
         }
     }
@@ -224,11 +244,14 @@
             }
             .tprice-delete {
                 .price {
-                    font-size: 12px;
+                    font-size: 11px;
                 }
-                .trash-can {
-                    padding: 4px 0;
+                .tprice-wrapper {
+                    font-size: 10px;
                 }
+            }
+            .trash-can {
+                padding: 4px 0;
             }
         }
     }
@@ -267,11 +290,14 @@
             }
             .tprice-delete {
                 .price {
-                    font-size: 13px;
+                    font-size: 12px;
                 }
-                .trash-can {
-                    padding: 4.5px 0;
+                .tprice-wrapper {
+                    font-size: 11px;
                 }
+            }
+            .trash-can {
+                padding: 4.5px 0;
             }
         }
     }
@@ -310,11 +336,14 @@
             }
             .tprice-delete {
                 .price {
-                    font-size: 14px;
+                    font-size: 13px;
                 }
-                .trash-can {
-                    padding: 4.5px 0;
+                .tprice-wrapper {
+                    font-size: 12px;
                 }
+            }
+            .trash-can {
+                padding: 4.5px 0;
             }
         }
     }

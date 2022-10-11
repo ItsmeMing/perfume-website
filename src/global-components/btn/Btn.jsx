@@ -4,9 +4,12 @@ import "./Btn.scss";
 const Btn = (props) => {
     return (
         <Fragment>
-            <button className={props.btnClass} onClick={props.onClick}>{props.btnContent}</button>
+            <button className={props.btnClass} onClick={props.onClick}>
+                {props.btnContent}
+                {props.children}
+            </button>
         </Fragment>
     );
-}
+};
 
 export default Btn;

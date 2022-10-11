@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 import Topnav from "./assets/components/topnav/Topnav";
@@ -51,7 +51,6 @@ const Header = () => {
 
     //get cart's length
     const cartCount = useSelector((state) => state.cart).cart.list.length;
-    console.log(cartCount);
 
     //submenu's ref
     const sMenu = useRef(null);
