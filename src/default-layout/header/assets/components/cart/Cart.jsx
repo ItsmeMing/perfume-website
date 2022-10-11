@@ -25,6 +25,7 @@ const Cart = ({ cart }) => {
     const [dProgress, setDProgress] = useState(null);
 
     const progressRef = useRef();
+    const progressBarRef = useRef();
     const progressTextRef = useRef();
 
     useEffect(() => {
@@ -45,19 +46,23 @@ const Cart = ({ cart }) => {
                         setDCondition(1);
                         setDNumber(15);
                         setDProgress(`${dNumber}% OFF`);
+                        progressBarRef.current.style.width = "60%";
                     } else if (totalQuantity === 4) {
                         dPer.current = 15;
                         setDCondition(1);
                         setDNumber(20);
                         setDProgress(`${dNumber}% OFF`);
+                        progressBarRef.current.style.width = "80%";
                     } else {
                         dPer.current = 20;
                         setDNumber(25);
                         progressTextRef.current.classList.add("hidden");
+                        progressBarRef.current.style.width = "100%";
                     }
                 } else {
                     setSPrice(9);
                     setIPriceClass(null);
+                    progressBarRef.current.style.width = `${20 * totalQuantity}%`;
                     dPer.current = 0;
                 }
             } else setCheck(false);
@@ -166,7 +171,9 @@ const Cart = ({ cart }) => {
                 <p className="progress" ref={progressRef}>
                     You get <b style={{ fontWeight: "bold" }}>{dNumber - 5}% OFF + FREE SHIPPING!</b>
                 </p>
-                <span className="progress-bar"></span>
+                <div className="progress-bar">
+                    <span ref={progressBarRef}></span>
+                </div>
                 <p className="progress-text" ref={progressTextRef}>
                     You are <b style={{ fontWeight: "bold" }}>{dCondition}</b> products away from{" "}
                     <b style={{ fontWeight: "bold" }}>{dProgress}</b>!
