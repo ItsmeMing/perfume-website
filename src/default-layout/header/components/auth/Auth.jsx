@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
-import Input from "../../../../../global-components/input/Input";
-import Btn from "../../../../../global-components/btn/Btn";
+import Input from "../../../../global-components/input/Input";
+import Btn from "../../../../global-components/btn/Btn";
 import "./Auth.scss";
 
 const Auth = (props) => {

@@ -1,12 +1,11 @@
-import { Fragment, useState, useEffect, useRef, useCallback } from "react";
-import { useSelector } from "react-redux";
+import { Fragment, useState, useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import Topnav from "./assets/components/topnav/Topnav";
-import { Navbar, MobileNavbar } from "./assets/components/navbar/Navbar";
-import Search from "./assets/components/search/Search";
-import Auth from "./assets/components/auth/Auth";
-import Cart from "./assets/components/cart/Cart";
-import MobileMenu from "./assets/components/mobile-menu/MobileMenu";
+import Topnav from "./components/topnav/Topnav";
+import { Navbar, MobileNavbar } from "./components/navbar/Navbar";
+import Search from "./components/search/Search";
+import Auth from "./components/auth/Auth";
+import Cart from "./components/cart/Cart";
+import MobileMenu from "./components/mobile-menu/MobileMenu";
 import "./assets/styles/Header.scss";
 
 const Header = () => {
@@ -49,9 +48,6 @@ const Header = () => {
     //toggle auth-form
     const auth = useRef(null);
 
-    //get cart's length
-    const cartCount = useSelector((state) => state.cart).cart.list.length;
-
     //submenu's ref
     const sMenu = useRef(null);
 
@@ -67,11 +63,7 @@ const Header = () => {
                 <Container className="g-0">
                     <Topnav></Topnav>
                     <nav className="navbar g-0 p-0">
-                        {mnav ? (
-                            <MobileNavbar cart={cart} />
-                        ) : (
-                            <Navbar searchRef={search} auth={auth} count={cartCount} cart={cart} />
-                        )}
+                        {mnav ? <MobileNavbar cart={cart} /> : <Navbar searchRef={search} auth={auth} cart={cart} />}
                     </nav>
                 </Container>
                 <Search search={search}></Search>

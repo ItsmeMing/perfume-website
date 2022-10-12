@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import "./Btn.scss";
 
 const Btn = (props) => {
+    console.log(props.re);
     return (
         <Fragment>
             <button className={props.btnClass} onClick={props.onClick}>
@@ -12,4 +13,4 @@ const Btn = (props) => {
     );
 };
 
-export default Btn;
+export default memo(Btn);

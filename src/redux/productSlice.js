@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const cartSlice = createSlice({
-    name: "cart",
-    initialState: {
-        cart: {
-            list: [],
-            productid: 0,
-        },
+    name: "products",
+    initialState: () => {
+        let products;
+        fetch("http://localhost:3001/api/products")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                products = data;
+            })
+            .catch(() => {
+                console.log("Can't get products.");
+            });
     },
     reducers: {
         addCartItem: (state, action) => {

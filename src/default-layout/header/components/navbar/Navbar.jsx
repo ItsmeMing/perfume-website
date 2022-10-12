@@ -1,24 +1,21 @@
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faMagnifyingGlass,
-    faCartShopping,
-    faBars,
-    faSprayCanSparkles,
-    faCircleInfo,
-    faUser as faUserSolid,
-    faCaretDown,
-    faPerson,
-    faPersonDress,
-    faQuestion,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faCartShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import logo from "./assets/images/logo.webp";
 import "./assets/styles/Navbar.scss";
 import "./assets/styles/MobileNavbar.scss";
 
-const Navbar = ({ searchRef, auth, count, cart }) => {
+const Navbar = ({ searchRef, auth, cart }) => {
+    const [count, setCount] = useState(null);
+    //get cart's length
+    const cartCount = useSelector((state) => state.cart).cart.list.length;
+    useEffect(() => {
+        setCount(cartCount);
+    }, [cartCount]);
+
     const dButton = useRef(null);
     return (
         <Fragment>

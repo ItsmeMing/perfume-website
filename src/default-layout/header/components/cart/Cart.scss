@@ -1,4 +1,4 @@
-@import "../../../../../styles/variables.scss";
+@import "../../../../styles/variables.scss";
 
 .cart-container {
     position: absolute;
@@ -56,6 +56,7 @@
         }
     }
     .price-details-list {
+        padding-top: 0 !important;
         .price-details-item {
             display: flex;
             justify-content: space-between;
@@ -71,6 +72,7 @@
     .checkout-btn {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin: 0 auto;
     }
 }

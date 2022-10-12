@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import Btn from "../../../../../global-components/btn/Btn";
+import Btn from "../../../../global-components/btn/Btn";
 import "./Topnav.scss";
 
 const Topnav = () => {
