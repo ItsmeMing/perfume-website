@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef, memo } from "react";
 import { Container } from "react-bootstrap";
 import Topnav from "./components/topnav/Topnav";
 import { Navbar, MobileNavbar } from "./components/navbar/Navbar";
@@ -88,4 +88,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default memo(Header);

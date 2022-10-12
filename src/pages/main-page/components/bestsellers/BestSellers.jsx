@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { memo } from "react";
-import { Row, Col } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import cartSlice from "../../../../redux/cartSlice";
+import { Row } from "react-bootstrap";
+import ProductBox from "../../../../global-components/product-box/ProductBox";
 import "./BestSellers.scss";
 
 //get types of products
@@ -14,7 +13,8 @@ const BestSellers = () => {
                 return res.json();
             })
             .then((data) => {
-                setCates(data);
+                const dLastIndex = data.pop();
+                setCates(data.slice(1));
             });
     }, []);
 
@@ -58,48 +58,6 @@ const BestSellers = () => {
                 break;
         }
     };
-    //add product to cart
-    const dispatch = useDispatch();
-    const productId = useSelector((state) => state.cart).cart.productid;
-    const cartItems = useSelector((state) => state.cart).cart.list;
-    const AddItemToCart = (product) => {
-        dispatch(
-            cartSlice.actions.addCartItem({
-                id: productId,
-                productid: product.id,
-                name: product.name,
-                description: product.description,
-                price: product.price,
-                quantity: 1,
-                imgurl: product.productimg,
-            }),
-        );
-    };
-
-    //check the cart to either add new product or increase product's quantity if product exist
-    const checkProduct = (product) => {
-        let check = false;
-        let temp;
-        if (cartItems.length === 0) AddItemToCart(product);
-        else {
-            for (let i = 0; i < cartItems.length; i++) {
-                if (cartItems[i].productid === product.id) {
-                    check = true;
-                    temp = cartItems[i];
-                }
-            }
-            switch (check) {
-                case true:
-                    dispatch(cartSlice.actions.updatePlusCartItem(temp.id));
-                    break;
-                case false:
-                    AddItemToCart(product);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
     return (
         <section className="best-sellers container g-0">
@@ -133,45 +91,16 @@ const BestSellers = () => {
             <Row>
                 {products &&
                     products.map((product, index) => (
-                        <Col lg={3} md={6} xs={6} id={product.id} className="product" key={index}>
-                            <div
-                                className="product-img-wrapper"
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.childNodes[0].src = product.productimghover;
-                                    e.currentTarget.childNodes[1].style.opacity = 1;
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.childNodes[0].src = product.productimg;
-                                    e.currentTarget.childNodes[1].removeAttribute("style");
-                                }}
-                            >
-                                <img src={product.productimg} alt="" className="product-image"></img>
-                                <button
-                                    className="product-btn"
-                                    onClick={() => {
-                                        checkProduct(product);
-                                    }}
-                                >
-                                    ADD TO CART
-                                </button>
-                            </div>
-                            <div className="product-info">
-                                <p className="product-reviews">Reviews: {product.reviews}</p>
-                                <ul className="p-info-list">
-                                    <li className="product-name">
-                                        <strong>{product.name.toUpperCase()}</strong>
-                                    </li>
-                                    <li className="product-price">
-                                        <strong>{product.price}$</strong>
-                                    </li>
-                                </ul>
-                                <p className="product-des">
-                                    Inspired by
-                                    <br />
-                                    {product.description}
-                                </p>
-                            </div>
-                        </Col>
+                        <ProductBox
+                            id={product.id}
+                            productimg={product.productimg}
+                            productimghover={product.productimghover}
+                            product={product}
+                            reviews={product.reviews}
+                            name={product.name}
+                            price={product.price}
+                            description={product.description}
+                        ></ProductBox>
                     ))}
             </Row>
         </section>

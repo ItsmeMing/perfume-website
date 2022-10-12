@@ -54,21 +54,23 @@
     "categories": [
         {
             "id": 1,
-            "name": "Women",
-            "createAt": 1616346753759,
-            "updateAt": 1616346753759
+            "name": "All"
         },
         {
             "id": 2,
-            "name": "Men",
-            "createAt": 1616346753759,
-            "updateAt": 1616346753759
+            "name": "Women"
         },
         {
             "id": 3,
-            "name": "Unisex",
-            "createAt": 1616346753759,
-            "updateAt": 1616346753759
+            "name": "Men"
+        },
+        {
+            "id": 4,
+            "name": "Unisex"
+        },
+        {
+            "id": 5,
+            "name": "Bestsellers"
         }
     ],
     "products": [

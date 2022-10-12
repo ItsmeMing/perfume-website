@@ -1,7 +1,7 @@
 @import "../../../../styles/variables.scss";
 
 .cart-list {
-    overflow-y: auto;
+    overflow-y: scroll;
     .cart-item {
         display: flex;
         justify-content: space-between;

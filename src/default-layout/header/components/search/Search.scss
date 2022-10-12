@@ -172,14 +172,11 @@
             padding: 14px 0;
         }
     }
-
-    .search-wrapper.active {
-        top: 0;
-    }
 }
 
 @media (min-width: 992px) {
     .search-wrapper {
+        z-index: 2;
         width: 500px;
 
         .search-form {
@@ -204,6 +201,9 @@
             font-size: 14px;
             padding: 16px 0;
         }
+    }
+    .search-wrapper.active {
+        top: 100%;
     }
 }
 

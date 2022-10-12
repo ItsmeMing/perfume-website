@@ -31,6 +31,11 @@
     border-radius: 100px;
 }
 
+.btn.ease-trans-orange {
+    @include ease($orange, transparent, $white, $orange);
+    border: 1px solid $orange;
+}
+
 .btn.ease-orange-trans {
     @include ease($white, $orange, $orange, transparent);
 }

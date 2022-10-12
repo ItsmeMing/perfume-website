@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import Btn from "../../global-components/btn/Btn";
 import { Container } from "react-bootstrap";
 import { faInstagram, faPinterestP, faFacebookF, faTiktok } from "@fortawesome/free-brands-svg-icons";
@@ -52,4 +52,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default memo(Footer);
