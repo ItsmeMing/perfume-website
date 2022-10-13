@@ -9,7 +9,7 @@ import Refund from "./components/refund/Refund";
 import Features from "./components/features/Features";
 import SocialPosts from "./components/social-posts/SocialPosts";
 
-function Main() {
+const Main = () => {
     return (
         <Fragment>
             <Banner></Banner>
@@ -23,6 +23,6 @@ function Main() {
             <SocialPosts></SocialPosts>
         </Fragment>
     );
-}
+};
 
 export default Main;

@@ -1,37 +1,41 @@
-import { useEffect, useState } from "react";
-import { memo } from "react";
+import { useState, memo } from "react";
+import { useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
 import ProductBox from "../../../../global-components/product-box/ProductBox";
 import "./BestSellers.scss";
 
-//get types of products
 const BestSellers = () => {
-    const [cates, setCates] = useState(null);
-    useEffect(() => {
-        fetch("http://localhost:3001/api/categories")
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                const dLastIndex = data.pop();
-                setCates(data.slice(1));
-            });
-    }, []);
+    //get types of products
+    const cates = useSelector((state) => state.products).categories.data;
+    //get products
+    const products = useSelector((state) => state.products).products.data;
 
-    //get value base on type of products
-    const [url, setUrl] = useState(
-        "http://localhost:3001/api/products?categoryId=1&_sort=reviews&_order=desc&start=0&_limit=4",
-    );
-    const [products, setProducts] = useState(null);
-    useEffect(() => {
-        fetch(url)
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                setProducts(data);
+    const [psFiltered, setPsFiltered] = useState(() => {
+        return products
+            .filter((product) => product.categoryId === 1)
+            .filter((t) => t.reviews > 1000)
+            .slice(0, 4)
+            .sort((a, b) => {
+                let x = a["reviews"];
+                let y = b["reviews"];
+                return y - x;
             });
-    }, [url]);
+    });
+    const filtering = (key, name) => {
+        setPsFiltered(
+            // First, filter out products that have the same categoryId, then filter out products that have reviews > 1000.
+            // Second, get the first 4 products, then sort them from the highest to the lowest.
+            products
+                .filter((product) => product.categoryId === key)
+                .filter((t) => t.reviews > 1000)
+                .slice(0, 4)
+                .sort((a, b) => {
+                    let x = a["reviews"];
+                    let y = b["reviews"];
+                    return y - x;
+                }),
+        );
+    };
 
     // set text color to the product's type
     const [clrWomen, setClrWomen] = useState("#ef776a");
@@ -70,9 +74,7 @@ const BestSellers = () => {
                                 key={key}
                                 className="b-s-btn"
                                 onClick={(e) => {
-                                    setUrl(
-                                        `http://localhost:3001/api/products?categoryId=${cate.id}&_sort=reviews&_order=desc&start=0&_limit=4`,
-                                    );
+                                    filtering(cate.id);
                                     handleClr(e);
                                 }}
                             >
@@ -89,17 +91,18 @@ const BestSellers = () => {
                 </ul>
             </div>
             <Row>
-                {products &&
-                    products.map((product, index) => (
+                {psFiltered &&
+                    psFiltered.map((pFiltered) => (
                         <ProductBox
-                            id={product.id}
-                            productimg={product.productimg}
-                            productimghover={product.productimghover}
-                            product={product}
-                            reviews={product.reviews}
-                            name={product.name}
-                            price={product.price}
-                            description={product.description}
+                            key={pFiltered.id}
+                            id={pFiltered.id}
+                            productimg={pFiltered.productimg}
+                            productimghover={pFiltered.productimghover}
+                            product={pFiltered}
+                            reviews={pFiltered.reviews}
+                            name={pFiltered.name}
+                            price={pFiltered.price}
+                            description={pFiltered.description}
                         ></ProductBox>
                     ))}
             </Row>

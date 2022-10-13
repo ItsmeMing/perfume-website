@@ -15,7 +15,7 @@
 
         .navbar {
             flex-wrap: nowrap;
-            background-color: rgb(240, 240, 240);
+            background-color: $white;
             .d-menu-wrapper,
             .r-menu-wrapper {
                 flex: 1;
@@ -70,7 +70,7 @@
 
 @media (min-width: 576px) {
     .header {
-        background: linear-gradient(to bottom, $black 32px, rgb(240, 240, 240) 0%);
+        background: linear-gradient(to bottom, $black 32px, $white 0%);
 
         .container {
             .navbar {
@@ -82,7 +82,7 @@
 
 @media (min-width: 768px) {
     .header {
-        background: linear-gradient(to bottom, $black 34.5px, rgb(240, 240, 240) 0%);
+        background: linear-gradient(to bottom, $black 34.5px, $white 0%);
         .container {
             .navbar {
                 height: 54px;
@@ -93,19 +93,19 @@
 
 @media (min-width: 992px) {
     .header {
-        background: linear-gradient(to bottom, $black 36px, rgb(240, 240, 240) 0%);
+        background: linear-gradient(to bottom, $black 36px, $white 0%);
     }
 }
 
 @media (min-width: 1200px) {
     .header {
-        background: linear-gradient(to bottom, $black 38px, rgb(240, 240, 240) 0%);
+        background: linear-gradient(to bottom, $black 38px, $white 0%);
     }
 }
 
 @media (min-width: 1400px) {
     .header {
-        background: linear-gradient(to bottom, $black 40px, rgb(240, 240, 240) 0%);
+        background: linear-gradient(to bottom, $black 40px, $white 0%);
 
         .container {
             width: 1300px !important;

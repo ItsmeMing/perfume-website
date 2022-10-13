@@ -68,6 +68,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                 >
                     ADD TO CART
                 </button>
+                {product.reviews > 1000 ? <span className="bestseller-tag">Bestseller</span> : null}
             </div>
             <div className="product-info">
                 <p className="product-reviews">Reviews: {reviews}</p>

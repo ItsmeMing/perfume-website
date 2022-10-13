@@ -54,23 +54,15 @@
     "categories": [
         {
             "id": 1,
-            "name": "All"
-        },
-        {
-            "id": 2,
             "name": "Women"
         },
         {
-            "id": 3,
+            "id": 2,
             "name": "Men"
         },
         {
-            "id": 4,
+            "id": 3,
             "name": "Unisex"
-        },
-        {
-            "id": 5,
-            "name": "Bestsellers"
         }
     ],
     "products": [
