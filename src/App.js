@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchProducts, fetchCategories } from "./redux/productSlice";
+import { fetchPrice } from "./redux/priceSlice";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "./routes";
 import DefaultLayout from "./default-layout";
@@ -12,6 +13,7 @@ function App() {
     useEffect(() => {
         dispatch(fetchProducts());
         dispatch(fetchCategories());
+        dispatch(fetchPrice());
     }, []);
 
     return (

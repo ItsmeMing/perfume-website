@@ -13,17 +13,17 @@
         }
     }
     .sort-filter {
-        .sort-list {
+        .filter-list {
             display: flex;
         }
-        .btn.filter {
+        .btn.sort {
             position: relative;
-            .filter-icon {
+            .sort-icon {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
             }
-            .filter-box {
+            .sort-box {
                 display: none;
                 position: absolute;
                 z-index: 6;
@@ -36,13 +36,13 @@
                 border-top: none;
                 transform: translate(0, calc(100%));
                 opacity: 0;
-                .filter-list {
+                .sort-list {
                     display: flex;
                     flex-direction: column;
                     text-align: left;
                     width: 100%;
                     height: 100%;
-                    .filter-item {
+                    .sort-item {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
@@ -70,7 +70,7 @@
             &:hover {
                 border: none;
                 border-radius: 0;
-                > .filter-box {
+                > .sort-box {
                     display: block;
                     opacity: 1;
                 }
@@ -94,13 +94,13 @@
             }
         }
         .sort-filter {
-            .sort-list {
+            .filter-list {
                 gap: 10px;
             }
-            .btn.filter {
+            .btn.sort {
                 padding-left: 30px !important;
                 padding-right: 30px !important;
-                .filter-icon {
+                .sort-icon {
                     right: 6px;
                 }
             }
@@ -122,13 +122,13 @@
             }
         }
         .sort-filter {
-            .sort-list {
+            .filter-list {
                 gap: 11px;
             }
-            .btn.filter {
+            .btn.sort {
                 padding-left: 35px !important;
                 padding-right: 35px !important;
-                .filter-icon {
+                .sort-icon {
                     right: 7px;
                 }
             }
@@ -161,13 +161,13 @@
             }
         }
         .sort-filter {
-            .sort-list {
+            .filter-list {
                 gap: 11px;
             }
-            .btn.filter {
+            .btn.sort {
                 padding-left: 35px !important;
                 padding-right: 35px !important;
-                .filter-icon {
+                .sort-icon {
                     right: 7px;
                 }
             }
@@ -189,13 +189,13 @@
             }
         }
         .sort-filter {
-            .sort-list {
+            .filter-list {
                 gap: 12px;
             }
-            .btn.filter {
+            .btn.sort {
                 padding-left: 40px !important;
                 padding-right: 40px !important;
-                .filter-icon {
+                .sort-icon {
                     right: 8px;
                 }
             }
@@ -217,13 +217,13 @@
             }
         }
         .sort-filter {
-            .sort-list {
+            .filter-list {
                 gap: 13px;
             }
-            .btn.filter {
+            .btn.sort {
                 padding-left: 45px !important;
                 padding-right: 45px !important;
-                .filter-icon {
+                .sort-icon {
                     right: 9px;
                 }
             }
@@ -245,13 +245,13 @@
             }
         }
         .sort-filter {
-            .sort-list {
+            .filter-list {
                 gap: 15px;
             }
-            .btn.filter {
+            .btn.sort {
                 padding-left: 50px !important;
                 padding-right: 50px !important;
-                .filter-icon {
+                .sort-icon {
                     right: 10px;
                 }
             }

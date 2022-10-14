@@ -5,8 +5,18 @@ import { faRightLeft, faCircleUp } from "@fortawesome/free-solid-svg-icons";
 import Btn from "../../../../global-components/btn/Btn";
 import "./SortFilter.scss";
 
-const SortFilter = ({ products, onFilter, header }) => {
+const SortFilter = ({
+    products,
+    priceSort,
+    reviewsSort,
+    onPriceSort,
+    onReviewsSort,
+    onDeleteSort,
+    onFilter,
+    header,
+}) => {
     const cates = useSelector((state) => state.products).categories.data;
+
     return (
         <section className="sort-filter-wrapper">
             <div className="label-wrapper">
@@ -14,7 +24,7 @@ const SortFilter = ({ products, onFilter, header }) => {
                 <span className="product-count">{products.length} products</span>
             </div>
             <div className="sort-filter">
-                <ul className="sort-list">
+                <ul className="filter-list">
                     <Btn
                         btnClass="btn ease-trans-orange"
                         btnContent="All"
@@ -23,8 +33,8 @@ const SortFilter = ({ products, onFilter, header }) => {
                         }}
                     ></Btn>
                     {cates &&
-                        cates.map((cate) => (
-                            <li className="sort-item">
+                        cates.map((cate, index) => (
+                            <li className="filter-item" key={index}>
                                 <Btn
                                     btnClass="btn ease-trans-orange"
                                     btnContent={cate.name}
@@ -42,19 +52,19 @@ const SortFilter = ({ products, onFilter, header }) => {
                         }}
                     ></Btn>
                 </ul>
-                <Btn btnClass="btn filter ease-trans-orange" btnContent="Filter">
-                    <FontAwesomeIcon className="filter-icon" icon={faRightLeft}></FontAwesomeIcon>
-                    <div className="filter-box">
-                        <ul className="filter-list">
-                            <li className="filter-item activated">
+                <Btn btnClass="btn sort ease-trans-orange" btnContent="Sort">
+                    <FontAwesomeIcon className="sort-icon" icon={faRightLeft}></FontAwesomeIcon>
+                    <div className="sort-box">
+                        <ul className="sort-list">
+                            <li className="sort-item" id="price" ref={priceSort} onClick={onPriceSort}>
                                 <span>Price:</span>
                                 <FontAwesomeIcon className="f-i-icon" icon={faCircleUp}></FontAwesomeIcon>
                             </li>
-                            <li className="filter-item">
+                            <li className="sort-item" ref={reviewsSort} onClick={onReviewsSort}>
                                 <span>Reviews:</span>
                                 <FontAwesomeIcon className="f-i-icon" icon={faCircleUp}></FontAwesomeIcon>
                             </li>
-                            <li className="filter-item">
+                            <li className="sort-item" onClick={onDeleteSort}>
                                 <span>Clear all</span>
                             </li>
                         </ul>
