@@ -15,7 +15,6 @@ function Product() {
                 setFHeader("Shop All.");
                 setProducts(temp);
                 unfilteredProducts.current = temp;
-                console.log(unfilteredProducts.current);
                 break;
             case "Women":
             case "Men":
@@ -152,8 +151,8 @@ function Product() {
         priceSort.current.classList.remove("reverse");
         reviewsSort.current.classList.remove("activated");
         reviewsSort.current.classList.remove("reverse");
-        console.log(unfilteredProducts);
         setProducts(unfilteredProducts);
+        console.log(products);
     };
 
     return (
