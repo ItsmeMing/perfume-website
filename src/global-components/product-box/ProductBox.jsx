@@ -1,5 +1,6 @@
 import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import cartSlice from "../../redux/cartSlice";
 import "./ProductBox.scss";
 
@@ -74,7 +75,10 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                 <p className="product-reviews">Reviews: {reviews}</p>
                 <ul className="p-info-list">
                     <li className="product-name">
-                        <strong>{name.toUpperCase()}</strong>
+                        <b>
+                            {" "}
+                            <Link to={`/products/${id}`}>{name}</Link>
+                        </b>
                     </li>
                     <li className="product-price">
                         <strong>{price}$</strong>

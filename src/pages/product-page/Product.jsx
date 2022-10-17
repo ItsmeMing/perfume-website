@@ -151,7 +151,7 @@ function Product() {
         priceSort.current.classList.remove("reverse");
         reviewsSort.current.classList.remove("activated");
         reviewsSort.current.classList.remove("reverse");
-        setProducts(unfilteredProducts);
+        setProducts(unfilteredProducts.current);
         console.log(products);
     };
 
