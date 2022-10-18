@@ -77,7 +77,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                     <li className="product-name">
                         <b>
                             {" "}
-                            <Link to={`/products/${id}`}>{name}</Link>
+                            <Link to={`/products/${name.toLowerCase()}`}>{name}</Link>
                         </b>
                     </li>
                     <li className="product-price">

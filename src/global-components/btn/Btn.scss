@@ -27,8 +27,89 @@
 
 .btn {
     display: block;
-    padding: 0 24px !important;
     border-radius: 100px;
+    @media (max-width: 575.78px) {
+        font-size: 11px;
+        height: 36px;
+        padding: 0 19px !important;
+    }
+
+    @media (min-width: 576px) {
+        font-size: 12px;
+        height: 38px;
+        padding: 0 20px !important;
+    }
+
+    @media (min-width: 768px) {
+        font-size: 13px;
+        height: 40px;
+        padding: 0 21px !important;
+    }
+
+    @media (min-width: 992px) {
+        font-size: 14px;
+        height: 42px;
+        padding: 0 22px !important;
+    }
+
+    @media (min-width: 1200px) {
+        font-size: 15px;
+        height: 44px;
+        padding: 0 23px !important;
+    }
+
+    @media (min-width: 1400px) {
+        font-size: 16px;
+        height: 46px;
+        padding: 0 24px !important;
+    }
+}
+
+.btn.small {
+    @media (max-width: 575.78px) {
+        font-size: 9px;
+        height: 26px;
+        padding: 0 12px !important;
+    }
+
+    @media (min-width: 576px) {
+        font-size: 10px;
+        height: 28px;
+        padding: 0 13px !important;
+    }
+
+    @media (min-width: 768px) {
+        font-size: 11px;
+        height: 30px;
+        padding: 0 14px !important;
+    }
+
+    @media (min-width: 992px) {
+        font-size: 12px;
+        height: 32px;
+        padding: 0 15px !important;
+    }
+
+    @media (min-width: 1200px) {
+        font-size: 13px;
+        height: 34px;
+        padding: 0 16px !important;
+    }
+
+    @media (min-width: 1400px) {
+        font-size: 14px;
+        height: 36px;
+        padding: 0 17px !important;
+    }
+}
+
+.btn.ease-trans-black {
+    @include ease($black, transparent, $white, $black);
+    border-color: $black;
+}
+
+.btn.ease-black-trans {
+    @include ease($white, $black, $black, transparent);
 }
 
 .btn.ease-trans-orange {
@@ -51,46 +132,4 @@
 
 .btn.fill-trans-orange {
     @include fill($orange, transparent, $orange, $white);
-}
-
-@media (max-width: 575.78px) {
-    .btn {
-        font-size: 11px;
-        height: 36px;
-    }
-}
-
-@media (min-width: 576px) {
-    .btn {
-        font-size: 12px;
-        height: 38px;
-    }
-}
-
-@media (min-width: 768px) {
-    .btn {
-        font-size: 13px;
-        height: 40px;
-    }
-}
-
-@media (min-width: 992px) {
-    .btn {
-        font-size: 14px;
-        height: 42px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .btn {
-        font-size: 15px;
-        height: 44px;
-    }
-}
-
-@media (min-width: 1400px) {
-    .btn {
-        font-size: 16px;
-        height: 46px;
-    }
 }

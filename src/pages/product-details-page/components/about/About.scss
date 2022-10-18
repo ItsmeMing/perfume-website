@@ -1,0 +1,21 @@
+@import "../../../../styles/variables.scss";
+
+.bold {
+    font-weight: bold;
+}
+
+.small.bold {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.gender {
+    span {
+        font-weight: bold;
+        color: $orange;
+    }
+}
+
+.ingredients-tag {
+    margin-bottom: 10px;
+}

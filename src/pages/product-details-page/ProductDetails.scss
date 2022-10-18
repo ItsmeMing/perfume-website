@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.image-section {
+    display: flex;
+    gap: 50px;
+}
+
+@media (min-width: 1400px) {
+    .product-details-container {
+        width: 1300px;
+        margin: 50px auto;
+    }
+}

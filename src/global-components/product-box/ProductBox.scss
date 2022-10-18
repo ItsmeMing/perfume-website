@@ -51,12 +51,15 @@
             display: flex;
             justify-content: space-between;
 
-            > * {
+            > *,
+            a {
+                font-weight: bold;
                 transition: all 0.5s;
             }
 
             &:hover {
-                > * {
+                > *,
+                a {
                     color: $orange;
                     cursor: pointer;
                 }

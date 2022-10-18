@@ -32,7 +32,7 @@ const Navbar = ({ searchRef, auth, cart }) => {
                     </ul>
                 </div>
             </div>
-            <Link to="/index">
+            <Link to="/">
                 <figure className="logo-wrapper">
                     <img src={logo} alt="logo" className="logo"></img>
                 </figure>
