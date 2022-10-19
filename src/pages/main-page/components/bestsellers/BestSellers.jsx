@@ -96,8 +96,8 @@ const BestSellers = () => {
                         <ProductBox
                             key={pFiltered.id}
                             id={pFiltered.id}
-                            productimg={pFiltered.productimg}
-                            productimghover={pFiltered.productimghover}
+                            productimg={pFiltered.images.productimg}
+                            productimghover={pFiltered.images.productimghover}
                             product={pFiltered}
                             reviews={pFiltered.reviews}
                             name={pFiltered.name}

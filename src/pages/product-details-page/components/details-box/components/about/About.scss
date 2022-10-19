@@ -1,0 +1,60 @@
+@import "../../../../../../styles/variables.scss";
+
+.bold {
+    font-weight: bold;
+}
+
+.small {
+    @media (max-width: 575.98px) {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    @media (min-width: 576px) {
+        font-size: 13px;
+        line-height: 21px;
+    }
+    @media (min-width: 768px) {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    @media (min-width: 992px) {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    @media (min-width: 1200px) {
+        font-size: 13px;
+        line-height: 21px;
+    }
+    @media (min-width: 1400px) {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+.gender {
+    span {
+        font-weight: bold;
+        color: $orange;
+    }
+}
+
+.ingredients-tag {
+    @media (max-width: 575.98px) {
+        margin-bottom: 8px;
+    }
+    @media (min-width: 576px) {
+        margin-bottom: 9px;
+    }
+    @media (min-width: 768px) {
+        margin-bottom: 10px;
+    }
+    @media (min-width: 992px) {
+        margin-bottom: 8px;
+    }
+    @media (min-width: 1200px) {
+        margin-bottom: 9px;
+    }
+    @media (min-width: 1400px) {
+        margin-bottom: 10px;
+    }
+}

@@ -173,8 +173,8 @@ function Product() {
                         <ProductBox
                             key={index}
                             id={product.id}
-                            productimg={product.productimg}
-                            productimghover={product.productimghover}
+                            productimg={product.images.productimg}
+                            productimghover={product.images.productimghover}
                             product={product}
                             reviews={product.reviews}
                             name={product.name}

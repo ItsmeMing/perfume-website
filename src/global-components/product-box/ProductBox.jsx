@@ -18,7 +18,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                 description: product.description,
                 price: product.price,
                 quantity: 1,
-                imgurl: product.productimg,
+                imgurl: product.images.productimg,
             }),
         );
     };

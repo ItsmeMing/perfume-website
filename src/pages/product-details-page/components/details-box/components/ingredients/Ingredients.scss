@@ -1,0 +1,48 @@
+@import "../../../../../../styles/variables.scss";
+
+.ingredients-title {
+    font-weight: bold;
+}
+
+.ingredients-title,
+.ingredients {
+    @media (max-width: 575.98px) {
+        font-size: 12px;
+    }
+    @media (min-width: 576px) {
+        font-size: 13px;
+    }
+    @media (min-width: 768px) {
+        font-size: 14px;
+    }
+    @media (min-width: 992px) {
+        font-size: 12px;
+    }
+    @media (min-width: 1200px) {
+        font-size: 13px;
+    }
+    @media (min-width: 1400px) {
+        font-size: 14px;
+    }
+}
+
+.ingredients {
+    @media (max-width: 575.98px) {
+        margin-top: 16px;
+    }
+    @media (min-width: 576px) {
+        margin-top: 18px;
+    }
+    @media (min-width: 768px) {
+        margin-top: 20px;
+    }
+    @media (min-width: 992px) {
+        margin-top: 16px;
+    }
+    @media (min-width: 1200px) {
+        margin-top: 18px;
+    }
+    @media (min-width: 1400px) {
+        margin-top: 20px;
+    }
+}

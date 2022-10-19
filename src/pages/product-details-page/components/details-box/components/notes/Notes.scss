@@ -1,0 +1,48 @@
+@import "../../../../../../styles/variables.scss";
+
+.note-item {
+    &:nth-child(2) {
+        @media (max-width: 575.98px) {
+            margin: 11px 0;
+        }
+        @media (min-width: 576px) {
+            margin: 13px 0;
+        }
+        @media (min-width: 768px) {
+            margin: 15px 0;
+        }
+        @media (min-width: 992px) {
+            margin: 11px 0;
+        }
+        @media (min-width: 1200px) {
+            margin: 13px 0;
+        }
+        @media (min-width: 1400px) {
+            margin: 15px 0;
+        }
+    }
+    > * {
+        @media (max-width: 575.98px) {
+            font-size: 12px;
+        }
+        @media (min-width: 576px) {
+            font-size: 13px;
+        }
+        @media (min-width: 768px) {
+            font-size: 14px;
+        }
+        @media (min-width: 992px) {
+            font-size: 12px;
+        }
+        @media (min-width: 1200px) {
+            font-size: 13px;
+        }
+        @media (min-width: 1400px) {
+            font-size: 14px;
+        }
+    }
+    p {
+        font-weight: bold;
+        color: $orange;
+    }
+}
