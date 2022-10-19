@@ -16,7 +16,6 @@ const DetailsBox = ({ product }) => {
     const dispatch = useDispatch();
     const productId = useSelector((state) => state.cart).cart.productid;
     const cartItems = useSelector((state) => state.cart).cart.list;
-    console.log(product);
     const AddItemToCart = (product) => {
         dispatch(
             cartSlice.actions.addCartItem({
@@ -31,7 +30,7 @@ const DetailsBox = ({ product }) => {
         );
     };
 
-    //check the cart to either add new product or increase product's quantity if product exist
+    //check the cart to either add a new product or increase the product's quantity if one already exists.
     const checkProduct = (product) => {
         let check = false;
         let temp;
