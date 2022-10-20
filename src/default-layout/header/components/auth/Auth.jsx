@@ -38,7 +38,7 @@ const Auth = (props) => {
             {login ? (
                 <Login setLogin={setLogin} setEmail={setEmail} setPassword={setPassword} />
             ) : (
-                <Signup setLogin={setLogin} setEmail={setEmail} setPassword={setPassword} />
+                <Signup setLogin={setLogin} setREmail={setREmail} setRPassword={setRPassword} onSignUp={handleSignUp} />
             )}
             <Btn btnClass="btn ease-orange-trans auto-width" btnContent="EXIT" onClick={removeAuth}></Btn>
         </section>
@@ -61,10 +61,20 @@ const Signup = (props) => {
             <form className="form-container signup">
                 <Input placeholder="First name" className="form-item light-brown" type="text"></Input>
                 <Input placeholder="Last name" className="form-item light-brown" type="text"></Input>
-                <Input placeholder="Email" className="form-item light-brown" type="email"></Input>
-                <Input placeholder="Password" className="form-item light-brown" type="password"></Input>
+                <Input
+                    onChange={(e) => props.setREmail(e.target.value)}
+                    placeholder="Email"
+                    className="form-item light-brown"
+                    type="email"
+                ></Input>
+                <Input
+                    onChange={(e) => props.setRPassword(e.target.value)}
+                    placeholder="Password"
+                    className="form-item light-brown"
+                    type="password"
+                ></Input>
             </form>
-            <Btn btnClass="btn ease-orange-trans" btnContent="SIGN UP"></Btn>
+            <Btn btnClass="btn ease-orange-trans" btnContent="SIGN UP" onClick={props.onSignUp}></Btn>
         </Fragment>
     );
 };
