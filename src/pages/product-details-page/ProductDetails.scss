@@ -23,22 +23,40 @@
     @media (max-width: 575.98px) {
         width: 90%;
         margin: 25px auto;
+        .row {
+            margin-bottom: 25px;
+        }
     }
     @media (min-width: 576px) {
         margin: 30px auto;
+        .row {
+            margin-bottom: 30px;
+        }
     }
     @media (min-width: 768px) {
         margin: 35px auto;
+        .row {
+            margin-bottom: 35px;
+        }
     }
     @media (min-width: 992px) {
         margin: 40px auto;
+        .row {
+            margin-bottom: 40px;
+        }
     }
     @media (min-width: 1200px) {
         margin: 45px auto;
+        .row {
+            margin-bottom: 45px;
+        }
     }
 
     @media (min-width: 1400px) {
         width: 1300px;
         margin: 50px auto;
+        .row {
+            margin-bottom: 50px;
+        }
     }
 }

@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
 import ImageSection from "./components/image-section/ImageSection";
 import DetailsBox from "./components/details-box/DetailsBox";
+import Quality from "./components/quality-services/Quality";
+import Services from "./components/quality-services/Services";
 import "./ProductDetails.scss";
 
 function ProductDetails() {
@@ -24,6 +26,8 @@ function ProductDetails() {
                         <DetailsBox product={product} />
                     </Col>
                 </Row>
+                <Quality />
+                <Services />
             </Container>
         </>
     );
