@@ -5,10 +5,10 @@ const ImageSection = ({ product }) => {
     const slider = useRef(null);
     const curImg = useRef(null);
     let transPer = 0;
-    let temp = 0;
+    const temp = useRef(0);
 
     const handleCurrentImage = (index) => {
-        temp = index;
+        temp.current = index;
         transPer = 100 * index;
         slider.current.style.transform = `translateX(-${transPer}%)`;
         const curImgWidth = window.getComputedStyle(curImg.current).getPropertyValue("width");
@@ -21,13 +21,13 @@ const ImageSection = ({ product }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            handleCurrentImage(temp);
-            if (temp === Object.keys(product.images).length - 1) temp = 0;
-            else temp++;
+            handleCurrentImage(temp.current);
+            if (temp.current === Object.keys(product.images).length - 1) temp.current = 0;
+            else temp.current++;
         }, 2000);
         const checkWidth = () => {
             if (window.innerWidth >= 768) {
-                setTimeout(handleCurrentImage(temp), 1000);
+                setTimeout(handleCurrentImage(temp.current), 1000);
             }
         };
         window.addEventListener("resize", checkWidth);
