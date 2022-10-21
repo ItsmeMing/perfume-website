@@ -46,7 +46,7 @@ const Header = () => {
     const search = useRef(null);
 
     //toggle auth-form
-    const auth = useRef(null);
+    const authen = useRef(null);
 
     //submenu's ref
     const sMenu = useRef(null);
@@ -63,13 +63,17 @@ const Header = () => {
                 <Container className="g-0">
                     <Topnav></Topnav>
                     <nav className="navbar g-0 p-0">
-                        {mnav ? <MobileNavbar cart={cart} /> : <Navbar searchRef={search} auth={auth} cart={cart} />}
+                        {mnav ? (
+                            <MobileNavbar cart={cart} />
+                        ) : (
+                            <Navbar searchRef={search} authen={authen} cart={cart} />
+                        )}
                     </nav>
                 </Container>
                 <Search search={search}></Search>
-                <Auth auth={auth}></Auth>
+                <Auth authen={authen}></Auth>
                 <Cart cart={cart}></Cart>
-                <MobileMenu searchRef={search} auth={auth} sMenu={sMenu} arrow={arrow}></MobileMenu>
+                <MobileMenu searchRef={search} authen={authen} sMenu={sMenu} arrow={arrow}></MobileMenu>
                 <div
                     className="overlay"
                     onClick={() => {

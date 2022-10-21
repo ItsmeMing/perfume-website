@@ -8,7 +8,7 @@ import logo from "./assets/images/logo.webp";
 import "./assets/styles/Navbar.scss";
 import "./assets/styles/MobileNavbar.scss";
 
-const Navbar = ({ searchRef, auth, cart }) => {
+const Navbar = ({ searchRef, authen, cart }) => {
     const [count, setCount] = useState(null);
     //get cart's length
     const cartCount = useSelector((state) => state.cart).cart.list.length;
@@ -51,7 +51,7 @@ const Navbar = ({ searchRef, auth, cart }) => {
                     <li
                         className="r-menu-item"
                         onClick={() => {
-                            auth.current.classList.toggle("active");
+                            authen.current.classList.toggle("active");
                         }}
                     >
                         <FontAwesomeIcon icon={faUser} />

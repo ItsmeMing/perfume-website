@@ -6,6 +6,7 @@ import { fetchPrice } from "./redux/priceSlice";
 import { publicRoutes } from "./routes";
 import DefaultLayout from "./default-layout";
 import { Container } from "react-bootstrap";
+import { app } from "./firebase";
 
 function App() {
     //call api and then set it all to product's initial state
