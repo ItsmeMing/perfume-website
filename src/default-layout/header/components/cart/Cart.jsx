@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,78 +15,24 @@ const Cart = ({ cart, authen }) => {
     const dispatch = useDispatch();
 
     //discount, shipping price, subtotal
-    const [check, setCheck] = useState(false);
-    const dPer = useRef(0);
+    const totalQuantity = useSelector((state) => state.cart).totalQuantity;
+    const progressRef = useRef(null);
     const [iPriceClass, setIPriceClass] = useState(null);
-    const [sPrice, setSPrice] = useState(9);
-    const [dTotal, setDTotal] = useState(null);
-    const [totalPrice, setTotalPrice] = useState(null);
-    const [sTotal, setSTotal] = useState(null);
-    const [dNumber, setDNumber] = useState(null);
-    const [dCondition, setDCondition] = useState(null);
-    const [dProgress, setDProgress] = useState(null);
-
-    const progressRef = useRef();
-    const progressBarRef = useRef();
-    const progressTextRef = useRef();
+    //discount percent
+    const [dPer, setDPer] = useState(0);
+    const progressBarRef = useRef(null);
+    const discountConRef = useRef(null);
+    const [discountCon, setDiscountCon] = useState(3);
 
     useEffect(() => {
-        const checkCartContent = (totalQuantity) => {
-            if (loginStatus === "true") {
-                if (totalQuantity >= 0) {
-                    setCheck(true);
-                    setDCondition(3 - totalQuantity);
-                    setDNumber(10);
-                    setDProgress(`${dNumber}% OFF + FREE SHIPPING`);
-                    progressTextRef.current.classList.remove("hidden");
-                    progressRef.current.classList.add("hidden");
-                    if (totalQuantity > 2) {
-                        setSPrice(0);
-                        setIPriceClass("crossed-out");
-                        progressRef.current.classList.remove("hidden");
-                        if (totalQuantity === 3) {
-                            dPer.current = 10;
-                            setDCondition(1);
-                            setDNumber(15);
-                            setDProgress(`${dNumber}% OFF`);
-                            progressBarRef.current.style.width = "60%";
-                        } else if (totalQuantity === 4) {
-                            dPer.current = 15;
-                            setDCondition(1);
-                            setDNumber(20);
-                            setDProgress(`${dNumber}% OFF`);
-                            progressBarRef.current.style.width = "80%";
-                        } else {
-                            dPer.current = 20;
-                            setDNumber(25);
-                            progressTextRef.current.classList.add("hidden");
-                            progressBarRef.current.style.width = "100%";
-                        }
-                    } else {
-                        setSPrice(9);
-                        setIPriceClass(null);
-                        progressBarRef.current.style.width = `${20 * totalQuantity}%`;
-                        dPer.current = 0;
-                    }
-                } else setCheck(false);
+        if (totalQuantity >= 0) {
+            setDiscountCon(3 - totalQuantity);
+            if (totalQuantity >= 3) {
+            } else {
             }
-        };
-
-        //check total products for discount
-        const totalQuantity = cartItems.reduce((prev, cartItem) => prev + cartItem.quantity, 0);
-        checkCartContent(totalQuantity);
-
-        //discount sum
-        setDTotal(
-            cartItems.reduce((prev, cartItem) => prev + (cartItem.price * cartItem.quantity * dPer.current) / 100, 0),
-        );
-
-        //total original price
-        setTotalPrice(cartItems.reduce((prev, cartItem) => prev + cartItem.price * cartItem.quantity, 0));
-
-        //total price after discount
-        setSTotal(totalPrice - dTotal + sPrice);
-    }, [cartItems.length, cartItems, dTotal, sPrice, totalPrice, dNumber, loginStatus]);
+        } else {
+        }
+    }, [totalQuantity]);
 
     //remove cart
     const removeCart = () => {
@@ -102,6 +48,7 @@ const Cart = ({ cart, authen }) => {
         return (
             <ul className="cart-list">
                 {cartItems.map((cartItem, index) => {
+                    console.log(cartItem.totalPrice);
                     return (
                         <li key={index} className="cart-item">
                             <div className="cart-item-group">
@@ -138,14 +85,10 @@ const Cart = ({ cart, authen }) => {
                             </div>
                             <div className="tprice-delete">
                                 <div className="tprice-wrapper">
-                                    <span className={`price ${iPriceClass}`}>
-                                        ${cartItem.price * cartItem.quantity}
-                                    </span>
+                                    <span className={`price ${iPriceClass}`}>${cartItem.totalPrice}</span>
                                     <br />
                                     <span className="d-price">
-                                        $
-                                        {cartItem.price * cartItem.quantity -
-                                            cartItem.price * cartItem.quantity * (dPer.current / 100)}
+                                        ${cartItem.totalPrice - cartItem.totalPrice * (dPer.current / 100)}
                                     </span>
                                 </div>
                                 <FontAwesomeIcon
@@ -166,48 +109,40 @@ const Cart = ({ cart, authen }) => {
     const CartContent = () => {
         return (
             <>
-                {check ? (
-                    <CartDetails />
-                ) : (
-                    <div className="null-section">
-                        <p>null</p>
-                    </div>
-                )}
+                <CartDetails />
                 <div className="progress-wrapper">
-                    <p className="progress" ref={progressRef}>
-                        You get <b style={{ fontWeight: "bold" }}>{dNumber - 5}% OFF + FREE SHIPPING!</b>
+                    <p className="progress hidden" ref={progressRef}>
+                        You get <b style={{ fontWeight: "bold" }}>{dPer - 5}% OFF + FREE SHIPPING!</b>
                     </p>
                     <div className="progress-bar">
                         <span ref={progressBarRef}></span>
                     </div>
-                    <p className="progress-text" ref={progressTextRef}>
-                        You are <b style={{ fontWeight: "bold" }}>{dCondition}</b> products away from{" "}
-                        <b style={{ fontWeight: "bold" }}>{dProgress}</b>!
+                    <p className="progress-text" ref={discountConRef}>
+                        You are <b style={{ fontWeight: "bold" }}>{discountCon}</b> products away from{" "}
+                        <b style={{ fontWeight: "bold" }}>{}</b>!
                     </p>
                 </div>
                 <ul className="price-details-list">
                     <li className="price-details-item">
                         <span className="price-details-label bold">Initial price:</span>
-                        <span className="price-details-label light">${totalPrice}</span>
+                        <span className="price-details-label light">${}</span>
                     </li>
                     <li className="price-details-item">
                         <span className="price-details-label bold">Discount applied:</span>
-                        <span className="price-details-label light colored">
-                            {dPer.current === 0 ? "-" : `-$${dTotal}`}
-                        </span>
+                        <span className="price-details-label light colored">{dPer.current === 0 ? "-" : `-$`}</span>
                     </li>
                     <li className="price-details-item">
                         <span className="price-details-label bold">Shipping:</span>
-                        <span className="price-details-label light">{sPrice === 0 ? "FREE" : `$${sPrice}`}</span>
+                        <span className="price-details-label light">{}</span>
                     </li>
                     <li className="price-details-item">
                         <span className="price-details-label bold">Subtotal:</span>
-                        <span className="price-details-label light">${sTotal}</span>
+                        <span className="price-details-label light">${}</span>
                     </li>
                 </ul>
                 <Btn btnClass="btn checkout-btn ease-orange-trans" re={"re-rendered"}>
                     <span>GO TO CHECKOUT</span>
-                    <span>${sTotal}</span>
+                    <span>${}</span>
                 </Btn>
             </>
         );

@@ -20,6 +20,9 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                 price: product.price,
                 quantity: 1,
                 imgurl: product.images.productimg,
+                get totalPrice() {
+                    return this.price * this.quantity;
+                },
             }),
         );
     };
