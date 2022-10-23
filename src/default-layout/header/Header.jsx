@@ -57,6 +57,8 @@ const Header = () => {
     //cart's ref
     const cart = useRef(null);
 
+    //check if token exist in local storage
+
     return (
         <Fragment>
             <header className="header" ref={header}>
@@ -72,7 +74,7 @@ const Header = () => {
                 </Container>
                 <Search search={search}></Search>
                 <Auth authen={authen}></Auth>
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart} authen={authen}></Cart>
                 <MobileMenu searchRef={search} authen={authen} sMenu={sMenu} arrow={arrow}></MobileMenu>
                 <div
                     className="overlay"

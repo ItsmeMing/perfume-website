@@ -17,6 +17,14 @@
             font-weight: bold;
         }
     }
+
+    .login-warning {
+        text-align: center;
+        margin: 25px auto;
+        .btn.login {
+            margin: 10px auto;
+        }
+    }
     .null-section {
         display: flex;
         align-items: center;

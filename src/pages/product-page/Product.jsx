@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
 import ProductBox from "../../global-components/product-box/ProductBox";
@@ -7,34 +7,37 @@ import SortFilter from "./components/sort-filter/SortFilter";
 function Product() {
     const [fHeader, setFHeader] = useState("Shop All.");
     const temp = useSelector((state) => state.products).products.data;
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState(temp);
     const unfilteredProducts = useRef();
-    const handleFilter = (name, id) => {
-        switch (name) {
-            case "All":
-                setFHeader("Shop All.");
-                setProducts(temp);
-                unfilteredProducts.current = temp;
-                break;
-            case "Women":
-            case "Men":
-            case "Unisex":
-                name === "Unisex" ? setFHeader(`${name} Perfumes.`) : setFHeader(`Perfumes for ${name}.`);
-                unfilteredProducts.current = temp.filter((t) => t.categoryId === id);
-                setProducts(unfilteredProducts.current);
-                break;
-            case "Bestsellers":
-                setFHeader("Bestselling Perfumes.");
-                unfilteredProducts.current = temp.filter((t) => t.reviews > 1000);
-                setProducts(unfilteredProducts.current);
-                break;
-            default:
-                break;
-        }
-    };
+    const handleFilter = useCallback(
+        (name, id) => {
+            switch (name) {
+                case "All":
+                    setFHeader("Shop All.");
+                    setProducts(temp);
+                    unfilteredProducts.current = temp;
+                    break;
+                case "Women":
+                case "Men":
+                case "Unisex":
+                    name === "Unisex" ? setFHeader(`${name} Perfumes.`) : setFHeader(`Perfumes for ${name}.`);
+                    unfilteredProducts.current = temp.filter((t) => t.categoryId === id);
+                    setProducts(unfilteredProducts.current);
+                    break;
+                case "Bestsellers":
+                    setFHeader("Bestselling Perfumes.");
+                    unfilteredProducts.current = temp.filter((t) => t.reviews > 1000);
+                    setProducts(unfilteredProducts.current);
+                    break;
+                default:
+                    break;
+            }
+        },
+        [temp],
+    );
     useEffect(() => {
         handleFilter("All", null);
-    }, []);
+    }, [handleFilter]);
 
     const priceSort = useRef(null);
     const reviewsSort = useRef(null);

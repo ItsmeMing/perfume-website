@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import { useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
 import ProductBox from "../../../../global-components/product-box/ProductBox";
@@ -10,22 +10,13 @@ const BestSellers = () => {
     //get products
     const products = useSelector((state) => state.products).products.data;
 
-    const [psFiltered, setPsFiltered] = useState(() => {
-        return products
-            .filter((product) => product.categoryId === 1)
-            .filter((t) => t.reviews > 1000)
-            .slice(0, 4)
-            .sort((a, b) => {
-                let x = a["reviews"];
-                let y = b["reviews"];
-                return y - x;
-            });
-    });
-    const filtering = (key, name) => {
-        setPsFiltered(
+    const [psFiltered, setPsFiltered] = useState(null);
+    const [productId, setProductId] = useState(1);
+    const filtering = useCallback(
+        (key) => {
             // First, filter out products that have the same categoryId, then filter out products that have reviews > 1000.
             // Second, get the first 4 products, then sort them from the highest to the lowest.
-            products
+            return products
                 .filter((product) => product.categoryId === key)
                 .filter((t) => t.reviews > 1000)
                 .slice(0, 4)
@@ -33,9 +24,15 @@ const BestSellers = () => {
                     let x = a["reviews"];
                     let y = b["reviews"];
                     return y - x;
-                }),
-        );
-    };
+                });
+        },
+        [products],
+    );
+
+    useEffect(() => {
+        const temp = filtering(productId);
+        setPsFiltered(temp);
+    }, [productId, filtering]);
 
     // set text color to the product's type
     const [clrWomen, setClrWomen] = useState("#ef776a");
@@ -74,7 +71,7 @@ const BestSellers = () => {
                                 key={key}
                                 className="b-s-btn"
                                 onClick={(e) => {
-                                    filtering(cate.id);
+                                    setProductId(cate.id);
                                     handleClr(e);
                                 }}
                             >

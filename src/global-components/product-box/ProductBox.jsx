@@ -2,6 +2,7 @@ import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import cartSlice from "../../redux/cartSlice";
+import userSlice from "../../redux/userSlice";
 import "./ProductBox.scss";
 
 const ProductBox = ({ id, productimg, productimghover, product, reviews, name, price, description }) => {
@@ -47,6 +48,14 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
             }
         }
     };
+
+    //check if user has logged in or not when clicking "ADD TO CART" button
+    const loginStatus = useSelector((state) => state.user).logged;
+    const handleAddProduct = () => {
+        if (loginStatus === "true") checkProduct(product);
+        else console.log("please login to continue");
+    };
+
     return (
         <Col lg={3} md={6} xs={6} id={id} className="product">
             <div
@@ -61,12 +70,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                 }}
             >
                 <img src={productimg} alt="" className="product-image"></img>
-                <button
-                    className="product-btn"
-                    onClick={() => {
-                        checkProduct(product);
-                    }}
-                >
+                <button className="product-btn" onClick={handleAddProduct}>
                     ADD TO CART
                 </button>
                 {product.reviews > 1000 ? <span className="bestseller-tag">Bestseller</span> : null}

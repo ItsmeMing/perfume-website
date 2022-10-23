@@ -5,9 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import cartSlice from "../../../../redux/cartSlice";
 import Btn from "../../../../global-components/btn/Btn";
 import "./Cart.scss";
-import "./CartContent.scss";
+import "./CartDetails.scss";
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, authen }) => {
+    const loginStatus = useSelector((state) => state.user).logged;
+
     //get cart data from redux
     const cartItems = useSelector((state) => state.cart).cart.list;
     const dispatch = useDispatch();
@@ -30,42 +32,44 @@ const Cart = ({ cart }) => {
 
     useEffect(() => {
         const checkCartContent = (totalQuantity) => {
-            if (totalQuantity >= 0) {
-                setCheck(true);
-                setDCondition(3 - totalQuantity);
-                setDNumber(10);
-                setDProgress(`${dNumber}% OFF + FREE SHIPPING`);
-                progressTextRef.current.classList.remove("hidden");
-                progressRef.current.classList.add("hidden");
-                if (totalQuantity > 2) {
-                    setSPrice(0);
-                    setIPriceClass("crossed-out");
-                    progressRef.current.classList.remove("hidden");
-                    if (totalQuantity === 3) {
-                        dPer.current = 10;
-                        setDCondition(1);
-                        setDNumber(15);
-                        setDProgress(`${dNumber}% OFF`);
-                        progressBarRef.current.style.width = "60%";
-                    } else if (totalQuantity === 4) {
-                        dPer.current = 15;
-                        setDCondition(1);
-                        setDNumber(20);
-                        setDProgress(`${dNumber}% OFF`);
-                        progressBarRef.current.style.width = "80%";
+            if (loginStatus === "true") {
+                if (totalQuantity >= 0) {
+                    setCheck(true);
+                    setDCondition(3 - totalQuantity);
+                    setDNumber(10);
+                    setDProgress(`${dNumber}% OFF + FREE SHIPPING`);
+                    progressTextRef.current.classList.remove("hidden");
+                    progressRef.current.classList.add("hidden");
+                    if (totalQuantity > 2) {
+                        setSPrice(0);
+                        setIPriceClass("crossed-out");
+                        progressRef.current.classList.remove("hidden");
+                        if (totalQuantity === 3) {
+                            dPer.current = 10;
+                            setDCondition(1);
+                            setDNumber(15);
+                            setDProgress(`${dNumber}% OFF`);
+                            progressBarRef.current.style.width = "60%";
+                        } else if (totalQuantity === 4) {
+                            dPer.current = 15;
+                            setDCondition(1);
+                            setDNumber(20);
+                            setDProgress(`${dNumber}% OFF`);
+                            progressBarRef.current.style.width = "80%";
+                        } else {
+                            dPer.current = 20;
+                            setDNumber(25);
+                            progressTextRef.current.classList.add("hidden");
+                            progressBarRef.current.style.width = "100%";
+                        }
                     } else {
-                        dPer.current = 20;
-                        setDNumber(25);
-                        progressTextRef.current.classList.add("hidden");
-                        progressBarRef.current.style.width = "100%";
+                        setSPrice(9);
+                        setIPriceClass(null);
+                        progressBarRef.current.style.width = `${20 * totalQuantity}%`;
+                        dPer.current = 0;
                     }
-                } else {
-                    setSPrice(9);
-                    setIPriceClass(null);
-                    progressBarRef.current.style.width = `${20 * totalQuantity}%`;
-                    dPer.current = 0;
-                }
-            } else setCheck(false);
+                } else setCheck(false);
+            }
         };
 
         //check total products for discount
@@ -82,14 +86,19 @@ const Cart = ({ cart }) => {
 
         //total price after discount
         setSTotal(totalPrice - dTotal + sPrice);
-    }, [cartItems.length, cartItems, dTotal, sPrice, totalPrice, dNumber]);
+    }, [cartItems.length, cartItems, dTotal, sPrice, totalPrice, dNumber, loginStatus]);
 
     //remove cart
     const removeCart = () => {
         cart.current.classList.remove("active");
     };
 
-    const CartContent = () => {
+    const handleLogin = () => {
+        removeCart();
+        authen.current.classList.add("active");
+    };
+
+    const CartDetails = () => {
         return (
             <ul className="cart-list">
                 {cartItems.map((cartItem, index) => {
@@ -154,55 +163,70 @@ const Cart = ({ cart }) => {
         );
     };
 
+    const CartContent = () => {
+        return (
+            <>
+                {check ? (
+                    <CartDetails />
+                ) : (
+                    <div className="null-section">
+                        <p>null</p>
+                    </div>
+                )}
+                <div className="progress-wrapper">
+                    <p className="progress" ref={progressRef}>
+                        You get <b style={{ fontWeight: "bold" }}>{dNumber - 5}% OFF + FREE SHIPPING!</b>
+                    </p>
+                    <div className="progress-bar">
+                        <span ref={progressBarRef}></span>
+                    </div>
+                    <p className="progress-text" ref={progressTextRef}>
+                        You are <b style={{ fontWeight: "bold" }}>{dCondition}</b> products away from{" "}
+                        <b style={{ fontWeight: "bold" }}>{dProgress}</b>!
+                    </p>
+                </div>
+                <ul className="price-details-list">
+                    <li className="price-details-item">
+                        <span className="price-details-label bold">Initial price:</span>
+                        <span className="price-details-label light">${totalPrice}</span>
+                    </li>
+                    <li className="price-details-item">
+                        <span className="price-details-label bold">Discount applied:</span>
+                        <span className="price-details-label light colored">
+                            {dPer.current === 0 ? "-" : `-$${dTotal}`}
+                        </span>
+                    </li>
+                    <li className="price-details-item">
+                        <span className="price-details-label bold">Shipping:</span>
+                        <span className="price-details-label light">{sPrice === 0 ? "FREE" : `$${sPrice}`}</span>
+                    </li>
+                    <li className="price-details-item">
+                        <span className="price-details-label bold">Subtotal:</span>
+                        <span className="price-details-label light">${sTotal}</span>
+                    </li>
+                </ul>
+                <Btn btnClass="btn checkout-btn ease-orange-trans" re={"re-rendered"}>
+                    <span>GO TO CHECKOUT</span>
+                    <span>${sTotal}</span>
+                </Btn>
+            </>
+        );
+    };
+
     return (
         <section className="cart-container" ref={cart}>
             <div className="cart-wrapper">
                 <p className="cart-title">Your cart.</p>
                 <Btn btnClass="btn custom ease-orange-trans" btnContent="Close" onClick={removeCart}></Btn>
             </div>
-            {check ? (
-                <CartContent></CartContent>
+            {loginStatus === "true" ? (
+                <CartContent />
             ) : (
-                <div className="null-section">
-                    <p>null</p>
+                <div className="login-warning">
+                    <p className="warning">Please log in in order to use this function</p>
+                    <Btn btnClass="btn login ease-orange-trans" btnContent="LOG IN" onClick={handleLogin} />
                 </div>
             )}
-            <div className="progress-wrapper">
-                <p className="progress" ref={progressRef}>
-                    You get <b style={{ fontWeight: "bold" }}>{dNumber - 5}% OFF + FREE SHIPPING!</b>
-                </p>
-                <div className="progress-bar">
-                    <span ref={progressBarRef}></span>
-                </div>
-                <p className="progress-text" ref={progressTextRef}>
-                    You are <b style={{ fontWeight: "bold" }}>{dCondition}</b> products away from{" "}
-                    <b style={{ fontWeight: "bold" }}>{dProgress}</b>!
-                </p>
-            </div>
-            <ul className="price-details-list">
-                <li className="price-details-item">
-                    <span className="price-details-label bold">Initial price:</span>
-                    <span className="price-details-label light">${totalPrice}</span>
-                </li>
-                <li className="price-details-item">
-                    <span className="price-details-label bold">Discount applied:</span>
-                    <span className="price-details-label light colored">
-                        {dPer.current === 0 ? "-" : `-$${dTotal}`}
-                    </span>
-                </li>
-                <li className="price-details-item">
-                    <span className="price-details-label bold">Shipping:</span>
-                    <span className="price-details-label light">{sPrice === 0 ? "FREE" : `$${sPrice}`}</span>
-                </li>
-                <li className="price-details-item">
-                    <span className="price-details-label bold">Subtotal:</span>
-                    <span className="price-details-label light">${sTotal}</span>
-                </li>
-            </ul>
-            <Btn btnClass="btn checkout-btn ease-orange-trans" re={"re-rendered"}>
-                <span>GO TO CHECKOUT</span>
-                <span>${sTotal}</span>
-            </Btn>
         </section>
     );
 };

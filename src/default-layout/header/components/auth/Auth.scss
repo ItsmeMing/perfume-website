@@ -64,6 +64,17 @@
         display: none;
         width: auto;
     }
+
+    .welcome {
+        b {
+            font-weight: bold;
+        }
+    }
+    .btn.logout {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .auth-container.active {
