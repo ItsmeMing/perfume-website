@@ -1,0 +1,27 @@
+@import "../../../../styles/variables.scss";
+
+.reviews-container {
+    margin: 100px 0;
+    .reviews-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $light-gray;
+        .rating-reviews-count {
+            .reviews-header {
+                font-weight: bold;
+                font-size: 30px;
+                margin-bottom: 5px;
+            }
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+    .reviews {
+        padding: 20px 0;
+        height: 100px;
+        border-top: 1px solid $light-gray;
+        border-bottom: 1px solid $light-gray;
+    }
+}

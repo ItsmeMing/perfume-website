@@ -5,6 +5,7 @@ import ImageSection from "./components/image-section/ImageSection";
 import DetailsBox from "./components/details-box/DetailsBox";
 import Quality from "./components/quality-services/Quality";
 import Services from "./components/quality-services/Services";
+import Reviews from "./components/reviews/Reviews";
 import "./ProductDetails.scss";
 
 function ProductDetails() {
@@ -28,6 +29,7 @@ function ProductDetails() {
                 </Row>
                 <Quality />
                 <Services />
+                <Reviews reviews={product.reviews} />
             </Container>
         </>
     );

@@ -1,0 +1,31 @@
+@import "../../../../../../styles/variables.scss";
+
+.review-form-wrapper {
+    margin: 20px 0;
+    padding-bottom: 40px;
+    .form-header {
+        color: #6a6c77;
+        font-size: 15px;
+    }
+    .form {
+        margin: 10px 0;
+        label {
+            display: block;
+            font-size: 13px;
+            margin: 10px 0;
+            em {
+                color: red;
+            }
+        }
+        .form-item {
+            input {
+                width: 40vw;
+                border: 1px solid $light-gray;
+                border-radius: 5px;
+            }
+        }
+        .btn.submit-review {
+            margin-top: 20px;
+        }
+    }
+}

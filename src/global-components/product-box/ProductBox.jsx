@@ -2,7 +2,6 @@ import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import cartSlice from "../../redux/cartSlice";
-import userSlice from "../../redux/userSlice";
 import "./ProductBox.scss";
 
 const ProductBox = ({ id, productimg, productimghover, product, reviews, name, price, description }) => {
@@ -20,9 +19,6 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                 price: product.price,
                 quantity: 1,
                 imgurl: product.images.productimg,
-                get totalPrice() {
-                    return this.price * this.quantity;
-                },
             }),
         );
     };
