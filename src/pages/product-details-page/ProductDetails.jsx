@@ -29,7 +29,7 @@ function ProductDetails() {
                 </Row>
                 <Quality />
                 <Services />
-                <Reviews reviews={product.reviews} />
+                <Reviews reviewsCount={product.reviewsCount} product={product} />
             </Container>
         </>
     );

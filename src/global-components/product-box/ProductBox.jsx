@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import cartSlice from "../../redux/cartSlice";
 import "./ProductBox.scss";
 
-const ProductBox = ({ id, productimg, productimghover, product, reviews, name, price, description }) => {
+const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, name, price, description }) => {
     //add product to cart
     const dispatch = useDispatch();
     const productId = useSelector((state) => state.cart).cart.productid;
@@ -75,7 +75,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviews, name, p
                 {product.reviews > 1000 ? <span className="bestseller-tag">Bestseller</span> : null}
             </div>
             <div className="product-info">
-                <p className="product-reviews">Reviews: {reviews}</p>
+                <p className="product-reviews">Reviews: {reviewsCount}</p>
                 <ul className="p-info-list">
                     <li className="product-name">
                         <b>

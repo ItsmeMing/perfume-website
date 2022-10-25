@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchProducts, fetchCategories } from "./redux/productSlice";
 import { fetchPrice } from "./redux/priceSlice";
+import { fetchReviews } from "./redux/reviewsSlice";
 import { publicRoutes } from "./routes";
 import DefaultLayout from "./default-layout";
 import { Container } from "react-bootstrap";
@@ -15,7 +16,8 @@ function App() {
         dispatch(fetchProducts());
         dispatch(fetchCategories());
         dispatch(fetchPrice());
-    }, []);
+        dispatch(fetchReviews());
+    }, [dispatch]);
 
     return (
         <Router>

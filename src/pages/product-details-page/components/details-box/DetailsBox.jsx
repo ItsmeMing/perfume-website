@@ -76,7 +76,7 @@ const DetailsBox = ({ product }) => {
                 <p className="product-vendor">
                     <span>Eau de Parfum. Size: 50ml / 1.7oz</span>
                     <span className="product-reviews" style={{ marginLeft: "10px" }}>
-                        Reviews: {product.reviews}
+                        Reviews: {product.reviewsCount}
                     </span>
                 </p>
                 <Btn

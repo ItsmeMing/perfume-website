@@ -26,7 +26,7 @@ function Product() {
                     break;
                 case "Bestsellers":
                     setFHeader("Bestselling Perfumes.");
-                    unfilteredProducts.current = temp.filter((t) => t.reviews > 1000);
+                    unfilteredProducts.current = temp.filter((t) => t.reviewsCount > 1000);
                     setProducts(unfilteredProducts.current);
                     break;
                 default:
@@ -65,8 +65,8 @@ function Product() {
             if (reviewsSort.current.classList.contains("activated")) {
                 for (const re of result) {
                     for (const r of re.sort((a, b) => {
-                        let x = a["reviews"];
-                        let y = b["reviews"];
+                        let x = a["reviewsCount"];
+                        let y = b["reviewsCount"];
                         if (reviewsSort.current.classList.contains("reverse")) return y - x;
                         else return x - y;
                     }))
@@ -82,8 +82,8 @@ function Product() {
         };
         const ReviewsSort = () => {
             output = arr.sort((a, b) => {
-                let x = a["reviews"];
-                let y = b["reviews"];
+                let x = a["reviewsCount"];
+                let y = b["reviewsCount"];
                 if (reviewsSort.current.classList.contains("reverse")) return y - x;
                 else return x - y;
             });
@@ -179,7 +179,7 @@ function Product() {
                             productimg={product.images.productimg}
                             productimghover={product.images.productimghover}
                             product={product}
-                            reviews={product.reviews}
+                            reviewsCount={product.reviewsCount}
                             name={product.name}
                             price={product.price}
                             description={product.description}
