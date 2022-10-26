@@ -1,0 +1,80 @@
+@import "../../../../styles/variables.scss";
+
+.shipping-information-wrapper {
+    text-align: left;
+    padding: 0 10px;
+    border: 1px solid $light-gray;
+    border-radius: 5px;
+    .shipping-information {
+        display: flex;
+        padding: 10px;
+        p {
+            color: gray;
+            font-size: 14px;
+            width: 100px;
+        }
+        span,
+        address {
+            font-size: 14px;
+            margin-left: 20px;
+        }
+        &:first-child {
+            border-bottom: 1px solid $light-gray;
+        }
+    }
+}
+
+.shipping-form {
+    text-align: left;
+    padding: 15px 0;
+    margin-top: 30px;
+    .shipping-header {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .shipping-group {
+        border: 1px solid $light-gray;
+        border-radius: 5px;
+        .shipping-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px;
+            .shipping-input {
+                margin-left: 10px;
+            }
+            .shipping-label,
+            span {
+                font-size: 14px;
+            }
+            span {
+                font-weight: bold;
+                margin-left: auto;
+            }
+        }
+    }
+    .damage-protection {
+        font-size: 12px;
+        font-weight: 15px;
+        text-align: right;
+        width: 50%;
+        margin: 20px 0 20px auto;
+    }
+}
+.process-btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        font-size: 14px;
+        cursor: pointer;
+        svg {
+            margin-right: 5px;
+        }
+        &:hover {
+            color: $orange;
+        }
+    }
+}

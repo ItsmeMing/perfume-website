@@ -1,0 +1,46 @@
+@import "../../../../styles/variables.scss";
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 15px 0;
+    .checkout-header {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .checkout-group {
+        display: flex;
+        gap: 12px;
+    }
+    .checkout-input {
+        font-family: "Lora", serif !important;
+        font-size: 12px !important;
+        width: 100%;
+        margin-bottom: 12px;
+        padding: 15px 10px;
+        border: 1px solid $light-gray;
+        border-radius: 5px;
+        transition: all 0.3s;
+        &::placeholder {
+            color: gray;
+        }
+        &:focus-visible {
+            border-color: #1878b9;
+        }
+        option {
+            padding: 10px;
+        }
+    }
+    .btn.move {
+        margin: 18px 0 0 auto;
+    }
+}
+
+.extra-message {
+    margin-top: 15px;
+    font-size: 12px;
+    text-align: justify;
+}

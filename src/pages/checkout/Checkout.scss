@@ -1,0 +1,54 @@
+@import "../../styles/variables.scss";
+
+.checkout-wrapper {
+    .checkout-container {
+        max-width: 1300px;
+        width: 100%;
+        height: 100vh;
+        .checkout-main {
+            text-align: center;
+            float: right;
+            margin-right: 55px;
+            .checkout-breadcumb {
+                margin: 15px 0 10px 0;
+                .checkout-breadcumb-text {
+                    font-size: 13px;
+                }
+                .arrow {
+                    font-size: 11px;
+                    margin: 0 8px;
+                }
+            }
+            .urgency-message {
+                color: $orange;
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+        }
+        .checkout-sidebar {
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .checkout-wrapper {
+        background: linear-gradient(to right, $white calc(100% - 41.67%), $light-gray 41.67%);
+        .checkout-container {
+            .checkout-main {
+                margin-top: 60px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .checkout-wrapper {
+        .checkout-container {
+            .checkout-main {
+                width: 572px;
+            }
+            .checkout-sidebar {
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { Fragment, useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +18,7 @@ const Navbar = ({ searchRef, authen, cart }) => {
 
     const dButton = useRef(null);
     return (
-        <Fragment>
+        <>
             <div className="d-menu-wrapper">
                 <div ref={dButton} className="d-menu">
                     PERFUMES
@@ -67,7 +67,7 @@ const Navbar = ({ searchRef, authen, cart }) => {
                     </li>
                 </ul>
             </div>
-        </Fragment>
+        </>
     );
 };
 
@@ -76,7 +76,7 @@ const MobileNavbar = ({ cart }) => {
         cart.current.classList.add("active");
     };
     return (
-        <Fragment>
+        <>
             <FontAwesomeIcon
                 icon={faBars}
                 onClick={() => {
@@ -88,7 +88,7 @@ const MobileNavbar = ({ cart }) => {
                 <img src={logo} alt="logo" className="logo"></img>
             </figure>
             <FontAwesomeIcon icon={faCartShopping} onClick={toggleCart} />
-        </Fragment>
+        </>
     );
 };
 

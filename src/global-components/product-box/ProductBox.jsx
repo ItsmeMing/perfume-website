@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,7 +9,10 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
     //add product to cart
     const dispatch = useDispatch();
     const productId = useSelector((state) => state.cart).cart.productid;
-    const cartItems = useSelector((state) => state.cart).cart.list;
+    // const cartItems = useSelector((state) => state.cart).cart.list;
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
+    console.log(cartItems);
+
     const AddItemToCart = (product) => {
         dispatch(
             cartSlice.actions.addCartItem({
@@ -46,6 +50,8 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
                     break;
             }
         }
+        localStorage.removeItem("cart");
+        localStorage.setItem("cart", JSON.stringify(cartItems));
     };
 
     //check if user has logged in or not when clicking "ADD TO CART" button
@@ -72,7 +78,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
                 <button className="product-btn" onClick={handleAddProduct}>
                     ADD TO CART
                 </button>
-                {product.reviews > 1000 ? <span className="bestseller-tag">Bestseller</span> : null}
+                {product.reviewsCount > 1000 ? <span className="bestseller-tag">Bestseller</span> : null}
             </div>
             <div className="product-info">
                 <p className="product-reviews">Reviews: {reviewsCount}</p>

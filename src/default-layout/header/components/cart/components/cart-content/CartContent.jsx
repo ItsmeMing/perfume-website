@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import CartDetails from "../cart-details/CartDetails";
 import Btn from "../../../../../../global-components/btn/Btn";
 import { useCallback } from "react";
+import CartDetails from "../cart-details/CartDetails";
 
 const CartContent = ({ dispatch }) => {
     //get cart data from redux
     const totalQuantity = useSelector((state) => state.cart).totalQuantity;
-    const cartItems = useSelector((state) => state.cart).cart.list;
+    // const cartItems = useSelector((state) => state.cart).cart.list;
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
 
     //discount percent
     const [dPer, setDPer] = useState(0);
@@ -60,14 +62,19 @@ const CartContent = ({ dispatch }) => {
                 }
             } else {
             }
-            const totalInitPrice = cartItems.reduce((prev, cartItem) => prev + cartItem.price * cartItem.quantity, 0);
-            setTotalInitPrice(totalInitPrice);
-            const totalReduced = (totalInitPrice * dPer) / 100;
-            setTotalReduced(totalReduced);
-            const shippingPrice = totalQuantity < 3 ? 9 : 0;
-            setShippingPrice(shippingPrice);
-            const subTotal = totalInitPrice - totalReduced + shippingPrice;
-            setSubTotal(subTotal);
+            if (cartItems) {
+                const totalInitPrice = cartItems.reduce(
+                    (prev, cartItem) => prev + cartItem.price * cartItem.quantity,
+                    0,
+                );
+                setTotalInitPrice(totalInitPrice);
+                const totalReduced = (totalInitPrice * dPer) / 100;
+                setTotalReduced(totalReduced);
+                const shippingPrice = totalQuantity < 3 ? 9 : 0;
+                setShippingPrice(shippingPrice);
+                const subTotal = totalInitPrice - totalReduced + shippingPrice;
+                setSubTotal(subTotal);
+            }
         },
         [cartItems, dPer],
     );
@@ -112,8 +119,10 @@ const CartContent = ({ dispatch }) => {
                 </li>
             </ul>
             <Btn btnClass="btn checkout-btn ease-orange-trans" re={"re-rendered"}>
-                <span>GO TO CHECKOUT</span>
-                <span>${subTotal}</span>
+                <Link to="/checkout">
+                    <span>GO TO CHECKOUT</span>
+                    <span>${subTotal}</span>
+                </Link>
             </Btn>
         </>
     );

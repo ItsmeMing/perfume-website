@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchProducts, fetchCategories } from "./redux/productSlice";
@@ -23,27 +23,48 @@ function App() {
         <Router>
             <div className="App">
                 <Container fluid className="g-0" style={{ position: "relative" }}>
-                    <DefaultLayout>
-                        <Routes>
-                            {publicRoutes.map((route, index) => {
-                                const Page = route.component;
-                                return (
-                                    <Route
-                                        key={index}
-                                        path={route.path}
-                                        element={route.childroutes ? undefined : <Page />}
-                                    >
-                                        {route.childroutes ? (
-                                            <>
-                                                <Route index element={<Page />} />
-                                                <Route path=":name" element={<route.children />} />
-                                            </>
-                                        ) : undefined}
-                                    </Route>
-                                );
-                            })}
-                        </Routes>
-                    </DefaultLayout>
+                    <Routes>
+                        {publicRoutes.map((route, index) => {
+                            const Page = route.component;
+                            let Layout;
+                            if (route.defaultlayout) Layout = DefaultLayout;
+                            else Layout = Fragment;
+                            return (
+                                <Route
+                                    key={index}
+                                    path={route.path}
+                                    element={
+                                        route.childroutes ? undefined : (
+                                            <Layout>
+                                                <Page />
+                                            </Layout>
+                                        )
+                                    }
+                                >
+                                    {route.childroutes ? (
+                                        <>
+                                            <Route
+                                                index
+                                                element={
+                                                    <Layout>
+                                                        <Page />
+                                                    </Layout>
+                                                }
+                                            />
+                                            <Route
+                                                path=":name"
+                                                element={
+                                                    <Layout>
+                                                        <route.children />
+                                                    </Layout>
+                                                }
+                                            />
+                                        </>
+                                    ) : undefined}
+                                </Route>
+                            );
+                        })}
+                    </Routes>
                 </Container>
             </div>
         </Router>

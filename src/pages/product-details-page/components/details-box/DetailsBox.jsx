@@ -15,7 +15,8 @@ const DetailsBox = ({ product }) => {
     //add product to cart
     const dispatch = useDispatch();
     const productId = useSelector((state) => state.cart).cart.productid;
-    const cartItems = useSelector((state) => state.cart).cart.list;
+    // const cartItems = useSelector((state) => state.cart).cart.list;
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
     const AddItemToCart = (product) => {
         dispatch(
             cartSlice.actions.addCartItem({
@@ -53,6 +54,8 @@ const DetailsBox = ({ product }) => {
                     break;
             }
         }
+        localStorage.removeItem("cart");
+        localStorage.setItem("cart", JSON.stringify(cartItems));
     };
     const [details, setDetails] = useState(
         <About concentration={product.concentration} gender={product.gender} about={product.about} />,
@@ -62,6 +65,13 @@ const DetailsBox = ({ product }) => {
     const [notesBtn, setNotesBtn] = useState("");
     const [ingreBtn, setIngreBtn] = useState("");
     const [detailsBtn, setDetailsBtn] = useState("");
+
+    //check if user has logged in or not when clicking "ADD TO CART" button
+    const loginStatus = useSelector((state) => state.user).logged;
+    const handleAddProduct = () => {
+        if (loginStatus === "true") checkProduct(product);
+        else console.log("please login to continue");
+    };
 
     return (
         <>
@@ -79,12 +89,7 @@ const DetailsBox = ({ product }) => {
                         Reviews: {product.reviewsCount}
                     </span>
                 </p>
-                <Btn
-                    btnClass="btn ease-orange-trans"
-                    onClick={() => {
-                        checkProduct(product);
-                    }}
-                >
+                <Btn btnClass="btn ease-orange-trans" onClick={handleAddProduct}>
                     ADD TO CART
                 </Btn>
                 <ul className="feature-list">
