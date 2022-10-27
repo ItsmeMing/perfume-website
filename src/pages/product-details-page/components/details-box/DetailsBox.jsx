@@ -4,6 +4,7 @@ import cartSlice from "../../../../redux/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import { faTruck, faBox } from "@fortawesome/free-solid-svg-icons";
+import store from "../../../../redux/store";
 import Btn from "../../../../global-components/btn/Btn";
 import About from "./components/about/About";
 import Notes from "./components/notes/Notes";
@@ -15,8 +16,7 @@ const DetailsBox = ({ product }) => {
     //add product to cart
     const dispatch = useDispatch();
     const productId = useSelector((state) => state.cart).cart.productid;
-    // const cartItems = useSelector((state) => state.cart).cart.list;
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
+    const cartItems = useSelector((state) => state.cart).cart.list;
     const AddItemToCart = (product) => {
         dispatch(
             cartSlice.actions.addCartItem({
@@ -55,6 +55,7 @@ const DetailsBox = ({ product }) => {
             }
         }
         localStorage.removeItem("cart");
+        const cart = store.getState().cart.cart.list;
         localStorage.setItem("cart", JSON.stringify(cartItems));
     };
     const [details, setDetails] = useState(
@@ -70,7 +71,7 @@ const DetailsBox = ({ product }) => {
     const loginStatus = useSelector((state) => state.user).logged;
     const handleAddProduct = () => {
         if (loginStatus === "true") checkProduct(product);
-        else console.log("please login to continue");
+        else alert("please login to continue");
     };
 
     return (

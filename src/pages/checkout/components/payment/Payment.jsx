@@ -4,7 +4,11 @@ import Shipping from "../shipping/Shipping";
 import Btn from "../../../../global-components/btn/Btn";
 import "./Payment.scss";
 
-const Payment = ({ setProcess }) => {
+const Payment = ({ setProcess, information }) => {
+    const newInformation = { ...information };
+    newInformation.payment = "Cash on delivery";
+    newInformation.billing = "Same as shipping address";
+    console.log(newInformation);
     return (
         <>
             <div className="payment-information-wrapper">

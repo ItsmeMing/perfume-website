@@ -1,17 +1,15 @@
-import { useEffect } from "react";
 import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import cartSlice from "../../redux/cartSlice";
 import "./ProductBox.scss";
+import store from "../../redux/store";
 
 const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, name, price, description }) => {
     //add product to cart
     const dispatch = useDispatch();
     const productId = useSelector((state) => state.cart).cart.productid;
-    // const cartItems = useSelector((state) => state.cart).cart.list;
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
-    console.log(cartItems);
+    const cartItems = useSelector((state) => state.cart).cart.list;
 
     const AddItemToCart = (product) => {
         dispatch(
@@ -51,14 +49,15 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
             }
         }
         localStorage.removeItem("cart");
-        localStorage.setItem("cart", JSON.stringify(cartItems));
+        const cart = store.getState().cart.cart.list;
+        localStorage.setItem("cart", JSON.stringify(cart));
     };
 
     //check if user has logged in or not when clicking "ADD TO CART" button
     const loginStatus = useSelector((state) => state.user).logged;
     const handleAddProduct = () => {
         if (loginStatus === "true") checkProduct(product);
-        else console.log("please login to continue");
+        else alert("Please login to continue");
     };
 
     return (

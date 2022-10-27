@@ -1,33 +1,109 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faFire } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faFire, faTags } from "@fortawesome/free-solid-svg-icons";
 import Information from "./components/information/Information";
+import store from "../../redux/store";
 import logo from "../../default-layout/header/components/navbar/assets/images/logo.webp";
 import "./Checkout.scss";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
+    const cartItems = useSelector((state) => state.cart).cart.list;
+    const information = useMemo(() => {
+        return { products: cartItems };
+    }, [cartItems]);
+    console.log(information);
+    const totalQuantity = useSelector((state) => state.cart).totalQuantity;
+    const productPrice = document.querySelectorAll(".product-price#checkout");
+    const totalProductPrice = document.querySelectorAll(".after-discount");
+    const [sale, setSale] = useState(0);
+    const [dPer, setDPer] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [shippingPrice, setShippingPrice] = useState(0);
+    const [informationBtn, setInformationBtn] = useState("active");
+    const [shippingBtn, setShippingBtn] = useState("");
+    const [paymentBtn, setPaymentBtn] = useState("");
+
+    const handleCart = useCallback(() => {
+        const totalQuantity = store.getState().cart.totalQuantity;
+        if (totalQuantity >= 0) {
+            if (totalQuantity >= 3) {
+                for (const pp of productPrice) {
+                    pp.classList.remove("hidden");
+                }
+                for (const tpp of totalProductPrice) {
+                    tpp.classList.remove("hidden");
+                }
+                if (totalQuantity === 3) {
+                    setDPer(10);
+                    information.discountPer = 10;
+                    setSale("10% OFF FOR 3");
+                } else if (totalQuantity === 4) {
+                    setDPer(15);
+                    information.discountPer = 15;
+                    setSale("15% OFF FOR 4");
+                } else {
+                    setDPer(20);
+                    information.discountPer = 20;
+                    setSale("20% OFF FOR 5");
+                }
+            } else {
+                setDPer(0);
+                for (const pp of productPrice) {
+                    pp.classList.add("hidden");
+                }
+                for (const tpp of totalProductPrice) {
+                    tpp.classList.add("hidden");
+                }
+            }
+        } else {
+        }
+        if (cartItems) {
+            const totalPrice =
+                (cartItems.reduce((prev, cartItem) => prev + cartItem.price * cartItem.quantity, 0) * (100 - dPer)) /
+                100;
+            information.totalPrice = totalPrice;
+            setTotalPrice(totalPrice);
+            const shippingPrice = totalQuantity < 3 ? 9 : 0;
+            information.shippingPrice = shippingPrice;
+            setShippingPrice(shippingPrice);
+        }
+    }, [productPrice, totalProductPrice, cartItems, dPer, information]);
+
+    useEffect(() => {
+        handleCart();
+    }, [handleCart]);
+
     const [process, setProcess] = useState();
     useEffect(() => {
-        setProcess(<Information setProcess={setProcess} />);
+        setProcess(
+            <Information
+                setProcess={setProcess}
+                information={information}
+                setInformationBtn={setInformationBtn}
+                setShippingBtn={setShippingBtn}
+                setPaymentBtn={setPaymentBtn}
+            />,
+        );
     }, []);
 
-    const cartItems = useSelector((state) => state.cart).cart.list;
-    console.log(cartItems);
     return (
         <main className="checkout-wrapper">
             <Container className="checkout-container g-0">
                 <Row className="g-0">
                     <Col lg={7} md={12} xs={12}>
                         <section className="checkout-main">
-                            <img src={logo} alt=""></img>
+                            <Link to="/">
+                                <img src={logo} alt=""></img>
+                            </Link>
                             <div className="checkout-breadcumb">
-                                <span className="checkout-breadcumb-text">Information</span>
+                                <span className={`checkout-breadcumb-text ${informationBtn}`}>Information</span>
                                 <FontAwesomeIcon className="arrow" icon={faChevronRight} />
-                                <span className="checkout-breadcumb-text">Shipping</span>
+                                <span className={`checkout-breadcumb-text ${shippingBtn}`}>Shipping</span>
                                 <FontAwesomeIcon className="arrow" icon={faChevronRight} />
-                                <span className="checkout-breadcumb-text">Payment</span>
+                                <span className={`checkout-breadcumb-text ${paymentBtn}`}>Payment</span>
                             </div>
                             <div className="urgency-message">
                                 <FontAwesomeIcon icon={faFire} />
@@ -38,11 +114,53 @@ const Checkout = () => {
                     </Col>
                     <Col lg={5} md={12} xs={12}>
                         <section className="checkout-sidebar">
-                            <ul className="product-list">
-                                <li className="product">
-                                    <img></img>
-                                </li>
-                            </ul>
+                            <div className="products">
+                                {cartItems.map((cartItem, index) => {
+                                    return (
+                                        <div className="product-checkout" key={index}>
+                                            <div className="product-description">
+                                                <img src={cartItem.imgurl} alt="" className="product-img"></img>
+                                                <div className="product-info-group">
+                                                    <p className="product-name">{cartItem.name}</p>
+                                                    <p className="product-price" id="checkout">
+                                                        <FontAwesomeIcon icon={faTags}></FontAwesomeIcon> {sale} (-$
+                                                        {(cartItem.price * cartItem.quantity * dPer) / 100})
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="product-total-price">
+                                                <p
+                                                    className="before-discount"
+                                                    style={{
+                                                        textDecoration: totalQuantity >= 3 ? "line-through" : "none",
+                                                    }}
+                                                >
+                                                    ${cartItem.price * cartItem.quantity}
+                                                </p>
+                                                <p className="after-discount">
+                                                    ${(cartItem.price * cartItem.quantity * (100 - dPer)) / 100}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            <div className="total-wrapper">
+                                <div className="subtotal-group">
+                                    <p className="subtotal-text">Subtotal</p>
+                                    <span className="subtotal-price">${totalPrice}</span>
+                                </div>
+                                <div className="shipping-group">
+                                    <p className="shipping-text">Shipping</p>
+                                    <span className="shipping-price">${shippingPrice}</span>
+                                </div>
+                            </div>
+                            <div className="total-group">
+                                <p className="total-text">Total</p>
+                                <p className="total-price">
+                                    USD <span className="total">${totalPrice + shippingPrice}</span>
+                                </p>
+                            </div>
                         </section>
                     </Col>
                 </Row>

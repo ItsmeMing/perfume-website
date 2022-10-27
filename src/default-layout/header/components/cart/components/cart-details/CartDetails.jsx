@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useSelector } from "react-redux";
+import store from "../../../../../../redux/store";
 import cartSlice from "../../../../../../redux/cartSlice";
 import "./CartDetails.scss";
 
@@ -31,6 +32,9 @@ const CartDetails = ({ dispatch, dPer }) => {
                                         className="quantity-plus"
                                         onClick={() => {
                                             dispatch(cartSlice.actions.updatePlusCartItem(cartItem.id));
+                                            localStorage.removeItem("cart");
+                                            const cart = store.getState().cart.cart.list;
+                                            localStorage.setItem("cart", JSON.stringify(cart));
                                         }}
                                     >
                                         +
@@ -39,6 +43,9 @@ const CartDetails = ({ dispatch, dPer }) => {
                                         className="quantity-minus"
                                         onClick={() => {
                                             dispatch(cartSlice.actions.updateMinusCartItem(cartItem.id));
+                                            localStorage.removeItem("cart");
+                                            const cart = store.getState().cart.cart.list;
+                                            localStorage.setItem("cart", JSON.stringify(cart));
                                         }}
                                     >
                                         -
@@ -57,6 +64,9 @@ const CartDetails = ({ dispatch, dPer }) => {
                                 icon={faTrashCan}
                                 onClick={() => {
                                     dispatch(cartSlice.actions.deleteCartItem(cartItem.id));
+                                    localStorage.removeItem("cart");
+                                    const cart = store.getState().cart.cart.list;
+                                    localStorage.setItem("cart", JSON.stringify(cart));
                                 }}
                             ></FontAwesomeIcon>
                         </div>

@@ -8,6 +8,7 @@ import { publicRoutes } from "./routes";
 import DefaultLayout from "./default-layout";
 import { Container } from "react-bootstrap";
 import { app } from "./firebase";
+import cartSlice from "./redux/cartSlice";
 
 function App() {
     //call api and then set it all to product's initial state
@@ -17,6 +18,11 @@ function App() {
         dispatch(fetchCategories());
         dispatch(fetchPrice());
         dispatch(fetchReviews());
+        let cartItems = JSON.parse(localStorage.getItem("cart"));
+        if (cartItems === null) {
+            cartItems = [];
+        }
+        dispatch(cartSlice.actions.setCart(cartItems));
     }, [dispatch]);
 
     return (

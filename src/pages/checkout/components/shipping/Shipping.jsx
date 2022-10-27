@@ -1,17 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import Btn from "../../../../global-components/btn/Btn";
-import "../shipping/Shipping.scss";
 import Information from "../information/Information";
 import Payment from "../payment/Payment";
+import "../shipping/Shipping.scss";
 
-const Shipping = ({ setProcess }) => {
+const Shipping = ({ setProcess, information }) => {
+    const newInformation = { ...information };
+
     return (
         <>
             <div className="shipping-information-wrapper">
                 <div className="shipping-information">
                     <p> Contact</p>
-                    <span>ngocminh.vu.520@gmail.com</span>
+                    <span>{newInformation.email}</span>
                 </div>
                 <div className="shipping-information">
                     <p>Ship to</p>
@@ -22,15 +24,37 @@ const Shipping = ({ setProcess }) => {
                 <h1 className="shipping-header">Shipping method</h1>
                 <div className="shipping-group">
                     <div className="shipping-option">
-                        <input id="ground" value="ground" name="radio" className="shipping-input" type="radio"></input>
-                        <label htmlFor="ground" className="shipping-label">
+                        <input
+                            id="ground"
+                            value="ground"
+                            name="radio"
+                            className="shipping-input"
+                            type="radio"
+                            onClick={() => (newInformation.shipping = "ground")}
+                        ></input>
+                        <label
+                            htmlFor="ground"
+                            className="shipping-label"
+                            onClick={() => (newInformation.shipping = "ground")}
+                        >
                             Ground Shipping
                         </label>
                         <span>Free</span>
                     </div>
                     <div className="shipping-option">
-                        <input id="plane" value="plane" name="radio" className="shipping-input" type="radio"></input>
-                        <label htmlFor="plane" className="shipping-label">
+                        <input
+                            id="plane"
+                            value="plane"
+                            name="radio"
+                            className="shipping-input"
+                            type="radio"
+                            onClick={() => (newInformation.shipping = "plane")}
+                        ></input>
+                        <label
+                            htmlFor="plane"
+                            className="shipping-label"
+                            onClick={() => (newInformation.shipping = "plane")}
+                        >
                             Plane Shipping
                         </label>
                         <span>Free</span>
@@ -52,7 +76,10 @@ const Shipping = ({ setProcess }) => {
                 <Btn
                     btnClass="btn move ease-trans-orange"
                     btnContent="Continue to payment"
-                    onClick={() => setProcess(<Payment setProcess={setProcess} />)}
+                    onClick={() => {
+                        setProcess(<Payment setProcess={setProcess} information={newInformation} />);
+                        console.log(newInformation);
+                    }}
                 ></Btn>
             </div>
         </>

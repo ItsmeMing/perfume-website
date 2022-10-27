@@ -1,15 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import store from "../../../../../../redux/store";
 import Btn from "../../../../../../global-components/btn/Btn";
-import { useCallback } from "react";
 import CartDetails from "../cart-details/CartDetails";
 
 const CartContent = ({ dispatch }) => {
     //get cart data from redux
-    const totalQuantity = useSelector((state) => state.cart).totalQuantity;
-    // const cartItems = useSelector((state) => state.cart).cart.list;
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
+    const cartItems = useSelector((state) => state.cart).cart.list;
 
     //discount percent
     const [dPer, setDPer] = useState(0);
@@ -20,7 +18,7 @@ const CartContent = ({ dispatch }) => {
     //next discount's ref
     const nextDiscountRef = useRef(null);
     //number of products needed to have discount
-    const [discountConNum, setDiscountConNum] = useState(3 - totalQuantity);
+    const [discountConNum, setDiscountConNum] = useState(0);
     //next discount
     const [nextDiscount, setNextDiscount] = useState("10% OFF + FREE SHIPPING");
     //total init price
@@ -32,56 +30,51 @@ const CartContent = ({ dispatch }) => {
     //subtotal
     const [subTotal, setSubTotal] = useState(0);
 
-    const handleCart = useCallback(
-        (totalQuantity) => {
-            if (totalQuantity >= 0) {
-                if (totalQuantity >= 3) {
-                    progressRef.current.classList.remove("hidden");
-                    if (totalQuantity === 3) {
-                        setDPer(10);
-                        progressBarRef.current.style.width = "60%";
-                        setDiscountConNum(1);
-                        setNextDiscount("15% OFF");
-                    } else if (totalQuantity === 4) {
-                        setDPer(15);
-                        progressBarRef.current.style.width = "80%";
-                        setDiscountConNum(1);
-                        setNextDiscount("20% OFF");
-                        nextDiscountRef.current.classList.remove("hidden");
-                    } else {
-                        setDPer(20);
-                        progressBarRef.current.style.width = "100%";
-                        nextDiscountRef.current.classList.add("hidden");
-                    }
+    const handleCart = useCallback(() => {
+        const totalQuantity = store.getState().cart.totalQuantity;
+        if (totalQuantity >= 0) {
+            if (totalQuantity >= 3) {
+                progressRef.current.classList.remove("hidden");
+                if (totalQuantity === 3) {
+                    setDPer(10);
+                    progressBarRef.current.style.width = "60%";
+                    setDiscountConNum(1);
+                    setNextDiscount("15% OFF");
+                } else if (totalQuantity === 4) {
+                    setDPer(15);
+                    progressBarRef.current.style.width = "80%";
+                    setDiscountConNum(1);
+                    setNextDiscount("20% OFF");
+                    nextDiscountRef.current.classList.remove("hidden");
                 } else {
-                    setDPer(0);
-                    progressRef.current.classList.add("hidden");
-                    progressBarRef.current.style.width = `${20 * totalQuantity}%`;
-                    setDiscountConNum(3 - totalQuantity);
-                    setNextDiscount("10% OFF + FREE SHIPPING");
+                    setDPer(20);
+                    progressBarRef.current.style.width = "100%";
+                    nextDiscountRef.current.classList.add("hidden");
                 }
             } else {
+                setDPer(0);
+                progressRef.current.classList.add("hidden");
+                progressBarRef.current.style.width = `${20 * totalQuantity}%`;
+                setDiscountConNum(3 - totalQuantity);
+                setNextDiscount("10% OFF + FREE SHIPPING");
             }
-            if (cartItems) {
-                const totalInitPrice = cartItems.reduce(
-                    (prev, cartItem) => prev + cartItem.price * cartItem.quantity,
-                    0,
-                );
-                setTotalInitPrice(totalInitPrice);
-                const totalReduced = (totalInitPrice * dPer) / 100;
-                setTotalReduced(totalReduced);
-                const shippingPrice = totalQuantity < 3 ? 9 : 0;
-                setShippingPrice(shippingPrice);
-                const subTotal = totalInitPrice - totalReduced + shippingPrice;
-                setSubTotal(subTotal);
-            }
-        },
-        [cartItems, dPer],
-    );
+        } else {
+        }
+        if (cartItems) {
+            const totalInitPrice = cartItems.reduce((prev, cartItem) => prev + cartItem.price * cartItem.quantity, 0);
+            setTotalInitPrice(totalInitPrice);
+            const totalReduced = (totalInitPrice * dPer) / 100;
+            setTotalReduced(totalReduced);
+            const shippingPrice = totalQuantity < 3 ? 9 : 0;
+            setShippingPrice(shippingPrice);
+            const subTotal = totalInitPrice - totalReduced + shippingPrice;
+            setSubTotal(subTotal);
+        }
+    }, [cartItems, dPer]);
 
     useEffect(() => {
-        handleCart(totalQuantity);
-    }, [totalQuantity, handleCart]);
+        handleCart();
+    }, [handleCart]);
 
     return (
         <>
