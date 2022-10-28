@@ -2,41 +2,29 @@
 
 .checkout-wrapper {
     .checkout-container {
-        max-width: 1300px;
-        width: 100%;
+        // max-width: 1300px;
+        // width: 100%;
         height: 100vh;
         .checkout-main {
             text-align: center;
-            float: right;
-            margin-right: 55px;
             .checkout-breadcumb {
-                margin: 15px 0 10px 0;
                 .checkout-breadcumb-text {
                     color: #1878b9;
-                    font-size: 13px;
-                    cursor: pointer;
                 }
                 .checkout-breadcumb-text.active {
                     color: $black;
-                    pointer-events: none;
-                }
-                .arrow {
-                    font-size: 11px;
-                    margin: 0 8px;
                 }
             }
             .urgency-message {
                 color: $orange;
-                font-size: 14px;
-                margin-bottom: 30px;
             }
         }
         .checkout-sidebar {
-            margin-left: 55px;
             .products {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
+                overflow: auto;
+                height: 100%;
                 .product-checkout {
                     display: flex;
                     justify-content: space-between;
@@ -44,9 +32,7 @@
                     .product-description {
                         display: flex;
                         align-items: center;
-                        gap: 10px;
                         .product-img {
-                            width: 64px;
                             height: auto;
                             border-radius: 5px;
                         }
@@ -54,10 +40,8 @@
                             text-transform: capitalize;
                             .product-name {
                                 font-weight: bold;
-                                font-size: 14px;
                             }
                             .product-price {
-                                font-size: 15px;
                                 color: gray;
                             }
                             .product-price.hidden {
@@ -70,12 +54,10 @@
                     }
                     .product-total-price {
                         .before-discount {
-                            font-size: 13px;
                             color: gray;
                         }
                         .after-discount {
                             font-weight: bold;
-                            font-size: 15px;
                         }
                         .after-discount.hidden {
                             display: none;
@@ -84,8 +66,6 @@
                 }
             }
             .total-wrapper {
-                margin: 20px 0;
-                padding: 15px 0;
                 border-top: 2px solid $light-gray;
                 border-bottom: 2px solid $light-gray;
             }
@@ -96,25 +76,269 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 5px 0;
-                .subtotal-text,
-                .shipping-text,
-                .total-text {
-                    font-size: 14px;
-                }
                 .subtotal-price,
                 .shipping-price {
                     font-weight: bold;
-                    font-size: 14px;
                 }
                 .total-price {
                     display: flex;
                     align-items: center;
-                    font-size: 14px;
                     span {
                         font-weight: bold;
-                        font-size: 24px;
-                        margin-left: 7px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .checkout-wrapper {
+        width: 90%;
+        margin: 0 auto;
+        .checkout-container {
+            .checkout-main,
+            .checkout-sidebar {
+                margin: 10px 0;
+            }
+            .checkout-main {
+                .checkout-breadcumb {
+                    margin: 11px 0 6px 0;
+                    .checkout-breadcumb-text {
+                        font-size: 11px;
+                    }
+                    .arrow {
+                        font-size: 9px;
+                        margin: 0 6px;
+                    }
+                }
+                .urgency-message {
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                }
+            }
+            .checkout-sidebar {
+                margin-bottom: 10px;
+                .products {
+                    max-height: 192px;
+                    gap: 8px;
+                    .product-checkout {
+                        .product-description {
+                            gap: 8px;
+                            .product-img {
+                                width: 56px;
+                            }
+                            .product-info-group {
+                                .product-name {
+                                    font-size: 12px;
+                                }
+                                .product-price {
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                        .product-total-price {
+                            .before-discount {
+                                font-size: 11px;
+                            }
+                            .after-discount {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+                .total-wrapper {
+                    margin: 16px 0;
+                    padding: 11px 0;
+                }
+
+                .subtotal-group,
+                .shipping-group,
+                .total-group {
+                    padding: 3px 0;
+                    .subtotal-text,
+                    .shipping-text,
+                    .total-text {
+                        font-size: 12px;
+                    }
+                    .subtotal-price,
+                    .shipping-price {
+                        font-size: 12px;
+                    }
+                    .total-price {
+                        font-size: 12px;
+                        span {
+                            font-size: 20px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .checkout-wrapper {
+        .checkout-container {
+            .checkout-main,
+            .checkout-sidebar {
+                margin: 20px 0;
+            }
+            .checkout-main {
+                .checkout-breadcumb {
+                    margin: 13px 0 8px 0;
+                    .checkout-breadcumb-text {
+                        font-size: 12px;
+                    }
+                    .arrow {
+                        font-size: 10px;
+                        margin: 0 7px;
+                    }
+                }
+                .urgency-message {
+                    font-size: 13px;
+                    margin-bottom: 25px;
+                }
+            }
+            .checkout-sidebar {
+                margin-bottom: 20px;
+                .products {
+                    max-height: 207px;
+                    gap: 9px;
+                    .product-checkout {
+                        .product-description {
+                            gap: 9px;
+                            .product-img {
+                                width: 60px;
+                            }
+                            .product-info-group {
+                                .product-name {
+                                    font-size: 13px;
+                                }
+                                .product-price {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                        .product-total-price {
+                            .before-discount {
+                                font-size: 12px;
+                            }
+                            .after-discount {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+                .total-wrapper {
+                    margin: 18px 0;
+                    padding: 13px 0;
+                }
+
+                .subtotal-group,
+                .shipping-group,
+                .total-group {
+                    padding: 4px 0;
+                    .subtotal-text,
+                    .shipping-text,
+                    .total-text {
+                        font-size: 13px;
+                    }
+                    .subtotal-price,
+                    .shipping-price {
+                        font-size: 13px;
+                    }
+                    .total-price {
+                        font-size: 13px;
+                        span {
+                            font-size: 22px;
+                            margin-left: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .checkout-wrapper {
+        .checkout-container {
+            .checkout-main,
+            .checkout-sidebar {
+                margin: 30px 0;
+            }
+            .checkout-main {
+                .checkout-breadcumb {
+                    margin: 15px 0 10px 0;
+                    .checkout-breadcumb-text {
+                        font-size: 13px;
+                    }
+                    .arrow {
+                        font-size: 11px;
+                        margin: 0 8px;
+                    }
+                }
+                .urgency-message {
+                    font-size: 14px;
+                    margin-bottom: 30px;
+                }
+            }
+            .checkout-sidebar {
+                margin-bottom: 30px;
+                .products {
+                    max-height: 222px;
+                    gap: 10px;
+                    .product-checkout {
+                        .product-description {
+                            gap: 10px;
+                            .product-img {
+                                width: 64px;
+                            }
+                            .product-info-group {
+                                .product-name {
+                                    font-size: 14px;
+                                }
+                                .product-price {
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                        .product-total-price {
+                            .before-discount {
+                                font-size: 13px;
+                            }
+                            .after-discount {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+                .total-wrapper {
+                    margin: 20px 0;
+                    padding: 15px 0;
+                }
+
+                .subtotal-group,
+                .shipping-group,
+                .total-group {
+                    padding: 5px 0;
+                    .subtotal-text,
+                    .shipping-text,
+                    .total-text {
+                        font-size: 14px;
+                    }
+                    .subtotal-price,
+                    .shipping-price {
+                        font-size: 14px;
+                    }
+                    .total-price {
+                        font-size: 14px;
+                        span {
+                            font-size: 24px;
+                            margin-left: 7px;
+                        }
                     }
                 }
             }
@@ -128,7 +352,171 @@
         .checkout-container {
             .checkout-main,
             .checkout-sidebar {
-                margin-top: 60px;
+                margin-top: 40px;
+            }
+            .checkout-main {
+                width: 472px;
+                margin-right: 35px;
+                float: right;
+                .checkout-breadcumb {
+                    margin: 11px 0 6px 0;
+                    .checkout-breadcumb-text {
+                        font-size: 11px;
+                    }
+                    .arrow {
+                        font-size: 9px;
+                        margin: 0 6px;
+                    }
+                }
+                .urgency-message {
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                }
+            }
+            .checkout-sidebar {
+                width: 370px;
+                margin-left: 35px;
+                .products {
+                    max-height: 192px;
+                    gap: 8px;
+                    .product-checkout {
+                        .product-description {
+                            gap: 8px;
+                            .product-img {
+                                width: 56px;
+                            }
+                            .product-info-group {
+                                .product-name {
+                                    font-size: 12px;
+                                }
+                                .product-price {
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                        .product-total-price {
+                            .before-discount {
+                                font-size: 11px;
+                            }
+                            .after-discount {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+                .total-wrapper {
+                    margin: 16px 0;
+                    padding: 11px 0;
+                }
+
+                .subtotal-group,
+                .shipping-group,
+                .total-group {
+                    padding: 3px 0;
+                    .subtotal-text,
+                    .shipping-text,
+                    .total-text {
+                        font-size: 12px;
+                    }
+                    .subtotal-price,
+                    .shipping-price {
+                        font-size: 12px;
+                    }
+                    .total-price {
+                        font-size: 12px;
+                        span {
+                            font-size: 20px;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .checkout-wrapper {
+        .checkout-container {
+            .checkout-main,
+            .checkout-sidebar {
+                margin-top: 50px;
+            }
+            .checkout-main {
+                width: 522px;
+                margin-right: 45px;
+                .checkout-breadcumb {
+                    margin: 13px 0 8px 0;
+                    .checkout-breadcumb-text {
+                        font-size: 12px;
+                    }
+                    .arrow {
+                        font-size: 10px;
+                        margin: 0 7px;
+                    }
+                }
+                .urgency-message {
+                    font-size: 13px;
+                    margin-bottom: 25px;
+                }
+            }
+            .checkout-sidebar {
+                width: 395px;
+                margin-left: 45px;
+                .products {
+                    max-height: 207px;
+                    gap: 9px;
+                    .product-checkout {
+                        .product-description {
+                            gap: 9px;
+                            .product-img {
+                                width: 60px;
+                            }
+                            .product-info-group {
+                                .product-name {
+                                    font-size: 13px;
+                                }
+                                .product-price {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                        .product-total-price {
+                            .before-discount {
+                                font-size: 12px;
+                            }
+                            .after-discount {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+                .total-wrapper {
+                    margin: 18px 0;
+                    padding: 13px 0;
+                }
+
+                .subtotal-group,
+                .shipping-group,
+                .total-group {
+                    padding: 4px 0;
+                    .subtotal-text,
+                    .shipping-text,
+                    .total-text {
+                        font-size: 13px;
+                    }
+                    .subtotal-price,
+                    .shipping-price {
+                        font-size: 13px;
+                    }
+                    .total-price {
+                        font-size: 13px;
+                        span {
+                            font-size: 22px;
+                            margin-left: 6px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -137,11 +525,86 @@
 @media (min-width: 1400px) {
     .checkout-wrapper {
         .checkout-container {
+            width: 1300px;
+            .checkout-main,
+            .checkout-sidebar {
+                margin-top: 60px;
+            }
             .checkout-main {
                 width: 572px;
+                margin-right: 55px;
+                .checkout-breadcumb {
+                    margin: 15px 0 10px 0;
+                    .checkout-breadcumb-text {
+                        font-size: 13px;
+                    }
+                    .arrow {
+                        font-size: 11px;
+                        margin: 0 8px;
+                    }
+                }
+                .urgency-message {
+                    font-size: 14px;
+                    margin-bottom: 30px;
+                }
             }
             .checkout-sidebar {
                 width: 420px;
+                margin-left: 55px;
+                .products {
+                    max-height: 222px;
+                    gap: 10px;
+                    .product-checkout {
+                        .product-description {
+                            gap: 10px;
+                            .product-img {
+                                width: 64px;
+                            }
+                            .product-info-group {
+                                .product-name {
+                                    font-size: 14px;
+                                }
+                                .product-price {
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                        .product-total-price {
+                            .before-discount {
+                                font-size: 13px;
+                            }
+                            .after-discount {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+                .total-wrapper {
+                    margin: 20px 0;
+                    padding: 15px 0;
+                }
+
+                .subtotal-group,
+                .shipping-group,
+                .total-group {
+                    padding: 5px 0;
+                    .subtotal-text,
+                    .shipping-text,
+                    .total-text {
+                        font-size: 14px;
+                    }
+                    .subtotal-price,
+                    .shipping-price {
+                        font-size: 14px;
+                    }
+                    .total-price {
+                        font-size: 14px;
+                        span {
+                            font-size: 24px;
+                            margin-left: 7px;
+                        }
+                    }
+                }
             }
         }
     }

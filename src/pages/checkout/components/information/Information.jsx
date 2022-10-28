@@ -1,10 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Shipping from "../shipping/Shipping";
 import Btn from "../../../../global-components/btn/Btn";
 import "./Information.scss";
-import { text } from "@fortawesome/fontawesome-svg-core";
-import { useEffect } from "react";
 
 const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, setPaymentBtn }) => {
     const newUserCheckOut = { ...userCheckout };
@@ -54,7 +52,7 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
                     required
                     onChange={(e) => setAddress(e.target.value)}
                     value={address}
-                    type={text}
+                    type={Text}
                 ></input>
                 <input
                     placeholder="Phone number"

@@ -55,6 +55,12 @@
     .search-results {
         position: relative;
         text-align: center;
+        width: 90%;
+        margin: 0 auto;
+        .found-product {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
     .search-results::after {

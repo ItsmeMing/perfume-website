@@ -2,21 +2,12 @@
 
 .payment-information-wrapper {
     text-align: left;
-    padding: 0 10px;
     border: 1px solid $light-gray;
     border-radius: 5px;
     .payment-information {
         display: flex;
-        padding: 10px;
         p {
             color: gray;
-            font-size: 14px;
-            width: 100px;
-        }
-        span,
-        address {
-            font-size: 14px;
-            margin-left: 20px;
         }
         &:not(:last-child) {
             border-bottom: 1px solid $light-gray;
@@ -26,12 +17,8 @@
 
 .payment-form {
     text-align: left;
-    padding: 15px 0;
-    margin-top: 30px;
     .payment-header {
         font-weight: bold;
-        font-size: 16px;
-        margin-bottom: 20px;
     }
 
     .payment-group {
@@ -40,15 +27,6 @@
         .payment-option {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 0 10px;
-            .payment-input {
-                margin-left: 10px;
-            }
-            .payment-label,
-            span {
-                font-size: 14px;
-            }
             span {
                 font-weight: bold;
                 margin-left: auto;
@@ -61,13 +39,283 @@
     justify-content: space-between;
     align-items: center;
     span {
-        font-size: 14px;
         cursor: pointer;
+        &:hover {
+            color: $orange;
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .payment-information-wrapper {
+        padding: 0 8px;
+        .payment-information {
+            padding: 8px;
+            p {
+                font-size: 12px;
+                width: 80px;
+            }
+            span,
+            address {
+                font-size: 12px;
+                margin-left: 16px;
+            }
+        }
+    }
+
+    .payment-form {
+        padding: 13px 0;
+        margin-top: 20px;
+        .payment-header {
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .payment-option {
+            gap: 10px;
+            padding: 0 8px;
+            .payment-input {
+                margin-left: 8px;
+            }
+            .payment-label,
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+}
+.process-btn-group {
+    span {
+        font-size: 12px;
+        svg {
+            margin-right: 3px;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .payment-information-wrapper {
+        padding: 0 9px;
+        .payment-information {
+            padding: 9px;
+            p {
+                font-size: 13px;
+                width: 90px;
+            }
+            span,
+            address {
+                font-size: 13px;
+                margin-left: 18px;
+            }
+        }
+    }
+
+    .payment-form {
+        padding: 14px 0;
+        margin-top: 25px;
+        .payment-header {
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .payment-option {
+            gap: 11px;
+            padding: 0 9px;
+            .payment-input {
+                margin-left: 9px;
+            }
+            .payment-label,
+            span {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .payment-information-wrapper {
+        padding: 0 10px;
+        .payment-information {
+            padding: 10px;
+            p {
+                font-size: 14px;
+                width: 100px;
+            }
+            span,
+            address {
+                font-size: 14px;
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .payment-form {
+        padding: 15px 0;
+        margin-top: 30px;
+        .payment-header {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            gap: 12px;
+            padding: 0 10px;
+            .payment-input {
+                margin-left: 10px;
+            }
+            .payment-label,
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+}
+.process-btn-group {
+    span {
+        font-size: 14px;
         svg {
             margin-right: 5px;
         }
-        &:hover {
-            color: $orange;
+    }
+}
+
+@media (min-width: 992px) {
+    .payment-information-wrapper {
+        padding: 0 8px;
+        .payment-information {
+            padding: 8px;
+            p {
+                font-size: 12px;
+                width: 80px;
+            }
+            span,
+            address {
+                font-size: 12px;
+                margin-left: 16px;
+            }
+        }
+    }
+
+    .payment-form {
+        padding: 13px 0;
+        margin-top: 20px;
+        .payment-header {
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .payment-option {
+            gap: 10px;
+            padding: 0 8px;
+            .payment-input {
+                margin-left: 8px;
+            }
+            .payment-label,
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+}
+.process-btn-group {
+    span {
+        font-size: 12px;
+        svg {
+            margin-right: 3px;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .payment-information-wrapper {
+        padding: 0 9px;
+        .payment-information {
+            padding: 9px;
+            p {
+                font-size: 13px;
+                width: 90px;
+            }
+            span,
+            address {
+                font-size: 13px;
+                margin-left: 18px;
+            }
+        }
+    }
+
+    .payment-form {
+        padding: 14px 0;
+        margin-top: 25px;
+        .payment-header {
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .payment-option {
+            gap: 11px;
+            padding: 0 9px;
+            .payment-input {
+                margin-left: 9px;
+            }
+            .payment-label,
+            span {
+                font-size: 13px;
+            }
+        }
+    }
+}
+.process-btn-group {
+    span {
+        font-size: 13px;
+        svg {
+            margin-right: 4px;
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .payment-information-wrapper {
+        padding: 0 10px;
+        .payment-information {
+            padding: 10px;
+            p {
+                font-size: 14px;
+                width: 100px;
+            }
+            span,
+            address {
+                font-size: 14px;
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .payment-form {
+        padding: 15px 0;
+        margin-top: 30px;
+        .payment-header {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            gap: 12px;
+            padding: 0 10px;
+            .payment-input {
+                margin-left: 10px;
+            }
+            .payment-label,
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+}
+.process-btn-group {
+    span {
+        font-size: 14px;
+        svg {
+            margin-right: 5px;
         }
     }
 }
