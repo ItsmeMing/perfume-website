@@ -3,22 +3,38 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Shipping from "../shipping/Shipping";
 import Btn from "../../../../global-components/btn/Btn";
 import "./Information.scss";
+import { text } from "@fortawesome/fontawesome-svg-core";
+import { useEffect } from "react";
 
-const Information = ({ setProcess, information, setInformationBtn, setShippingBtn, setPaymentBtn }) => {
+const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, setPaymentBtn }) => {
+    const newUserCheckOut = { ...userCheckout };
     const auth = getAuth();
-    const [email, setEmail] = useState();
-    const [name, setName] = useState();
-    const [address, setAddress] = useState();
-    const [city, setCity] = useState();
-    const [phone, setPhone] = useState();
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setEmail(user.email);
-            setName(user.displayName);
-        }
-    });
-    const userInformation = { email: email, name: name, address: address, phone: phone, city: city };
-    const newInformation = { ...information, ...userInformation };
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("Vietnam");
+    const [phone, setPhone] = useState("");
+    const [valid, setValid] = useState(false);
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setEmail(user.email);
+                setName(user.displayName);
+            }
+        });
+
+        setAddress(newUserCheckOut.address);
+        setPhone(newUserCheckOut.phone);
+        setValid(newUserCheckOut.phoneValid);
+    }, [auth, newUserCheckOut.address, newUserCheckOut.phone, newUserCheckOut.phoneValid]);
+
+    const phoneRegex = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
+    const onChange = (value) => {
+        if (phoneRegex.test(value)) setValid(true);
+        else setValid(false);
+    };
+
     return (
         <>
             <form className="checkout-form">
@@ -37,22 +53,44 @@ const Information = ({ setProcess, information, setInformationBtn, setShippingBt
                     className="checkout-input"
                     required
                     onChange={(e) => setAddress(e.target.value)}
+                    value={address}
+                    type={text}
                 ></input>
                 <input
                     placeholder="Phone number"
                     className="checkout-input"
                     required
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => {
+                        setPhone(e.target.value);
+                        onChange(e.target.value);
+                    }}
+                    value={phone}
+                    type={Number}
                 ></input>
                 <Btn
                     btnClass="btn move ease-trans-orange"
                     btnContent="Continue to shipping"
                     onClick={() => {
-                        setInformationBtn("");
-                        setShippingBtn("active");
-                        setPaymentBtn("");
-                        setProcess(<Shipping setProcess={setProcess} information={newInformation} />);
-                        console.log(newInformation);
+                        if (valid) {
+                            setInformationBtn("");
+                            setShippingBtn("active");
+                            setPaymentBtn("");
+                            newUserCheckOut.email = email;
+                            newUserCheckOut.city = city;
+                            newUserCheckOut.name = name;
+                            newUserCheckOut.address = address;
+                            newUserCheckOut.phone = phone;
+                            newUserCheckOut.phoneValid = true;
+                            setProcess(
+                                <Shipping
+                                    setProcess={setProcess}
+                                    setInformationBtn={setInformationBtn}
+                                    setShippingBtn={setShippingBtn}
+                                    setPaymentBtn={setPaymentBtn}
+                                    userCheckout={newUserCheckOut}
+                                />,
+                            );
+                        } else alert("Invalid phone number!");
                     }}
                 ></Btn>
             </form>

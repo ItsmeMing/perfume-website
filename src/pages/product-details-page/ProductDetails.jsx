@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Col, Container, Row } from "react-bootstrap";
@@ -9,6 +10,11 @@ import Reviews from "./components/reviews/Reviews";
 import "./ProductDetails.scss";
 
 function ProductDetails() {
+    //always start at the top of the page
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { name } = useParams();
     const products = useSelector((state) => state.products).products.data;
     const pFiltered = products.filter((p) => {

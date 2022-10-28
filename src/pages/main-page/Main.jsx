@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Banner from "./components/banner/Banner";
 import BestSellers from "./components/bestsellers/BestSellers";
 import Sliderr from "./components/slider/Slider";
@@ -10,6 +10,11 @@ import Features from "./components/features/Features";
 import SocialPosts from "./components/social-posts/SocialPosts";
 
 const Main = () => {
+    //always start at the top of the page
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <Fragment>
             <Banner></Banner>

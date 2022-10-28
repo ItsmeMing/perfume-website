@@ -4,26 +4,48 @@ import Shipping from "../shipping/Shipping";
 import Btn from "../../../../global-components/btn/Btn";
 import "./Payment.scss";
 
-const Payment = ({ setProcess, information }) => {
-    const newInformation = { ...information };
-    newInformation.payment = "Cash on delivery";
-    newInformation.billing = "Same as shipping address";
-    console.log(newInformation);
+const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, setPaymentBtn }) => {
+    const newUserCheckout = { ...userCheckout };
+    newUserCheckout.payment = "Cash on delivery";
+    newUserCheckout.billing = "Same as shipping address";
+
+    const handleCheckout = (e) => {
+        e.preventDefault();
+        console.log(e);
+        const temp = new Date();
+        const date = temp.getDate();
+        const month = temp.getMonth() + 1;
+        const year = temp.getFullYear();
+        newUserCheckout.createdAt = `${date}/${month}/${year}`;
+        console.log(newUserCheckout);
+        fetch("http://localhost:3001/api/orders", {
+            method: "POST",
+            body: JSON.stringify(newUserCheckout),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        })
+            .then((res) => {
+                console.log("success");
+            })
+            .catch((err) => alert(err));
+    };
     return (
         <>
             <div className="payment-information-wrapper">
                 <div className="payment-information">
-                    <p> Contact</p>
-                    <span>ngocminh.vu.520@gmail.com</span>
+                    <p>Contact</p>
+                    <span>{newUserCheckout.email}</span>
                 </div>
                 <div className="payment-information">
                     <p>Ship to</p>
-                    <address>192 Hàm Tử</address>
+                    <address>{newUserCheckout.address}</address>
                 </div>
                 <div className="payment-information">
                     <p>Method</p>
                     <span>
-                        Ground shipping<span>Free</span>
+                        {newUserCheckout.shipping}
+                        <span>${newUserCheckout.shippingPrice}</span>
                     </span>
                 </div>
             </div>
@@ -52,13 +74,30 @@ const Payment = ({ setProcess, information }) => {
             <div className="process-btn-group">
                 <span
                     onClick={() => {
-                        setProcess(<Shipping setProcess={setProcess} />);
+                        setInformationBtn("");
+                        setShippingBtn("active");
+                        setPaymentBtn("");
+                        setProcess(
+                            <Shipping
+                                setProcess={setProcess}
+                                setInformationBtn={setInformationBtn}
+                                setShippingBtn={setShippingBtn}
+                                setPaymentBtn={setPaymentBtn}
+                                userCheckout={newUserCheckout}
+                            />,
+                        );
                     }}
                 >
                     <FontAwesomeIcon icon={faChevronLeft} />
                     Return to information
                 </span>
-                <Btn btnClass="btn move ease-trans-orange" btnContent="Checkout"></Btn>
+                <Btn
+                    btnClass="btn move ease-trans-orange"
+                    btnContent="Checkout"
+                    onClick={(e) => {
+                        handleCheckout(e);
+                    }}
+                ></Btn>
             </div>
         </>
     );

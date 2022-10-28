@@ -10,11 +10,28 @@ import "./Checkout.scss";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
+    //always start at the top of the page
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const cartItems = useSelector((state) => state.cart).cart.list;
-    const information = useMemo(() => {
-        return { products: cartItems };
+    const userCheckout = useMemo(() => {
+        return {
+            products: cartItems,
+            discountPer: undefined,
+            email: undefined,
+            name: undefined,
+            address: undefined,
+            phone: undefined,
+            phoneValid: undefined,
+            city: undefined,
+            shipping: undefined,
+            payment: undefined,
+            billing: undefined,
+        };
     }, [cartItems]);
-    console.log(information);
+
     const totalQuantity = useSelector((state) => state.cart).totalQuantity;
     const productPrice = document.querySelectorAll(".product-price#checkout");
     const totalProductPrice = document.querySelectorAll(".after-discount");
@@ -38,15 +55,15 @@ const Checkout = () => {
                 }
                 if (totalQuantity === 3) {
                     setDPer(10);
-                    information.discountPer = 10;
+                    userCheckout.discountPer = 10;
                     setSale("10% OFF FOR 3");
                 } else if (totalQuantity === 4) {
                     setDPer(15);
-                    information.discountPer = 15;
+                    userCheckout.discountPer = 15;
                     setSale("15% OFF FOR 4");
                 } else {
                     setDPer(20);
-                    information.discountPer = 20;
+                    userCheckout.discountPer = 20;
                     setSale("20% OFF FOR 5");
                 }
             } else {
@@ -64,13 +81,13 @@ const Checkout = () => {
             const totalPrice =
                 (cartItems.reduce((prev, cartItem) => prev + cartItem.price * cartItem.quantity, 0) * (100 - dPer)) /
                 100;
-            information.totalPrice = totalPrice;
+            userCheckout.totalPrice = totalPrice;
             setTotalPrice(totalPrice);
             const shippingPrice = totalQuantity < 3 ? 9 : 0;
-            information.shippingPrice = shippingPrice;
+            userCheckout.shippingPrice = shippingPrice;
             setShippingPrice(shippingPrice);
         }
-    }, [productPrice, totalProductPrice, cartItems, dPer, information]);
+    }, [cartItems, dPer, productPrice, totalProductPrice, userCheckout]);
 
     useEffect(() => {
         handleCart();
@@ -81,13 +98,13 @@ const Checkout = () => {
         setProcess(
             <Information
                 setProcess={setProcess}
-                information={information}
+                userCheckout={userCheckout}
                 setInformationBtn={setInformationBtn}
                 setShippingBtn={setShippingBtn}
                 setPaymentBtn={setPaymentBtn}
             />,
         );
-    }, []);
+    }, [userCheckout]);
 
     return (
         <main className="checkout-wrapper">

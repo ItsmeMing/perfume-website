@@ -5,6 +5,11 @@ import ProductBox from "../../global-components/product-box/ProductBox";
 import SortFilter from "./components/sort-filter/SortFilter";
 
 function Product() {
+    //always start at the top of the page
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [fHeader, setFHeader] = useState("Shop All.");
     const temp = useSelector((state) => state.products).products.data;
     const [products, setProducts] = useState(temp);
