@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useRef, memo } from "react";
+import { Fragment, useState, useEffect, useRef, memo, useLayoutEffect } from "react";
 import { Container } from "react-bootstrap";
 import Topnav from "./components/topnav/Topnav";
 import { Navbar, MobileNavbar } from "./components/navbar/Navbar";
@@ -11,7 +11,7 @@ import "./assets/styles/Header.scss";
 const Header = () => {
     //switch to navbar/mobile-navbar base on screen's width
     const [mnav, setMnav] = useState(false);
-    useEffect(() => {
+    useLayoutEffect(() => {
         const handleMobileNav = () => {
             if (window.innerWidth <= 991.98) setMnav(true);
             else setMnav(false);
@@ -57,7 +57,9 @@ const Header = () => {
     //cart's ref
     const cart = useRef(null);
 
-    //check if token exist in local storage
+    const [loginState, setLoginState] = useState("Log In");
+
+    const [searchText, setSearchText] = useState();
 
     return (
         <Fragment>
@@ -66,16 +68,23 @@ const Header = () => {
                     <Topnav></Topnav>
                     <nav className="navbar g-0 p-0">
                         {mnav ? (
-                            <MobileNavbar cart={cart} />
+                            <MobileNavbar cart={cart} authen={authen} />
                         ) : (
-                            <Navbar searchRef={search} authen={authen} cart={cart} />
+                            <Navbar searchRef={search} authen={authen} cart={cart} setSearchText={setSearchText} />
                         )}
                     </nav>
                 </Container>
-                <Search search={search}></Search>
-                <Auth authen={authen}></Auth>
+                <Search search={search} searchText={searchText} setSearchText={setSearchText}></Search>
+                <Auth authen={authen} setLoginState={setLoginState}></Auth>
                 <Cart cart={cart} authen={authen}></Cart>
-                <MobileMenu searchRef={search} authen={authen} sMenu={sMenu} arrow={arrow}></MobileMenu>
+                <MobileMenu
+                    searchRef={search}
+                    authen={authen}
+                    sMenu={sMenu}
+                    arrow={arrow}
+                    loginState={loginState}
+                    setSearchText={setSearchText}
+                ></MobileMenu>
                 <div
                     className="overlay"
                     onClick={() => {
@@ -87,6 +96,7 @@ const Header = () => {
                             sMenu.current.classList.remove("active");
                             arrow.current.classList.remove("active");
                         }
+                        setSearchText("");
                     }}
                 ></div>
             </header>

@@ -75,6 +75,13 @@
         margin-left: auto;
         margin-right: auto;
     }
+
+    .user-orders {
+        text-decoration: underline;
+        &:hover {
+            color: $orange;
+        }
+    }
 }
 
 .auth-container.active {
@@ -107,6 +114,14 @@
         .btn.auto-width {
             display: block;
         }
+
+        .welcome {
+            font-size: 14px;
+        }
+        .user-orders {
+            font-size: 13px;
+            margin-top: 8px;
+        }
     }
 }
 
@@ -126,6 +141,14 @@
 
         .btn {
             margin-top: 14px;
+        }
+
+        .welcome {
+            font-size: 15px;
+        }
+        .user-orders {
+            font-size: 14px;
+            margin-top: 9px;
         }
     }
 }
@@ -147,6 +170,14 @@
         .btn {
             margin-top: 18px;
         }
+
+        .welcome {
+            font-size: 16px;
+        }
+        .user-orders {
+            font-size: 15px;
+            margin-top: 10px;
+        }
     }
 }
 
@@ -166,6 +197,14 @@
 
         .btn {
             margin-top: 22px;
+        }
+
+        .welcome {
+            font-size: 14px;
+        }
+        .user-orders {
+            font-size: 13px;
+            margin-top: 8px;
         }
     }
 }
@@ -187,6 +226,14 @@
         .btn {
             margin-top: 26px;
         }
+
+        .welcome {
+            font-size: 15px;
+        }
+        .user-orders {
+            font-size: 14px;
+            margin-top: 9px;
+        }
     }
 }
 
@@ -206,6 +253,14 @@
 
         .btn {
             margin-top: 30px;
+        }
+
+        .welcome {
+            font-size: 16px;
+        }
+        .user-orders {
+            font-size: 15px;
+            margin-top: 10px;
         }
     }
 }

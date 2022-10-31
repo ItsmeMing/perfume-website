@@ -1,4 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -12,8 +13,7 @@ import Btn from "../../../../global-components/btn/Btn";
 import userSlice from "../../../../redux/userSlice";
 import "./Auth.scss";
 
-const Auth = (props) => {
-    const { authen } = props;
+const Auth = ({ authen, setLoginState }) => {
     const auth = getAuth();
     const dispatch = useDispatch();
 
@@ -31,14 +31,14 @@ const Auth = (props) => {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     const name = user.displayName;
-                    setForm(<User name={name} setForm={setForm} auth={auth} />);
+                    setForm(<User name={name} setForm={setForm} auth={auth} authen={authen} />);
                     dispatch(userSlice.actions.enableLoginStatus(name));
                 }
             });
         } else {
-            setForm(<Login setForm={setForm} auth={auth} />);
+            setForm(<Login setForm={setForm} auth={auth} setLoginState={setLoginState} />);
         }
-    }, []);
+    }, [auth, dispatch, setLoginState, authen]);
 
     return (
         <section className="auth-container" ref={authen}>
@@ -48,7 +48,7 @@ const Auth = (props) => {
     );
 };
 
-const Signup = ({ setForm, auth }) => {
+const Signup = ({ setForm, auth, setLoginState, authen }) => {
     const dispatch = useDispatch();
 
     //signup's state
@@ -65,7 +65,16 @@ const Signup = ({ setForm, auth }) => {
                     onAuthStateChanged(auth, (user) => {
                         if (user) {
                             const name = user.displayName;
-                            setForm(<User name={name} setForm={setForm} auth={auth} />);
+                            setForm(
+                                <User
+                                    name={name}
+                                    setForm={setForm}
+                                    auth={auth}
+                                    setLoginState={setLoginState}
+                                    authen={authen}
+                                />,
+                            );
+                            setLoginState(name);
                             dispatch(userSlice.actions.enableLoginStatus(name));
                         }
                     });
@@ -80,7 +89,7 @@ const Signup = ({ setForm, auth }) => {
             <p
                 className="auth-btn"
                 onClick={() => {
-                    setForm(<Login setForm={setForm} auth={auth} />);
+                    setForm(<Login setForm={setForm} auth={auth} setLoginState={setLoginState} />);
                 }}
             >
                 Or <strong>Login</strong>
@@ -116,7 +125,7 @@ const Signup = ({ setForm, auth }) => {
     );
 };
 
-const Login = ({ setForm, auth }) => {
+const Login = ({ setForm, auth, setLoginState, authen }) => {
     const dispatch = useDispatch();
 
     const [uEmail, setUEmail] = useState("");
@@ -131,7 +140,16 @@ const Login = ({ setForm, auth }) => {
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         const name = user.displayName;
-                        setForm(<User name={name} setForm={setForm} auth={auth} />);
+                        setForm(
+                            <User
+                                name={name}
+                                setForm={setForm}
+                                auth={auth}
+                                setLoginState={setLoginState}
+                                authen={authen}
+                            />,
+                        );
+                        setLoginState(name);
                         dispatch(userSlice.actions.enableLoginStatus(name));
                     }
                 });
@@ -147,7 +165,7 @@ const Login = ({ setForm, auth }) => {
             <p
                 className="auth-btn"
                 onClick={() => {
-                    setForm(<Signup setForm={setForm} auth={auth} />);
+                    setForm(<Signup setForm={setForm} auth={auth} setLoginState={setLoginState} />);
                 }}
             >
                 Or <strong>Create an account</strong>
@@ -177,11 +195,12 @@ const Login = ({ setForm, auth }) => {
     );
 };
 
-const User = ({ name, setForm, auth }) => {
+const User = ({ name, setForm, auth, setLoginState, authen }) => {
     const dispatch = useDispatch();
     const handleLogout = () => {
         localStorage.removeItem("Auth-token");
-        setForm(<Login setForm={setForm} auth={auth} />);
+        setForm(<Login setForm={setForm} auth={auth} setLoginState={setLoginState} authen={authen} />);
+        setLoginState("Log In");
         dispatch(userSlice.actions.disableLoginStatus());
     };
     return (
@@ -189,6 +208,14 @@ const User = ({ name, setForm, auth }) => {
             <h1 className="welcome">
                 Welcome, <b>{name}</b>
             </h1>
+            <Link
+                to="/your-orders"
+                onClick={() => {
+                    authen.current.classList.remove("active");
+                }}
+            >
+                <p className="user-orders">Orders</p>
+            </Link>
             <Btn btnClass="btn logout fill-trans-orange" btnContent="Sign out" onClick={handleLogout}></Btn>
         </>
     );

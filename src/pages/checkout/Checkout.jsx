@@ -8,6 +8,7 @@ import store from "../../redux/store";
 import logo from "../../default-layout/header/components/navbar/assets/images/logo.webp";
 import "./Checkout.scss";
 import { Link } from "react-router-dom";
+import CheckoutSuccess from "./components/checkout-success/CheckoutSuccess";
 
 const Checkout = () => {
     //always start at the top of the page

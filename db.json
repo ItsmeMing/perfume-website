@@ -364,22 +364,18 @@
   ],
   "orders": [
     {
-      "createdAt": "28/10/2022",
-      "id": 1
-    },
-    {
       "products": [
         {
-          "id": -2,
+          "id": 0,
           "productid": 4,
           "name": "AMBERY VANILLA",
           "description": "YSL's Black Opium",
           "price": 29,
-          "quantity": 1,
+          "quantity": 2,
           "imgurl": "https://cdn.shopify.com/s/files/1/0047/4067/7699/products/ambery-vanilla-new-women-inspired-by-ysls-black-opium-455042.jpg?v=1643131896"
         },
         {
-          "id": -1,
+          "id": 1,
           "productid": 7,
           "name": "FRUITY ALMOND",
           "description": "Carolina Herrera's Good Girl",
@@ -388,28 +384,73 @@
           "imgurl": "https://cdn.shopify.com/s/files/1/0047/4067/7699/products/fruity-almond-new-women-inspired-by-carolina-herreras-good-girl-547307.jpg?v=1643131561"
         },
         {
-          "id": 0,
+          "id": 2,
           "productid": 2,
           "name": "GOURMAND WHITE FLOWERS",
           "description": "Viktor&Rolf's Flowerbomb",
           "price": 29,
-          "quantity": 1,
+          "quantity": 4,
           "imgurl": "https://cdn.shopify.com/s/files/1/0047/4067/7699/products/gourmand-white-flowers-women-inspired-by-viktorrolfs-flowerbomb-225280.jpg?v=1628249175"
         }
       ],
-      "discountPer": 10,
+      "discountPer": 20,
       "email": "bun123@gmail.com",
       "name": "Huy Hoang",
-      "address": "?",
+      "address": "grggergerg",
       "phone": "0896685635",
       "phoneValid": true,
       "city": "Vietnam",
       "shipping": "Plane shipping",
       "payment": "Cash on delivery",
       "billing": "Same as shipping address",
-      "totalPrice": 78.3,
+      "totalPrice": 162.4,
       "shippingPrice": 0,
-      "createdAt": "28/10/2022",
+      "createdAt": "31/10/2022",
+      "id": 1
+    },
+    {
+      "products": [
+        {
+          "id": 0,
+          "productid": 1,
+          "name": "FLORAL MARSHMALLOW",
+          "description": "Killian's Love, Don't Be Shy",
+          "price": 39,
+          "quantity": 1,
+          "imgurl": "https://cdn.shopify.com/s/files/1/0047/4067/7699/products/floral-marshmallow-women-inspired-by-by-killians-love-dont-be-shy-212609.jpg?v=1641238116"
+        },
+        {
+          "id": 1,
+          "productid": 2,
+          "name": "GOURMAND WHITE FLOWERS",
+          "description": "Viktor&Rolf's Flowerbomb",
+          "price": 29,
+          "quantity": 3,
+          "imgurl": "https://cdn.shopify.com/s/files/1/0047/4067/7699/products/gourmand-white-flowers-women-inspired-by-viktorrolfs-flowerbomb-225280.jpg?v=1628249175"
+        },
+        {
+          "id": 2,
+          "productid": 7,
+          "name": "FRUITY ALMOND",
+          "description": "Carolina Herrera's Good Girl",
+          "price": 29,
+          "quantity": 1,
+          "imgurl": "https://cdn.shopify.com/s/files/1/0047/4067/7699/products/fruity-almond-new-women-inspired-by-carolina-herreras-good-girl-547307.jpg?v=1643131561"
+        }
+      ],
+      "discountPer": 20,
+      "email": "bun123@gmail.com",
+      "name": "Huy Hoang",
+      "address": "fsfsdfdf",
+      "phone": "0784953978",
+      "phoneValid": true,
+      "city": "Vietnam",
+      "shipping": "Ground shipping",
+      "payment": "Cash on delivery",
+      "billing": "Same as shipping address",
+      "totalPrice": 124,
+      "shippingPrice": 0,
+      "createdAt": "31/10/2022",
       "id": 2
     }
   ]

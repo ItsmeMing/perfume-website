@@ -80,6 +80,9 @@
 }
 
 @media (max-width: 575.98px) {
+    .products-container {
+        margin-bottom: 20px;
+    }
     .sort-filter-wrapper {
         width: 90%;
         margin: 20px auto;
@@ -98,6 +101,7 @@
                 gap: 10px;
             }
             .btn.sort {
+                margin-top: 8px;
                 padding-left: 30px !important;
                 padding-right: 30px !important;
                 .sort-icon {
@@ -109,6 +113,9 @@
 }
 
 @media (min-width: 576px) {
+    .products-container {
+        margin-bottom: 25px;
+    }
     .sort-filter-wrapper {
         margin: 25px 0;
         .label-wrapper {
@@ -126,6 +133,7 @@
                 gap: 11px;
             }
             .btn.sort {
+                margin-top: 10px;
                 padding-left: 35px !important;
                 padding-right: 35px !important;
                 .sort-icon {
@@ -148,6 +156,9 @@
 }
 
 @media (min-width: 768px) {
+    .products-container {
+        margin-bottom: 25px;
+    }
     .sort-filter-wrapper {
         margin: 25px 0;
         .label-wrapper {
@@ -176,6 +187,9 @@
 }
 
 @media (min-width: 992px) {
+    .products-container {
+        margin-bottom: 30px;
+    }
     .sort-filter-wrapper {
         margin: 30px 0;
         .label-wrapper {
@@ -204,6 +218,9 @@
 }
 
 @media (min-width: 1200px) {
+    .products-container {
+        margin-bottom: 35px;
+    }
     .sort-filter-wrapper {
         margin: 35px 0;
         .label-wrapper {
@@ -232,6 +249,9 @@
 }
 
 @media (min-width: 1400px) {
+    .products-container {
+        margin-bottom: 40px;
+    }
     .sort-filter-wrapper {
         margin: 40px 0;
         .label-wrapper {

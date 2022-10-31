@@ -47,6 +47,10 @@ const CartDetails = ({ dispatch, dPer }) => {
                                             const cart = store.getState().cart.cart.list;
                                             localStorage.setItem("cart", JSON.stringify(cart));
                                         }}
+                                        style={{
+                                            pointerEvents: cartItem.quantity === 1 ? "none" : "all",
+                                            opacity: cartItem.quantity === 1 ? "0" : "1",
+                                        }}
                                     >
                                         -
                                     </span>

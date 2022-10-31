@@ -1,0 +1,103 @@
+@import "../../../../styles/variables.scss";
+
+.checkout-success-wrapper {
+    .checked-icon {
+        color: green;
+    }
+    .success-header {
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .checkout-success-wrapper {
+        margin: 30px 0;
+        .checked-icon {
+            font-size: 26px;
+        }
+        .success-header {
+            font-size: 20px;
+            margin: 11px 0 6px 0;
+        }
+        .success-text {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .checkout-success-wrapper {
+        margin: 40px 0;
+        .checked-icon {
+            font-size: 28px;
+        }
+        .success-header {
+            font-size: 22px;
+            margin: 13px 0 8px 0;
+        }
+        .success-text {
+            font-size: 15px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .checkout-success-wrapper {
+        margin: 50px 0;
+        .checked-icon {
+            font-size: 30px;
+        }
+        .success-header {
+            font-size: 24px;
+            margin: 15px 0 10px 0;
+        }
+        .success-text {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .checkout-success-wrapper {
+        .checked-icon {
+            font-size: 26px;
+        }
+        .success-header {
+            font-size: 20px;
+            margin: 11px 0 6px 0;
+        }
+        .success-text {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .checkout-success-wrapper {
+        .checked-icon {
+            font-size: 28px;
+        }
+        .success-header {
+            font-size: 22px;
+            margin: 13px 0 8px 0;
+        }
+        .success-text {
+            font-size: 15px;
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .checkout-success-wrapper {
+        .checked-icon {
+            font-size: 30px;
+        }
+        .success-header {
+            font-size: 24px;
+            margin: 15px 0 10px 0;
+        }
+        .success-text {
+            font-size: 16px;
+        }
+    }
+}

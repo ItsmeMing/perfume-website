@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import cartSlice from "../../redux/cartSlice";
 import "./ProductBox.scss";
 import store from "../../redux/store";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, name, price, description }) => {
     //add product to cart
@@ -65,12 +67,18 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
             <div
                 className="product-img-wrapper"
                 onMouseEnter={(e) => {
-                    e.currentTarget.childNodes[0].src = productimghover;
-                    e.currentTarget.childNodes[1].style.opacity = 1;
+                    if (window.matchMedia("(min-width: 992px)").matches) {
+                        console.log("triggered");
+                        e.currentTarget.childNodes[0].src = productimghover;
+                        e.currentTarget.childNodes[1].style.opacity = 1;
+                    }
                 }}
                 onMouseLeave={(e) => {
-                    e.currentTarget.childNodes[0].src = productimg;
-                    e.currentTarget.childNodes[1].removeAttribute("style");
+                    if (window.matchMedia("(min-width: 992px)").matches) {
+                        console.log("triggered");
+                        e.currentTarget.childNodes[0].src = productimg;
+                        e.currentTarget.childNodes[1].removeAttribute("style");
+                    }
                 }}
             >
                 <img src={productimg} alt="" className="product-image"></img>

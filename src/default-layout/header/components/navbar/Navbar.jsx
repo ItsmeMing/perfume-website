@@ -8,7 +8,7 @@ import logo from "./assets/images/logo.webp";
 import "./assets/styles/Navbar.scss";
 import "./assets/styles/MobileNavbar.scss";
 
-const Navbar = ({ searchRef, authen, cart }) => {
+const Navbar = ({ searchRef, authen, cart, setSearchText }) => {
     const [count, setCount] = useState(null);
     //get cart's length
     const cartCount = useSelector((state) => state.cart).cart.list.length;
@@ -20,17 +20,19 @@ const Navbar = ({ searchRef, authen, cart }) => {
     return (
         <>
             <div className="d-menu-wrapper">
-                <div ref={dButton} className="d-menu">
-                    PERFUMES
-                    <ul className="d-menu-list">
+                <Link to="/products">
+                    <div ref={dButton} className="d-menu">
+                        PERFUMES
+                        {/* <ul className="d-menu-list">
                         <Link to="/products">
                             <li className="d-menu-item">All</li>
                         </Link>
                         <li className="d-menu-item">Men</li>
                         <li className="d-menu-item">Women</li>
                         <li className="d-menu-item">Unisex</li>
-                    </ul>
-                </div>
+                    </ul> */}
+                    </div>
+                </Link>
             </div>
             <Link to="/">
                 <figure className="logo-wrapper">
@@ -44,6 +46,9 @@ const Navbar = ({ searchRef, authen, cart }) => {
                         className="r-menu-item"
                         onClick={() => {
                             searchRef.current.classList.toggle("active");
+                            authen.current.classList.remove("active");
+                            cart.current.classList.remove("active");
+                            setSearchText("");
                         }}
                     >
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -52,6 +57,8 @@ const Navbar = ({ searchRef, authen, cart }) => {
                         className="r-menu-item"
                         onClick={() => {
                             authen.current.classList.toggle("active");
+                            searchRef.current.classList.remove("active");
+                            cart.current.classList.remove("active");
                         }}
                     >
                         <FontAwesomeIcon icon={faUser} />
@@ -59,6 +66,8 @@ const Navbar = ({ searchRef, authen, cart }) => {
                     <li
                         className="r-menu-item"
                         onClick={() => {
+                            searchRef.current.classList.remove("active");
+                            authen.current.classList.remove("active");
                             cart.current.classList.toggle("active");
                         }}
                     >
@@ -71,7 +80,7 @@ const Navbar = ({ searchRef, authen, cart }) => {
     );
 };
 
-const MobileNavbar = ({ cart }) => {
+const MobileNavbar = ({ cart, setSearchText }) => {
     const toggleCart = () => {
         cart.current.classList.add("active");
     };
@@ -84,9 +93,11 @@ const MobileNavbar = ({ cart }) => {
                     document.querySelector(".overlay").classList.add("active");
                 }}
             />
-            <figure className="logo-wrapper">
-                <img src={logo} alt="logo" className="logo"></img>
-            </figure>
+            <Link to="/">
+                <figure className="logo-wrapper">
+                    <img src={logo} alt="logo" className="logo"></img>
+                </figure>
+            </Link>
             <FontAwesomeIcon icon={faCartShopping} onClick={toggleCart} />
         </>
     );

@@ -18,19 +18,26 @@
         cursor: pointer;
 
         &:first-child {
-            display: block;
+            // display: block;
             position: relative;
-            padding-bottom: 0;
+            // padding-bottom: 0;
             overflow: hidden;
 
-            .menu-icon {
-                &:first-child {
-                    transform: rotate(180deg);
-                }
+            // .menu-icon {
+            //     &:first-child {
+            //         transform: rotate(180deg);
+            //     }
 
-                &:first-child.active {
-                    transform: rotate(0deg);
-                }
+            //     &:first-child.active {
+            //         transform: rotate(0deg);
+            //     }
+            // }
+            a {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: $white;
+                width: 100%;
             }
         }
         .s-menu {

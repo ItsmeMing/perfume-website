@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Btn from "../../../../global-components/btn/Btn";
 import "./Search.scss";
 
-const Search = ({ search }) => {
-    const [searchText, setSearchText] = useState();
+const Search = ({ search, searchText, setSearchText }) => {
     const [results, setResults] = useState(undefined);
     const products = useSelector((state) => state.products).products.data;
 
@@ -22,13 +22,14 @@ const Search = ({ search }) => {
                 });
                 setResults(temp);
             }
-        }, 3000);
+        }, 1500);
 
         return () => clearTimeout(delayDebounceFn);
     }, [searchText, products]);
     return (
         <section ref={search} className="search-wrapper">
             <form className="search-form">
+                <FontAwesomeIcon className="search-icon" icon={faMagnifyingGlass} />
                 <input
                     type="text"
                     className="form-search"
@@ -37,17 +38,7 @@ const Search = ({ search }) => {
                     onChange={(e) => {
                         setSearchText(e.target.value);
                     }}
-                    //     setTimeout(() => {
-                    //         products.forEach((product) => {
-                    //             if (product.name.includes(searchText.toUpperCase())) temp.push(product);
-                    //         });
-                    //         setResults(temp);
-                    //     }, 2000);
-                    // }}
                 ></input>
-                <span>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon"></FontAwesomeIcon>
-                </span>
             </form>
             <div className="search-results">
                 {results === undefined
@@ -56,12 +47,7 @@ const Search = ({ search }) => {
                           return (
                               <Link to={`/products/${result.name.toLowerCase()}`}>
                                   <div className="found-product" key={index}>
-                                      <img
-                                          src={result.images.productimg}
-                                          alt=""
-                                          style={{ width: "60px" }}
-                                          className="product-img"
-                                      ></img>
+                                      <img src={result.images.productimg} alt="" className="product-img"></img>
                                       <div className="product-info-group">
                                           <p className="product-name">{result.name}</p>
                                           <p className="product-inspiration">
@@ -74,6 +60,13 @@ const Search = ({ search }) => {
                           );
                       })}
             </div>
+            <Btn
+                btnClass="btn small search-exit ease-trans-orange"
+                btnContent="EXIT"
+                onClick={() => {
+                    search.current.classList.remove("active");
+                }}
+            />
         </section>
     );
 };

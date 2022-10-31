@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchProducts, fetchCategories } from "./redux/productSlice";
 import { fetchPrice } from "./redux/priceSlice";
 import { fetchReviews } from "./redux/reviewsSlice";
+import { fetchOrders } from "./redux/orders";
 import { publicRoutes } from "./routes";
 import DefaultLayout from "./default-layout";
 import { Container } from "react-bootstrap";
@@ -18,6 +19,7 @@ function App() {
         dispatch(fetchCategories());
         dispatch(fetchPrice());
         dispatch(fetchReviews());
+        dispatch(fetchOrders());
         let cartItems = JSON.parse(localStorage.getItem("cart"));
         if (cartItems === null) {
             cartItems = [];

@@ -4,6 +4,7 @@ import productSlice from "./productSlice";
 import priceSlice from "./priceSlice";
 import userSlice from "./userSlice";
 import reviewsSlice from "./reviewsSlice";
+import ordersSlice from "./orders";
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         price: priceSlice.reducer,
         user: userSlice.reducer,
         reviews: reviewsSlice.reducer,
+        orders: ordersSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

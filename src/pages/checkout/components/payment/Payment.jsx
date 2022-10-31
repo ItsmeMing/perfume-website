@@ -1,15 +1,20 @@
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import CheckoutSuccess from "../checkout-success/CheckoutSuccess";
 import Shipping from "../shipping/Shipping";
 import Btn from "../../../../global-components/btn/Btn";
+import cartSlice from "../../../../redux/cartSlice";
 import "./Payment.scss";
 
 const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, setPaymentBtn }) => {
+    const dispatch = useDispatch();
+
     const newUserCheckout = { ...userCheckout };
     newUserCheckout.payment = "Cash on delivery";
     newUserCheckout.billing = "Same as shipping address";
 
-    const handleCheckout = (e) => {
+    const handleCheckout = async (e) => {
         e.preventDefault();
         console.log(e);
         const temp = new Date();
@@ -18,7 +23,7 @@ const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, 
         const year = temp.getFullYear();
         newUserCheckout.createdAt = `${date}/${month}/${year}`;
         console.log(newUserCheckout);
-        fetch("http://localhost:3001/api/orders", {
+        await fetch("http://localhost:3001/api/orders", {
             method: "POST",
             body: JSON.stringify(newUserCheckout),
             headers: {
@@ -26,7 +31,8 @@ const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, 
             },
         })
             .then((res) => {
-                console.log("success");
+                dispatch(cartSlice.actions.deleteCartAll);
+                setProcess(<CheckoutSuccess />);
             })
             .catch((err) => alert(err));
     };

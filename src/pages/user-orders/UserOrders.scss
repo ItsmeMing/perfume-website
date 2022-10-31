@@ -1,0 +1,200 @@
+@import "../../styles/variables.scss";
+
+.orders-container {
+    .orders-header {
+        font-weight: bold;
+        color: $orange;
+    }
+    table {
+        text-align: center;
+        width: 100%;
+        border: 1px solid $light-gray;
+        tr {
+            border: 1px solid $light-gray;
+            th {
+                border: 1px solid $light-gray;
+                vertical-align: middle;
+                &:first-child {
+                    width: 10%;
+                }
+                &:nth-child(2) {
+                    width: 10%;
+                }
+                &:nth-child(3) {
+                    width: 40%;
+                }
+                &:nth-child(4) {
+                    width: 20%;
+                }
+                &:last-child {
+                    width: 20%;
+                }
+            }
+
+            td {
+                border: 1px solid $light-gray;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .orders-container {
+        margin: 25px auto;
+        .orders-header {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        table {
+            overflow: auto;
+            tr {
+                font-size: 12px;
+                th {
+                    &:first-child {
+                        width: 15%;
+                    }
+                    &:nth-child(2) {
+                        width: 15%;
+                    }
+                    &:nth-child(3) {
+                        width: 40%;
+                    }
+                    &:nth-child(4) {
+                        width: 15%;
+                    }
+                    &:last-child {
+                        width: 15%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .orders-container {
+        margin: 30px auto;
+        .orders-header {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+        table {
+            overflow: auto;
+            tr {
+                font-size: 13px;
+                th {
+                    &:first-child {
+                        width: 15%;
+                    }
+                    &:nth-child(2) {
+                        width: 15%;
+                    }
+                    &:nth-child(3) {
+                        width: 40%;
+                    }
+                    &:nth-child(4) {
+                        width: 15%;
+                    }
+                    &:last-child {
+                        width: 15%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .orders-container {
+        margin: 35px auto;
+        .orders-header {
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+        table {
+            tr {
+                font-size: 13px;
+                th {
+                    &:first-child {
+                        width: 10%;
+                    }
+                    &:nth-child(2) {
+                        width: 15%;
+                    }
+                    &:nth-child(3) {
+                        width: 40%;
+                    }
+                    &:nth-child(4) {
+                        width: 15%;
+                    }
+                    &:last-child {
+                        width: 20%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .orders-container {
+        margin: 40px auto;
+        .orders-header {
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+        table {
+            tr {
+                font-size: 14px;
+                th {
+                    &:first-child {
+                        width: 10%;
+                    }
+                    &:nth-child(2) {
+                        width: 10%;
+                    }
+                    &:nth-child(3) {
+                        width: 40%;
+                    }
+                    &:nth-child(4) {
+                        width: 20%;
+                    }
+                    &:last-child {
+                        width: 20%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .orders-container {
+        margin: 45px auto;
+        .orders-header {
+            font-size: 28px;
+            margin-bottom: 18px;
+        }
+        table {
+            tr {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .orders-container {
+        margin: 50px auto;
+        .orders-header {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        table {
+            tr {
+                font-size: 16px;
+            }
+        }
+    }
+}

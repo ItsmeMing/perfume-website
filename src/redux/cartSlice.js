@@ -51,6 +51,11 @@ const cartSlice = createSlice({
                 state.totalQuantity += item.quantity;
             }
         },
+        deleteCartAll: (state) => {
+            state.cart.list = [];
+            state.cart.productid = 0;
+            state.totalQuantity = 0;
+        },
     },
 });
 

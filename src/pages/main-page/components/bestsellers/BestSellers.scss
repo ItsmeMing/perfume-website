@@ -2,8 +2,6 @@
 
 .best-sellers {
     .b-s-buttons {
-        display: flex;
-        justify-content: space-between;
         border-bottom: 1px solid $light-gray;
 
         .b-s-text {
@@ -11,10 +9,7 @@
         }
 
         .b-s-btn-list {
-            display: flex;
-            align-items: center;
-            transform: translateY(0.8px);
-
+            transform: translateY(1.5px);
             .b-s-btn {
                 cursor: pointer;
 
@@ -40,17 +35,23 @@
         margin: 50px auto;
 
         .b-s-buttons {
+            display: block;
             .b-s-text {
-                font-size: 12px;
+                font-size: 16px;
             }
 
             .b-s-btn-list {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 6px;
                 .b-s-btn {
-                    font-size: 9px;
-                    padding: 0 14px;
+                    flex: 33%;
+                    text-align: center;
+                    font-size: 12px;
+                    padding: 0 20px;
 
                     span {
-                        padding: 2px 0;
+                        padding: 6px 0;
                     }
                 }
             }
@@ -63,17 +64,23 @@
         margin: 60px auto;
 
         .b-s-buttons {
+            display: block;
             .b-s-text {
-                font-size: 14px;
+                font-size: 18px;
             }
 
             .b-s-btn-list {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 8px;
                 .b-s-btn {
-                    font-size: 10px;
-                    padding: 0 16px;
+                    flex-basis: 33%;
+                    text-align: center;
+                    font-size: 13px;
+                    padding: 0 25px;
 
                     span {
-                        padding: 4px 0;
+                        padding: 8px 0;
                     }
                 }
             }
@@ -91,9 +98,10 @@
             }
 
             .b-s-btn-list {
+                margin-top: 10px;
                 .b-s-btn {
-                    font-size: 11px;
-                    padding: 0 18px;
+                    font-size: 14px;
+                    padding: 0 30px;
 
                     span {
                         padding: 6px 0;
@@ -109,11 +117,16 @@
         margin: 80px auto;
 
         .b-s-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             .b-s-text {
                 font-size: 18px;
             }
 
             .b-s-btn-list {
+                display: flex;
+                align-items: center;
                 .b-s-btn {
                     font-size: 12px;
                     padding: 0 20px;
