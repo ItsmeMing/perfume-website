@@ -41,7 +41,10 @@ const Navbar = ({ searchRef, authen, cart, setSearchText }) => {
             </Link>
             <div className="r-menu-wrapper">
                 <ul className="r-menu">
-                    <li className="r-menu-item">ABOUT</li>
+                    <li className="r-menu-item">
+                        <Link to="/about-us">ABOUT</Link>
+                    </li>
+
                     <li
                         className="r-menu-item"
                         onClick={() => {
