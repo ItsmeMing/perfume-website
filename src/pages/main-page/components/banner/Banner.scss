@@ -4,13 +4,17 @@
     position: relative;
     height: auto;
 
+    video {
+        border-radius: 20px;
+    }
+
     .banner-content {
         text-align: center;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
 
-        >p {
+        > p {
             color: $white;
         }
 
@@ -37,7 +41,7 @@
             margin: 40px 0;
             transform: none;
 
-            >p {
+            > p {
                 color: $black;
             }
 
@@ -62,7 +66,7 @@
             margin: 25px 0;
             transform: none;
 
-            >p {
+            > p {
                 color: $black;
             }
 
