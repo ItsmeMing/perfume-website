@@ -3,27 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Btn from "../../../../global-components/btn/Btn";
 import "./Topnav.scss";
+import { Link } from "react-router-dom";
 
 const Topnav = () => {
     //toggle discount
     const disBtn = useRef(null);
     const discount = useRef(null);
     const handleDisDetails = () => {
-        disBtn.current.classList.add("blurred");
+        discount.current.classList.remove("disabled");
         setTimeout(() => {
-            disBtn.current.classList.remove("blurred");
-        }, 500);
-        if (discount.current.classList.contains("disabled")) {
-            discount.current.classList.remove("disabled");
-            setTimeout(() => {
-                discount.current.classList.toggle("active");
-            }, 150);
-        } else {
-            discount.current.classList.toggle("active");
-            setTimeout(() => {
-                discount.current.classList.add("disabled");
-            }, 500);
-        }
+            disBtn.current.classList.add("blurred");
+            discount.current.classList.add("active");
+        }, 150);
     };
     return (
         <section className="topnav">
@@ -37,17 +28,11 @@ const Topnav = () => {
                     icon={faXmark}
                     className="exit-button"
                     onClick={() => {
-                        if (discount.current.classList.contains("disabled")) {
-                            discount.current.classList.remove("disabled");
-                            setTimeout(() => {
-                                discount.current.classList.toggle("active");
-                            }, 150);
-                        } else {
-                            discount.current.classList.toggle("active");
-                            setTimeout(() => {
-                                discount.current.classList.add("disabled");
-                            }, 500);
-                        }
+                        discount.current.classList.remove("active");
+                        setTimeout(() => {
+                            disBtn.current.classList.remove("blurred");
+                            discount.current.classList.add("disabled");
+                        }, 150);
                     }}
                 />
                 <p className="dis-text">Buy more, save more.</p>
@@ -66,7 +51,9 @@ const Topnav = () => {
                     </ul>
                 </div>
                 <p className="f-ship-con">Plus, get free shipping on 3+ items!</p>
-                <Btn btnClass="btn fill-trans-white" btnContent="SHOP NOW"></Btn>
+                <Link to="/products">
+                    <Btn btnClass="btn fill-trans-white" btnContent="SHOP NOW"></Btn>
+                </Link>
             </section>
         </section>
     );

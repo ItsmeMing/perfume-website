@@ -1,0 +1,156 @@
+@import "../../../../styles/variables.scss";
+
+.missions-wrapper {
+    display: flex;
+
+    .missions {
+        text-align: justify;
+        > * {
+            margin: 0 auto;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .missions-header {
+            font-weight: bold;
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .missions-wrapper {
+        margin: 50px auto;
+        .missions {
+            width: 90%;
+            margin: 30px auto 0 auto;
+            .missions-header {
+                font-size: 20px;
+                margin-bottom: 9px;
+            }
+            .mission {
+                line-height: 16px;
+                font-size: 11px;
+                &:nth-child(3) {
+                    margin: 9px auto;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .missions-wrapper {
+        margin: 60px auto;
+        .missions {
+            max-width: 540px;
+            margin: 40px auto 0 auto;
+            .missions-header {
+                font-size: 22px;
+                margin-bottom: 11px;
+            }
+            .mission {
+                line-height: 18px;
+                font-size: 12px;
+                &:nth-child(3) {
+                    margin: 11px auto;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .missions-wrapper {
+        margin: 70px auto;
+        .missions {
+            max-width: 720px;
+            margin: 50px auto 0 auto;
+            .missions-header {
+                font-size: 24px;
+                margin-bottom: 13px;
+            }
+            .mission {
+                line-height: 20px;
+                font-size: 13px;
+                &:nth-child(3) {
+                    margin: 13px auto;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991.98px) {
+    .missions-wrapper {
+        flex-direction: column;
+        max-width: 100vw !important;
+        .missions {
+            order: 2;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .missions-wrapper {
+        margin: 80px auto;
+        > * {
+            flex: 50% 0 0;
+        }
+        .missions {
+            margin: 0 auto;
+            > * {
+                width: 80%;
+            }
+            .missions-header {
+                font-size: 26px;
+                margin-bottom: 15px;
+            }
+            .mission {
+                line-height: 20px;
+                font-size: 14px;
+                &:nth-child(3) {
+                    margin: 15px auto;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .missions-wrapper {
+        margin: 90px auto;
+        .missions {
+            .missions-header {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+            .mission {
+                line-height: 24px;
+                font-size: 15px;
+                &:nth-child(3) {
+                    margin: 20px auto;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .missions-wrapper {
+        width: 1300px;
+        margin: 100px auto;
+        .missions {
+            .missions-header {
+                font-size: 30px;
+                margin-bottom: 25px;
+            }
+            .mission {
+                line-height: 28px;
+                font-size: 16px;
+                &:nth-child(3) {
+                    margin: 25px auto;
+                }
+            }
+        }
+    }
+}

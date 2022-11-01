@@ -1,26 +1,32 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./UserOrders.scss";
 
 const UserOrders = () => {
+    const loginStatus = useSelector((state) => state.user).logged;
+    const navigate = useNavigate();
     const orders = useSelector((state) => state.orders).data;
     const auth = getAuth();
     const [email, setEmail] = useState();
     const [filteredOrders, setFilteredOrders] = useState([]);
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setEmail(user.email);
-            }
-        });
-        setFilteredOrders(
-            orders.filter((order) => {
-                return order.email === email;
-            }),
-        );
-    }, [auth, email, orders]);
+        if (loginStatus === "false") navigate("/");
+        else {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    setEmail(user.email);
+                }
+            });
+            setFilteredOrders(
+                orders.filter((order) => {
+                    return order.email === email;
+                }),
+            );
+        }
+    }, [auth, email, orders, navigate, loginStatus]);
 
     return (
         <section className="orders-container container">
@@ -36,7 +42,7 @@ const UserOrders = () => {
                 {filteredOrders !== [] ? (
                     filteredOrders.map((order, index) => {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td>{order.id}</td>
                                 <td>{order.createdAt}</td>
                                 <td>

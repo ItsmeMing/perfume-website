@@ -1,0 +1,29 @@
+@import "../../../../styles/variables.scss";
+
+.about-us-image-container {
+    width: 100%;
+    margin: 0 auto;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: 576px) {
+    .about-us-image-container {
+        height: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .about-us-image-container {
+        height: 525px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .about-us-image-container {
+        width: 1300px;
+    }
+}

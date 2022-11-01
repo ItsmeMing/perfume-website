@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+
+@media (max-width: 575.98px) {
+    .about-us-container {
+        margin: 50px auto;
+    }
+}
+
+@media (min-width: 576px) {
+    .about-us-container {
+        margin: 60px auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .about-us-container {
+        margin: 70px auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .about-us-container {
+        margin: 80px auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .about-us-container {
+        margin: 90px auto;
+    }
+}
+
+@media (min-width: 1400px) {
+    .about-us-container {
+        margin: 100px auto;
+    }
+}
