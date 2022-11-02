@@ -25,5 +25,8 @@
 @media (min-width: 1500px) {
     .about-us-image-container {
         width: 1300px;
+        img {
+            border-radius: 20px;
+        }
     }
 }

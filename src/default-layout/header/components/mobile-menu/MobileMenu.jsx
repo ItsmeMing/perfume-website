@@ -50,8 +50,10 @@ const MobileMenu = ({ searchRef, authen, sMenu, arrow, loginState, setSearchText
                     </ul> */}
                 </li>
                 <li className="m-menu-item">
-                    <p className="menu-text">About</p>
-                    <FontAwesomeIcon icon={faCircleInfo} className="menu-icon" />
+                    <Link to="/about-us">
+                        <p className="menu-text">About</p>
+                        <FontAwesomeIcon icon={faCircleInfo} className="menu-icon" />
+                    </Link>
                 </li>
                 <li
                     className="m-menu-item"

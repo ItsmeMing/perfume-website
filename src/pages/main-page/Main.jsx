@@ -13,6 +13,7 @@ const Main = () => {
     //always start at the top of the page
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = "Dossier | Luxury scents, fair price – Dossier Perfumes";
     }, []);
 
     return (

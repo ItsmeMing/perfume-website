@@ -8,6 +8,7 @@ import CartDetails from "../cart-details/CartDetails";
 const CartContent = ({ dispatch }) => {
     //get cart data from redux
     const cartItems = useSelector((state) => state.cart).cart.list;
+    const totalQuantity = useSelector((state) => state.cart).totalQuantity;
 
     //discount percent
     const [dPer, setDPer] = useState(0);
@@ -29,6 +30,8 @@ const CartContent = ({ dispatch }) => {
     const [shippingPrice, setShippingPrice] = useState(0);
     //subtotal
     const [subTotal, setSubTotal] = useState(0);
+
+    const [disabled, setDisabled] = useState(false);
 
     const handleCart = useCallback(() => {
         const totalQuantity = store.getState().cart.totalQuantity;
@@ -74,7 +77,9 @@ const CartContent = ({ dispatch }) => {
 
     useEffect(() => {
         handleCart();
-    }, [handleCart]);
+        if (totalQuantity === 0) setDisabled(true);
+        else setDisabled(false);
+    }, [handleCart, totalQuantity]);
 
     return (
         <>
@@ -111,7 +116,7 @@ const CartContent = ({ dispatch }) => {
                     <span className="price-details-label light">${subTotal}</span>
                 </li>
             </ul>
-            <Btn btnClass="btn checkout-btn ease-orange-trans" re={"re-rendered"}>
+            <Btn btnClass="btn checkout-btn ease-orange-trans" re={"re-rendered"} disabled={disabled}>
                 <Link to="/checkout">
                     <span>GO TO CHECKOUT</span>
                     <span>${subTotal}</span>

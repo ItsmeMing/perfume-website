@@ -27,7 +27,7 @@ const Desire = () => {
             <Row className="g-0">
                 <Col lg={6} md={12} xs={12} className="d-img-wrapper g-0">
                     <img
-                        src="https://cdn.shopify.com/s/files/1/0047/4067/7699/files/For-all-_desktop.jpg"
+                        src="https://cdn.shopify.com/s/files/1/0047/4067/7699/files/Desktop-1.jpg?v=1666730099"
                         alt="desire-img"
                         className="d-img"
                         ref={img}

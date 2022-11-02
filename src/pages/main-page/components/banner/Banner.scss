@@ -4,10 +4,6 @@
     position: relative;
     height: auto;
 
-    video {
-        border-radius: 20px;
-    }
-
     .banner-content {
         text-align: center;
         left: 50%;
@@ -60,8 +56,11 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
     .banner-container {
+        video {
+            border-radius: 0;
+        }
         .banner-content {
             margin: 25px 0;
             transform: none;
@@ -81,6 +80,14 @@
                 width: 100%;
                 margin: 15px auto;
             }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .banner-container {
+        video {
+            border-radius: 20px;
         }
     }
 }

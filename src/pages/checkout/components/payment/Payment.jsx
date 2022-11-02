@@ -16,13 +16,11 @@ const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, 
 
     const handleCheckout = async (e) => {
         e.preventDefault();
-        console.log(e);
         const temp = new Date();
         const date = temp.getDate();
         const month = temp.getMonth() + 1;
         const year = temp.getFullYear();
         newUserCheckout.createdAt = `${date}/${month}/${year}`;
-        console.log(newUserCheckout);
         await fetch("http://localhost:3001/api/orders", {
             method: "POST",
             body: JSON.stringify(newUserCheckout),
@@ -31,8 +29,11 @@ const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, 
             },
         })
             .then((res) => {
-                dispatch(cartSlice.actions.deleteCartAll);
-                setProcess(<CheckoutSuccess />);
+                dispatch(cartSlice.actions.deleteCartAll());
+                localStorage.removeItem("cart");
+                setTimeout(() => {
+                    setProcess(<CheckoutSuccess />);
+                });
             })
             .catch((err) => alert(err));
     };
@@ -59,7 +60,15 @@ const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, 
                 <h1 className="payment-header">Payment</h1>
                 <div className="payment-group">
                     <div className="payment-option">
-                        <input id="cod" value="cod" name="radio" className="payment-input" type="radio" checked></input>
+                        <input
+                            id="cod"
+                            value="cod"
+                            name="radio"
+                            className="payment-input"
+                            type="radio"
+                            checked
+                            readOnly
+                        ></input>
                         <label htmlFor="cod" className="payment-label">
                             Cash on delivery
                         </label>
@@ -70,7 +79,15 @@ const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, 
                 <h1 className="payment-header">Billing address</h1>
                 <div className="payment-group">
                     <div className="payment-option">
-                        <input id="cod" value="cod" name="radio" className="payment-input" type="radio" checked></input>
+                        <input
+                            id="cod"
+                            value="cod"
+                            name="radio"
+                            className="payment-input"
+                            type="radio"
+                            checked
+                            readOnly
+                        ></input>
                         <label htmlFor="cod" className="payment-label">
                             Same as shipping address
                         </label>

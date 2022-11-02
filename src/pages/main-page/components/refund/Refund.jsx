@@ -6,7 +6,7 @@ import "./Refund.scss";
 const Refund = () => {
     return (
         <section className="refund-container">
-            <Row className="refund-wrapper">
+            <Row className="refund-wrapper g-0">
                 <Col lg={6} md={12} xs={12} className="refund-item">
                     <div className="refund-content">
                         <TextLayout

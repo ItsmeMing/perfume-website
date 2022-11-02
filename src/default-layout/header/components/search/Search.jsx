@@ -12,15 +12,15 @@ const Search = ({ search, searchText, setSearchText }) => {
 
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
-            console.log(searchText);
-            // Send Axios request here
+            // Send request here
             const temp = [];
             if (searchText === "") setResults(undefined);
             else {
                 products.forEach((product) => {
                     if (product.name.includes(searchText.toUpperCase())) temp.push(product);
                 });
-                setResults(temp);
+                if (temp.length === 0) setResults(undefined);
+                else setResults(temp);
             }
         }, 1500);
 
@@ -65,6 +65,7 @@ const Search = ({ search, searchText, setSearchText }) => {
                 btnContent="EXIT"
                 onClick={() => {
                     search.current.classList.remove("active");
+                    document.querySelector(".overlay").classList.remove("active");
                 }}
             />
         </section>

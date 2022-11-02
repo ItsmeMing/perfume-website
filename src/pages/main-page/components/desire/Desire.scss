@@ -170,7 +170,15 @@
 @media (min-width: 1400px) {
     .desire-container {
         width: 1300px;
+        .d-img-wrapper {
+            img {
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+            }
+        }
         .d-text-container {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
             .d-text-wrapper {
                 .d-price-text {
                     font-size: 20px;

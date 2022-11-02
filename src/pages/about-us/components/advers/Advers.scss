@@ -1,0 +1,179 @@
+@import "../../../../styles/variables.scss";
+
+.advers-container {
+    .row {
+        .col-lg-6 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .adver-text-wrapper {
+                width: 80%;
+                .adver-header {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .advers-container {
+        .row {
+            .col-lg-6 {
+                .adver-text-wrapper {
+                    width: 90%;
+                    margin: 30px auto;
+                    .adver-header {
+                        font-size: 18px;
+                    }
+                    .adver-text {
+                        font-size: 11px;
+                        line-height: 20px;
+                        margin-top: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .advers-container {
+        .row {
+            .col-lg-6 {
+                .adver-text-wrapper {
+                    width: 540px;
+                    margin: 40px auto;
+                    .adver-header {
+                        font-size: 20px;
+                    }
+                    .adver-text {
+                        font-size: 12px;
+                        line-height: 22px;
+                        margin-top: 17px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .advers-container {
+        .row {
+            .col-lg-6 {
+                .adver-text-wrapper {
+                    width: 720px;
+                    margin: 50px auto;
+                    .adver-header {
+                        font-size: 22px;
+                    }
+                    .adver-text {
+                        font-size: 13px;
+                        line-height: 24px;
+                        margin-top: 19px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .advers-container {
+        .row {
+            &:first-child {
+                img {
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
+            &:last-child {
+                img {
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+                .col-lg-6 {
+                    &:first-child {
+                        order: 2;
+                    }
+                }
+            }
+            img {
+                border-radius: 20px;
+            }
+            .col-lg-6 {
+                .adver-text-wrapper {
+                    width: 80%;
+                    .adver-header {
+                        font-size: 26px;
+                    }
+                    .adver-text {
+                        font-size: 14px;
+                        line-height: 26px;
+                        margin-top: 21px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .advers-container {
+        .row {
+            .col-lg-6 {
+                .adver-text-wrapper {
+                    .adver-header {
+                        font-size: 28px;
+                    }
+                    .adver-text {
+                        font-size: 15px;
+                        line-height: 28px;
+                        margin-top: 23px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .advers-container {
+        width: 1300px;
+        margin: 0 auto;
+        .row {
+            &:first-child {
+                img {
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                }
+            }
+            &:last-child {
+                img {
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                }
+            }
+            .col-lg-6 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .adver-text-wrapper {
+                    width: 80%;
+                    .adver-header {
+                        font-weight: bold;
+                        font-size: 30px;
+                    }
+                    .adver-text {
+                        font-size: 16px;
+                        line-height: 30px;
+                        margin-top: 25px;
+                    }
+                }
+            }
+        }
+    }
+}

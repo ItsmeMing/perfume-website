@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import cartSlice from "../../redux/cartSlice";
 import "./ProductBox.scss";
 import store from "../../redux/store";
-import { useEffect } from "react";
-import { useRef } from "react";
 
 const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, name, price, description }) => {
     //add product to cart
@@ -68,14 +66,12 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
                 className="product-img-wrapper"
                 onMouseEnter={(e) => {
                     if (window.matchMedia("(min-width: 992px)").matches) {
-                        console.log("triggered");
                         e.currentTarget.childNodes[0].src = productimghover;
                         e.currentTarget.childNodes[1].style.opacity = 1;
                     }
                 }}
                 onMouseLeave={(e) => {
                     if (window.matchMedia("(min-width: 992px)").matches) {
-                        console.log("triggered");
                         e.currentTarget.childNodes[0].src = productimg;
                         e.currentTarget.childNodes[1].removeAttribute("style");
                     }
@@ -85,7 +81,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
                 <button className="product-btn" onClick={handleAddProduct}>
                     ADD TO CART
                 </button>
-                {product.reviewsCount > 1000 ? <span className="bestseller-tag">Bestseller</span> : null}
+                {product.reviewsCount > 500 ? <span className="bestseller-tag">Bestseller</span> : null}
             </div>
             <div className="product-info">
                 <p className="product-reviews">Reviews: {reviewsCount}</p>

@@ -101,7 +101,7 @@ const MobileNavbar = ({ cart, setSearchText }) => {
                     <img src={logo} alt="logo" className="logo"></img>
                 </figure>
             </Link>
-            <FontAwesomeIcon icon={faCartShopping} onClick={toggleCart} />
+            <FontAwesomeIcon icon={faCartShopping} onClick={toggleCart} style={{ color: "#ef776a" }} />
         </>
     );
 };

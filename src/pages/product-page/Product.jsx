@@ -8,6 +8,7 @@ function Product() {
     //always start at the top of the page
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = "Products – Dossier Perfumes";
     }, []);
 
     const [fHeader, setFHeader] = useState("Shop All.");
@@ -31,7 +32,7 @@ function Product() {
                     break;
                 case "Bestsellers":
                     setFHeader("Bestselling Perfumes.");
-                    unfilteredProducts.current = temp.filter((t) => t.reviewsCount > 1000);
+                    unfilteredProducts.current = temp.filter((t) => t.reviewsCount > 500);
                     setProducts(unfilteredProducts.current);
                     break;
                 default:

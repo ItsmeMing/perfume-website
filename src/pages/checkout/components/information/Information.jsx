@@ -41,7 +41,7 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
             </form>
             <form className="checkout-form">
                 <h1 className="checkout-header">Shipping address</h1>
-                <select className="checkout-input" onChange={(e) => setCity(e.target.value)} value="Vietnam">
+                <select className="checkout-input" onChange={(e) => setCity(e.target.value)} value={city}>
                     <option value="Vietnam">Vietnam</option>
                     <option value="United States">United States</option>
                 </select>
@@ -50,20 +50,20 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
                     placeholder="Address"
                     className="checkout-input"
                     required
-                    onChange={(e) => setAddress(e.target.value)}
                     value={address}
-                    type={Text}
+                    onChange={(e) => setAddress(e.target.value)}
+                    type="text"
                 ></input>
                 <input
                     placeholder="Phone number"
                     className="checkout-input"
                     required
+                    value={phone}
                     onChange={(e) => {
                         setPhone(e.target.value);
                         onChange(e.target.value);
                     }}
-                    value={phone}
-                    type={Number}
+                    type="number"
                 ></input>
                 <Btn
                     btnClass="btn move ease-trans-orange"

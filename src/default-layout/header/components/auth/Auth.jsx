@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -12,6 +12,7 @@ import Input from "../../../../global-components/input/Input";
 import Btn from "../../../../global-components/btn/Btn";
 import userSlice from "../../../../redux/userSlice";
 import "./Auth.scss";
+import cartSlice from "../../../../redux/cartSlice";
 
 const Auth = ({ authen, setLoginState }) => {
     const auth = getAuth();
@@ -31,7 +32,15 @@ const Auth = ({ authen, setLoginState }) => {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     const name = user.displayName;
-                    setForm(<User name={name} setForm={setForm} auth={auth} authen={authen} />);
+                    setForm(
+                        <User
+                            name={name}
+                            setForm={setForm}
+                            auth={auth}
+                            authen={authen}
+                            setLoginState={setLoginState}
+                        />,
+                    );
                     dispatch(userSlice.actions.enableLoginStatus(name));
                 }
             });
@@ -80,7 +89,7 @@ const Signup = ({ setForm, auth, setLoginState, authen }) => {
                     });
                 });
             })
-            .catch((err) => console.log(typeof err));
+            .catch((err) => alert(err));
     };
 
     return (
@@ -155,7 +164,7 @@ const Login = ({ setForm, auth, setLoginState, authen }) => {
                 });
             })
             .catch((err) => {
-                console.log(err);
+                alert(err);
             });
     };
 
@@ -197,11 +206,16 @@ const Login = ({ setForm, auth, setLoginState, authen }) => {
 
 const User = ({ name, setForm, auth, setLoginState, authen }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleLogout = () => {
         localStorage.removeItem("Auth-token");
+        localStorage.removeItem("cart");
+        dispatch(cartSlice.actions.deleteCartAll());
+        dispatch(userSlice.actions.disableLoginStatus());
         setForm(<Login setForm={setForm} auth={auth} setLoginState={setLoginState} authen={authen} />);
         setLoginState("Log In");
-        dispatch(userSlice.actions.disableLoginStatus());
+        console.log(document.title);
+        if (document.title === "Your Orders") navigate("/");
     };
     return (
         <>

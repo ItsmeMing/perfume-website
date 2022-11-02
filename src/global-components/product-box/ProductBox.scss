@@ -8,6 +8,8 @@
             display: block;
             width: 100%;
             height: auto;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
         }
 
         .product-btn {
@@ -42,6 +44,8 @@
 
     .product-info {
         background-color: $light-brown;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
         > * {
             width: 90%;
             margin: 0 auto;

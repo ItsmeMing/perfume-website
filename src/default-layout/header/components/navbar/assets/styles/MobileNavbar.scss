@@ -16,6 +16,13 @@
         justify-content: space-between;
         border: 1px solid $black;
         cursor: pointer;
+        a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $white;
+            width: 100%;
+        }
 
         &:first-child {
             // display: block;
@@ -32,13 +39,6 @@
             //         transform: rotate(0deg);
             //     }
             // }
-            a {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                color: $white;
-                width: 100%;
-            }
         }
         .s-menu {
             display: none;

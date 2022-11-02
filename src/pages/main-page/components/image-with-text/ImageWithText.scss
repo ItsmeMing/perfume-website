@@ -183,6 +183,22 @@
                     }
                 }
             }
+
+            &:nth-child(2) {
+                img {
+                    border-radius: 20px;
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+
+            &:last-child {
+                img {
+                    border-radius: 20px;
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                }
+            }
             .i-w-t-text {
                 font-size: 26px;
                 margin-bottom: 21px;
@@ -225,6 +241,19 @@
         width: 1300px;
         margin: 100px auto;
         .image-with-text-wrapper {
+            &:nth-child(2) {
+                img {
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                }
+            }
+
+            &:last-child {
+                img {
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                }
+            }
             &:first-child {
                 .i-w-t-list {
                     width: 80%;

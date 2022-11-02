@@ -72,6 +72,18 @@
     .refund-container {
         width: 1300px;
         margin-bottom: 100px;
+        .refund-wrapper {
+            .refund-item {
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                img {
+                    display: block;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    object-fit: fill;
+                }
+            }
+        }
     }
 }
 

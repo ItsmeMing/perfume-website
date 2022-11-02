@@ -4,7 +4,6 @@ import cartSlice from "../../../../redux/cartSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import { faTruck, faBox } from "@fortawesome/free-solid-svg-icons";
-import store from "../../../../redux/store";
 import Btn from "../../../../global-components/btn/Btn";
 import About from "./components/about/About";
 import Notes from "./components/notes/Notes";
@@ -55,7 +54,7 @@ const DetailsBox = ({ product }) => {
             }
         }
         localStorage.removeItem("cart");
-        const cart = store.getState().cart.cart.list;
+        // const cart = store.getState().cart.cart.list;
         localStorage.setItem("cart", JSON.stringify(cartItems));
     };
     const [details, setDetails] = useState(

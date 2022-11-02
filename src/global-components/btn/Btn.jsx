@@ -4,10 +4,17 @@ import "./Btn.scss";
 const Btn = (props) => {
     return (
         <Fragment>
-            <button className={props.btnClass} onClick={props.onClick}>
-                {props.btnContent}
-                {props.children}
-            </button>
+            {props.disabled === true ? (
+                <button className={props.btnClass} onClick={props.onClick} disabled>
+                    {props.btnContent}
+                    {props.children}
+                </button>
+            ) : (
+                <button className={props.btnClass} onClick={props.onClick}>
+                    {props.btnContent}
+                    {props.children}
+                </button>
+            )}
         </Fragment>
     );
 };
