@@ -81,7 +81,7 @@ const ProductBox = ({ id, productimg, productimghover, product, reviewsCount, na
                 <button className="product-btn" onClick={handleAddProduct}>
                     ADD TO CART
                 </button>
-                {product.reviewsCount > 500 ? <span className="bestseller-tag">Bestseller</span> : null}
+                {product.reviewsCount > 1000 ? <span className="bestseller-tag">Bestseller</span> : null}
             </div>
             <div className="product-info">
                 <p className="product-reviews">Reviews: {reviewsCount}</p>

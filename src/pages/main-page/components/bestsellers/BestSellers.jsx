@@ -18,7 +18,7 @@ const BestSellers = () => {
             // Second, get the first 4 products, then sort them from the highest to the lowest.
             return products
                 .filter((product) => product.categoryId === key)
-                .filter((t) => t.reviewsCount > 500)
+                .filter((t) => t.reviewsCount > 1000)
                 .slice(0, 4)
                 .sort((a, b) => {
                     let x = a["reviews"];

@@ -32,7 +32,7 @@ function Product() {
                     break;
                 case "Bestsellers":
                     setFHeader("Bestselling Perfumes.");
-                    unfilteredProducts.current = temp.filter((t) => t.reviewsCount > 500);
+                    unfilteredProducts.current = temp.filter((t) => t.reviewsCount > 1000);
                     setProducts(unfilteredProducts.current);
                     break;
                 default:
