@@ -39,7 +39,7 @@ const ReviewForm = ({ reviewFormRef, product, reviews }) => {
             review: review,
             createdAt: `${date}/${month}/${year}`,
         };
-        fetch("http://localhost:3001/api/reviews", {
+        fetch("https://fake-perfume-api.herokuapp.com/reviews", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

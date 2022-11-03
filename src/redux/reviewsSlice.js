@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchReviews = createAsyncThunk("reviews/fetchreviews", async () => {
-    const res = await fetch("http://localhost:3001/api/reviews");
+    const res = await fetch("https://fake-perfume-api.herokuapp.com/reviews");
     const data = await res.json();
     return data;
 });

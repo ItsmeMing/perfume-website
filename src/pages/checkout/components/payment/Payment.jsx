@@ -21,7 +21,7 @@ const Payment = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, 
         const month = temp.getMonth() + 1;
         const year = temp.getFullYear();
         newUserCheckout.createdAt = `${date}/${month}/${year}`;
-        await fetch("http://localhost:3001/api/orders", {
+        await fetch("https://fake-perfume-api.herokuapp.com/orders", {
             method: "POST",
             body: JSON.stringify(newUserCheckout),
             headers: {

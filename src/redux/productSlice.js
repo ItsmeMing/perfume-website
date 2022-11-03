@@ -3,13 +3,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //create thunk action and thunk action creator
 
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
-    const res = await fetch("http://localhost:3001/api/products");
+    const res = await fetch("https://fake-perfume-api.herokuapp.com/products");
     const data = await res.json();
     return data;
 });
 
 export const fetchCategories = createAsyncThunk("categories/fetchCategories", async () => {
-    const res = await fetch("http://localhost:3001/api/categories");
+    const res = await fetch("https://fake-perfume-api.herokuapp.com/categories");
     const data = await res.json();
     return data;
 });
