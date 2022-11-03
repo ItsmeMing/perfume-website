@@ -4,7 +4,7 @@
 body {
     font-family: "Lora", serif;
     text-rendering: optimizeSpeed;
-    overflow-x: clip;
+    overflow-x: hidden;
 }
 
 a:-webkit-any-link {
