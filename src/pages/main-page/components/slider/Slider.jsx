@@ -10,7 +10,7 @@ const Sliderr = () => {
     const [slides, setSlides] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3001/api/sliders")
+        fetch("https://fake-perfume-api.herokuapp.com/sliders")
             .then((res) => {
                 return res.json();
             })
@@ -18,32 +18,6 @@ const Sliderr = () => {
                 setSlides(data);
             });
     }, []);
-
-    // const swiper = new Swiper(".swiper", {
-    //     // Default parameters
-    //     slidesPerView: 1,
-    //     // Responsive breakpoints
-    //     breakpoints: {
-    //         // when window width is >= 576px
-    //         //   576: {
-    //         //     slidesPerView: 1,
-    //         //   },
-    //         // when window width is >= 768px
-    //         768: {
-    //             slidesPerView: 2,
-    //         },
-    //         // when window width is >= 640px
-    //         //   992: {
-    //         //     slidesPerView: 2,
-    //         //   },
-    //         1200: {
-    //             slidesPerView: 3,
-    //         },
-    //         1400: {
-    //             slidesPerView: 4,
-    //         },
-    //     },
-    // });
 
     return (
         <section className="slider">
