@@ -18,6 +18,10 @@
             .urgency-message {
                 color: $orange;
             }
+            .error-text {
+                font-weight: bold;
+                color: red;
+            }
         }
         .checkout-sidebar {
             .products {
@@ -114,6 +118,10 @@
                 }
                 .urgency-message {
                     font-size: 12px;
+                    margin-bottom: 5px;
+                }
+                .error-text {
+                    font-size: 12px;
                     margin-bottom: 20px;
                 }
             }
@@ -198,6 +206,10 @@
                 }
                 .urgency-message {
                     font-size: 13px;
+                    margin-bottom: 10px;
+                }
+                .error-text {
+                    font-size: 13px;
                     margin-bottom: 25px;
                 }
             }
@@ -281,6 +293,10 @@
                     }
                 }
                 .urgency-message {
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                }
+                .error-text {
                     font-size: 14px;
                     margin-bottom: 30px;
                 }
@@ -370,6 +386,10 @@
                 }
                 .urgency-message {
                     font-size: 12px;
+                    margin-bottom: 5px;
+                }
+                .error-text {
+                    font-size: 12px;
                     margin-bottom: 20px;
                 }
             }
@@ -456,6 +476,10 @@
                     }
                 }
                 .urgency-message {
+                    font-size: 13px;
+                    margin-bottom: 10px;
+                }
+                .error-text {
                     font-size: 13px;
                     margin-bottom: 25px;
                 }
@@ -544,6 +568,10 @@
                     }
                 }
                 .urgency-message {
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                }
+                .error-text {
                     font-size: 14px;
                     margin-bottom: 30px;
                 }

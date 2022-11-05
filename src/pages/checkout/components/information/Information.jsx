@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Shipping from "../shipping/Shipping";
 import Btn from "../../../../global-components/btn/Btn";
 import "./Information.scss";
 
-const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, setPaymentBtn }) => {
+const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingBtn, setPaymentBtn, setError }) => {
     const newUserCheckOut = { ...userCheckout };
     const auth = getAuth();
     const [email, setEmail] = useState("");
@@ -33,6 +33,8 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
         else setValid(false);
     };
 
+    const numberInputRef = useRef();
+
     return (
         <>
             <form className="checkout-form">
@@ -57,6 +59,7 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
                 <input
                     placeholder="Phone number"
                     className="checkout-input"
+                    ref={numberInputRef}
                     required
                     value={phone}
                     onChange={(e) => {
@@ -68,7 +71,8 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
                 <Btn
                     btnClass="btn move ease-trans-orange"
                     btnContent="Continue to shipping"
-                    onClick={() => {
+                    onClick={(e) => {
+                        e.preventDefault();
                         if (valid) {
                             setInformationBtn("");
                             setShippingBtn("active");
@@ -79,6 +83,7 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
                             newUserCheckOut.address = address;
                             newUserCheckOut.phone = phone;
                             newUserCheckOut.phoneValid = true;
+                            setError("");
                             setProcess(
                                 <Shipping
                                     setProcess={setProcess}
@@ -88,7 +93,11 @@ const Information = ({ setProcess, userCheckout, setInformationBtn, setShippingB
                                     userCheckout={newUserCheckOut}
                                 />,
                             );
-                        } else alert("Invalid phone number!");
+                        } else {
+                            setError('Your phone number format should be like this: "[03/05/07/08/09]12345678"');
+                            numberInputRef.current.style.borderColor = "red";
+                            setPhone("");
+                        }
                     }}
                 ></Btn>
             </form>

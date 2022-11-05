@@ -3,13 +3,13 @@ import Btn from "../../global-components/btn/Btn";
 import { Container } from "react-bootstrap";
 import { faInstagram, faPinterestP, faFacebookF, faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./assets/styles/Footer.scss";
 import logo from "./assets/images/logo.webp";
+import "./assets/styles/Footer.scss";
 
 const Footer = () => {
     return (
         <Fragment>
-            <footer className="footer">
+            <footer className="footer" style={{ position: "absolute", bottom: "0", width: "100%" }}>
                 <Container className="container g-0">
                     <div className="l-footer">
                         <img src={logo} alt="logo" className="logo"></img>

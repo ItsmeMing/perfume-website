@@ -11,70 +11,71 @@ const UserOrders = () => {
         document.title = "Your Orders";
     }, []);
 
-    const loginStatus = useSelector((state) => state.user).logged;
     const navigate = useNavigate();
     const orders = useSelector((state) => state.orders).data;
     const auth = getAuth();
     const [email, setEmail] = useState();
-    const [filteredOrders, setFilteredOrders] = useState([]);
+    const [userOrders, setUserOrders] = useState([]);
 
     useEffect(() => {
-        if (loginStatus === "false") navigate("/");
-        else {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    setEmail(user.email);
-                }
-            });
-            setFilteredOrders(
-                orders.filter((order) => {
-                    return order.email === email;
-                }),
-            );
-        }
-    }, [auth, email, orders, navigate, loginStatus]);
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setEmail(user.email);
+                setUserOrders(
+                    orders.filter((order) => {
+                        return order.email === email;
+                    }),
+                );
+                console.log(userOrders);
+            } else {
+                navigate("/");
+            }
+        });
+    }, [auth, email, navigate, orders]);
 
     return (
         <section className="orders-container container">
             <h1 className="orders-header">Your orders</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Created At</th>
-                        <th>Details</th>
-                        <th>Total Price</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredOrders !== [] ? (
-                        filteredOrders.map((order, index) => {
-                            return (
-                                <tr key={index}>
-                                    <td>{order.id}</td>
-                                    <td>{order.createdAt}</td>
-                                    <td>
-                                        {order.products.map((product, index) => {
-                                            return (
-                                                <div key={index}>
-                                                    <p>
-                                                        {product.name} *{product.quantity}
-                                                    </p>
-                                                </div>
-                                            );
-                                        })}
-                                    </td>
-                                    <td>${order.totalPrice}</td>
-                                    <td style={{ color: "green" }}>Confirmed</td>
-                                </tr>
-                            );
-                        })
-                    ) : (
-                        <p>You don't have any orders.</p>
-                    )}
-                </tbody>
-            </table>
+            {userOrders.length === 0 ? (
+                <p style={{ fontWeight: "bold" }}>You don't have any orders.</p>
+            ) : (
+                <>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Created At</th>
+                                <th>Details</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {userOrders.map((order, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{order.id}</td>
+                                        <td>{order.createdAt}</td>
+                                        <td>
+                                            {order.products.map((product, index) => {
+                                                return (
+                                                    <div key={index}>
+                                                        <p>
+                                                            {product.name} *{product.quantity}
+                                                        </p>
+                                                    </div>
+                                                );
+                                            })}
+                                        </td>
+                                        <td>${order.totalPrice}</td>
+                                        <td style={{ color: "green" }}>Confirmed</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </>
+            )}
         </section>
     );
 };

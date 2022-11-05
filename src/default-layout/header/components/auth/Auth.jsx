@@ -66,6 +66,8 @@ const Signup = ({ setForm, auth, setLoginState, authen }) => {
     const [rEmail, setREmail] = useState("");
     const [rPassword, setRPassword] = useState("");
 
+    const [error, setError] = useState("");
+
     const handleSignUp = () => {
         createUserWithEmailAndPassword(auth, rEmail, rPassword)
             .then((res) => {
@@ -74,6 +76,7 @@ const Signup = ({ setForm, auth, setLoginState, authen }) => {
                     onAuthStateChanged(auth, (user) => {
                         if (user) {
                             const name = user.displayName;
+                            dispatch(userSlice.actions.enableLoginStatus(name));
                             setForm(
                                 <User
                                     name={name}
@@ -84,12 +87,28 @@ const Signup = ({ setForm, auth, setLoginState, authen }) => {
                                 />,
                             );
                             setLoginState(name);
-                            dispatch(userSlice.actions.enableLoginStatus(name));
                         }
                     });
                 });
             })
-            .catch((err) => alert(err));
+            .catch((err) => {
+                switch (err.code) {
+                    case "auth/invalid-email":
+                        setError("Invalid email address!");
+                        break;
+                    case "auth/email-already-in-use":
+                        setError("This email is already in use.");
+                        break;
+                    case "auth/weak-password":
+                        setError("Your password is too weak!");
+                        break;
+                    case "auth/internal-error":
+                        alert(err.code);
+                        break;
+                    default:
+                        break;
+                }
+            });
     };
 
     return (
@@ -103,6 +122,7 @@ const Signup = ({ setForm, auth, setLoginState, authen }) => {
             >
                 Or <strong>Login</strong>
             </p>
+            <p className="error-text">{error}</p>
             <form className="form-container signup">
                 <Input
                     onChange={(e) => setFirstName(e.target.value)}
@@ -139,6 +159,7 @@ const Login = ({ setForm, auth, setLoginState, authen }) => {
 
     const [uEmail, setUEmail] = useState("");
     const [uPassword, setUPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -164,7 +185,7 @@ const Login = ({ setForm, auth, setLoginState, authen }) => {
                 });
             })
             .catch((err) => {
-                alert(err);
+                setError("Wrong username/password");
             });
     };
 
@@ -179,6 +200,7 @@ const Login = ({ setForm, auth, setLoginState, authen }) => {
             >
                 Or <strong>Create an account</strong>
             </p>
+            <p className="error-text">{error}</p>
             <form className="form-container">
                 <Input
                     placeholder="Email"
@@ -214,7 +236,7 @@ const User = ({ name, setForm, auth, setLoginState, authen }) => {
         dispatch(userSlice.actions.disableLoginStatus());
         setForm(<Login setForm={setForm} auth={auth} setLoginState={setLoginState} authen={authen} />);
         setLoginState("Log In");
-        console.log(document.title);
+        dispatch(userSlice.actions.enableLoginStatus(name));
         if (document.title === "Your Orders") navigate("/");
     };
     return (

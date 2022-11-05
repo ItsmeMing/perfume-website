@@ -30,7 +30,7 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <Container fluid className="g-0" style={{ position: "relative" }}>
+                <Container fluid className="g-0" style={{ position: "relative", minHeight: "100vh" }}>
                     <Routes>
                         {publicRoutes.map((route, index) => {
                             const Page = route.component;

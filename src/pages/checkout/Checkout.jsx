@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faFire, faTags } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +8,6 @@ import Information from "./components/information/Information";
 import store from "../../redux/store";
 import logo from "../../default-layout/header/components/navbar/assets/images/logo.webp";
 import "./Checkout.scss";
-import { Link } from "react-router-dom";
 
 const Checkout = () => {
     //always start at the top of the page
@@ -94,7 +94,9 @@ const Checkout = () => {
         handleCart();
     }, [handleCart]);
 
-    const [process, setProcess] = useState();
+    const [error, setError] = useState();
+
+    const [process, setProcess] = useState("");
     useEffect(() => {
         setProcess(
             <Information
@@ -103,6 +105,7 @@ const Checkout = () => {
                 setInformationBtn={setInformationBtn}
                 setShippingBtn={setShippingBtn}
                 setPaymentBtn={setPaymentBtn}
+                setError={setError}
             />,
         );
     }, [userCheckout]);
@@ -127,6 +130,7 @@ const Checkout = () => {
                                 <FontAwesomeIcon icon={faFire} />
                                 <strong> Items in your cart are in high demand, act fast.</strong>
                             </div>
+                            <p className="error-text">{error}</p>
                             {process}
                         </section>
                     </Col>

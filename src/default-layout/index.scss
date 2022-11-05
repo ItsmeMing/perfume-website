@@ -1,0 +1,22 @@
+@import "../styles/variables.scss";
+
+.container-fluid#content {
+    @media (max-width: 575.98px) {
+        padding-bottom: 466px;
+    }
+    @media (min-width: 576px) {
+        padding-bottom: 312px;
+    }
+    @media (min-width: 768px) {
+        padding-bottom: 347px;
+    }
+    @media (min-width: 992px) {
+        padding-bottom: 382px;
+    }
+    @media (min-width: 1200px) {
+        padding-bottom: 417px;
+    }
+    @media (min-width: 1400px) {
+        padding-bottom: 448px;
+    }
+}
